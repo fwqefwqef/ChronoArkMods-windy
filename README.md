@@ -49,3 +49,15 @@ You can obtain parrying attack skillbook from Lian even after unlocking her. It 
 
 Removes 'Cannot be Fixed' keyword from all skills.
 
+# [windymod]
+
+Miscellaneous gameplay changes that I personally like.
+
+Blade Starfall: Countdown reduced to 3->1
+
+Dark Sun, Dark Moon, Storming Blade: Gain Tracking
+
+Fox Orb: Extra effects can be used on male characters
+
+Burning Night: Give HP+4
+

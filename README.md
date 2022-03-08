@@ -17,7 +17,6 @@ Full Documentation:
 
 https://docs.google.com/document/d/1v1eJqPntX5T-lnDV4tWOFE66_IVwi6GWcdjPKxF9kL0/edit?usp=sharing
 
----
 # [505Error Skill Randomizer]
 
 This is Chrono Ark but 505Error taken to the extreme!
@@ -38,22 +37,17 @@ Healing 101: Gives 2 Healing 101 at the start of the game to help support charac
 
 (Go to BepInEx -> config -> open in Notepad: org.windy.chronoark.cardmod.randomskillmod.cfg)
 
----
 # [Fox Orb Genderlock Removal]
 
 Fox Orb is no longer limited to female characters.
 
----
 # [Parry Skill Book]
 
 You can obtain parrying attack skillbook from Lian even after unlocking her. It costs 0 credits. 
 
 (Optional) The game text will say that it still requires 8 credits. To fix this: Chrono Ark > ChronoArk_Data > StreamingAssets > LangDialogueDB.csv: Ctrl+F "8 credits", delete the parenthesis
 
----
 # [Remove Fixed Skill Limit]
 
 Removes 'Cannot be Fixed' keyword from all skills.
-
----
 

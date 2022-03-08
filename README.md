@@ -57,7 +57,8 @@ Blade Starfall: Countdown reduced to 3->1
 
 Dark Sun, Dark Moon, Storming Blade: Gain Tracking
 
+Time to Move!: Gain Swiftness
+
 Fox Orb: Can be used on male characters
 
 Burning Night: Give HP+4
-

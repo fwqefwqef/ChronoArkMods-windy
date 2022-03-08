@@ -27,8 +27,6 @@ Skill Book, Infinite Skill Book: Scrambled to show random Investigator skills.
 
 Golden Skill Book: Shows you random Investigator Rare Skills.
 
-Healing 101: Unchanged
-
 Extra settings
 
 Chaos Mode: Include every existing skill in the game (such as enemy skills and item effects) into the selection pool. Gets silly quickly. (Default OFF)

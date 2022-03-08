@@ -19,7 +19,7 @@ https://docs.google.com/document/d/1v1eJqPntX5T-lnDV4tWOFE66_IVwi6GWcdjPKxF9kL0/
 
 # [505Error Skill Randomizer]
 
-This is Chrono Ark but 505Error taken to the extreme!
+This is Chrono Ark but 505Error taken to the extreme.
 
 Level Up: The effects of 505Error are activated by default. However, the first 3 skills are gone meaning you choose between 3 random skills from all investigators.
 

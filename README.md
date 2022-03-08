@@ -49,7 +49,7 @@ You can obtain parrying attack skillbook from Lian even after unlocking her. It 
 
 Removes 'Cannot be Fixed' keyword from all skills.
 
-# [windymod]
+# [windy's mod]
 
 Miscellaneous gameplay changes that I personally like.
 

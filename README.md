@@ -1,2 +1,4 @@
 # ChronoArkMods-Windy
-A list of various mods for Chrono Ark. Requires BepInEx. 
+A list of various mods that I made for Chrono Ark. Requires BepInEx.
+The .dll files are what you need. I included .cs source code for people who want to look at it. 
+Check here for how to use mods: https://github.com/Neoshrimp/ChronoArk-gameplay-plugins

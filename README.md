@@ -39,6 +39,7 @@ Healing 101: Gives 2 Healing 101 at the start of the game to help support charac
 
 Fox Orb is no longer limited to female characters.
 
+
 # [Parry Skill Book]
 
 You can obtain parrying attack skillbook from Lian even after unlocking her. It costs 0 credits. 
@@ -47,7 +48,8 @@ You can obtain parrying attack skillbook from Lian even after unlocking her. It 
 
 # [Remove Fixed Skill Limit]
 
-Removes 'Cannot be Fixed' keyword from all skills.
+Removes 'Cannot be Fixed' keyword from all skills. 
+
 
 # [windy's mod]
 

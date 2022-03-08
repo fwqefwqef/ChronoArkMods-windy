@@ -1,6 +1,4 @@
-# ChronoArkMods-Windy
-
-Chrono Ark Mods
+# Chrono Ark Mods
 
 A list of various mods for Chrono Ark. Requires BepInEx.
 

@@ -1,6 +1,6 @@
 # Chrono Ark Mods
 
-A list of various mods that I made for Chrono Ark. Requires BepInEx.
+A list of various mods for Chrono Ark. Requires BepInEx.
 
 The .dll files are the mod files. I included .cs source code for people who want to look at it. 
 

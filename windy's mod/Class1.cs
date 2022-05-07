@@ -1,4 +1,4 @@
-﻿using BepInEx;
+using BepInEx;
 using BepInEx.Configuration;
 using GameDataEditor;
 using HarmonyLib;
@@ -62,13 +62,7 @@ namespace Alternative_ShadowCurtain
                             (masterJson[e.Key] as Dictionary<string, object>)["Track"] = true;
                         }
 
-                        // Blade Starfall: Countdown reduced to 1
-                        if (e.Key == "S_Azar_2")
-                        {
-                            (masterJson[e.Key] as Dictionary<string, object>)["Counting"] = 1;
-                        }
-
-                        // Time to Move!: Gain swiftness
+                        //Time to Move!: Gain swiftness
                         if (e.Key == "S_Sizz_6")
                         {
                             (masterJson[e.Key] as Dictionary<string, object>)["NotCount"] = true;

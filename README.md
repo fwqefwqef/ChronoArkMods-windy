@@ -37,7 +37,7 @@ Healing 101: Gives 2 Healing 101 at the start of the game to help support charac
 
 # [Fox Orb Genderlock Removal]
 
-Fox Orb is no longer limited to female characters.
+Fox Orb can be used on male characters.
 
 
 # [Parry Skill Book]
@@ -60,3 +60,5 @@ Dark Sun, Dark Moon, Storming Blade: Gain Tracking
 Time to Move!: Gain Swiftness
 
 Fox Orb: Can be used on male characters
+
+Game Start: Game runs at 3x speed until you reach first battle

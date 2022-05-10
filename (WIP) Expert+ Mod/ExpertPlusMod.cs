@@ -189,7 +189,7 @@ namespace ExpertPlusMod
             }
         }
 
-        // Despair Mode: Golden Apple now revives ally
+        // Sniper Curse can be removed by lifting scroll
         [HarmonyPatch(typeof(SkillExtended_UnCurse))]
         class SniperCurse_Patch
         {

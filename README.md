@@ -46,6 +46,12 @@ You can obtain parrying attack skillbook from Lian even after unlocking her. It 
 
 (Optional) The game text will say that it still requires 8 credits. To fix this: Chrono Ark > ChronoArk_Data > StreamingAssets > LangDialogueDB.csv: Ctrl+F "8 credits", delete the parenthesis
 
+# [Recruit Select Num]
+
+Change the number of party members available in campfire recruit. 
+Default 8 characters. To change the number,
+Go to BepInEx -> config -> open in Notepad: org.windy.chronoark.recruitmod.recruitselectnum
+
 # [Remove Fixed Skill Limit]
 
 Removes 'Cannot be Fixed' keyword from all skills. 

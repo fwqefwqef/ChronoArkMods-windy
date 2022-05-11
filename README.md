@@ -50,6 +50,7 @@ You can obtain parrying attack skillbook from Lian even after unlocking her. It 
 
 Change the number of party members available in campfire recruit. 
 Default 8 characters. To change the number,
+
 Go to BepInEx -> config -> open in Notepad: org.windy.chronoark.recruitmod.recruitselectnum
 
 # [Remove Fixed Skill Limit]

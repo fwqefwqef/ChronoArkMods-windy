@@ -353,16 +353,22 @@ namespace BossChanges
                             (masterJson[e.Key] as Dictionary<string, object>)["Buffs"] = a;
                         }
 
-                        // TFK: HP+100
-                        //if (e.Key == "S4_King_0")
-                        //{
-                        //    (masterJson[e.Key] as Dictionary<string, object>)["maxhp"] = 1000;
-                        //}
+                        //TFK: HP + 100
+                        if (e.Key == "S4_King_0")
+                        {
+                            (masterJson[e.Key] as Dictionary<string, object>)["maxhp"] = 1000;
+                        }
 
                         //Godo Revolver Panning: Damage increased
                         if (e.Key == "SE_Gunmman_2_T")
                         {
                             (masterJson[e.Key] as Dictionary<string, object>)["DMG_Per"] = 70;
+                        }
+
+                        //Impale: Changed to Null
+                        if (e.Key == "S_S4_King_LastAttack")
+                        {
+                            (masterJson[e.Key] as Dictionary<string, object>)["Category"] = "null";
                         }
                     }
                 }
@@ -980,30 +986,30 @@ namespace BossChanges
             }
         }
 
-        // TFK: Phase 2 starts at 500HP
-        //[HarmonyPatch(typeof(P_King))]
-        //class TFKPatch
-        //{
-        //    [HarmonyPatch(nameof(P_King.HPChange))]
-        //    [HarmonyPrefix]
-        //    static bool Prefix(P_King __instance)
-        //    {
-        //        if (__instance.MainAI.Phase == 1 && __instance.BChar.HP <= 500)
-        //        {
-        //            __instance.BChar.Info.Hp = 500;
-        //            __instance.BChar.BuffAdd(GDEItemKeys.Buff_B_S4_King_P1_Half, __instance.BChar, false, 0, false, -1, false);
-        //            if (__instance.MainAI.Phase == 1)
-        //            {
-        //                (__instance.BChar as BattleEnemy).ChangeSprite(((__instance.BChar as BattleEnemy).MyComponent as C_King).Phase_1_2);
-        //                __instance.BChar.UI.CharShake.ShakeEndbled(50f, 20f, 60);
-        //            }
-        //        }
-        //        return true;
-        //    }
-        //}
+       //TFK: Phase 2 starts at 500HP
+       [HarmonyPatch(typeof(P_King))]
+        class TFKPatch
+        {
+            [HarmonyPatch(nameof(P_King.HPChange))]
+            [HarmonyPrefix]
+            static bool Prefix(P_King __instance)
+            {
+                if (__instance.MainAI.Phase == 1 && __instance.BChar.HP <= 500)
+                {
+                    __instance.BChar.Info.Hp = 500;
+                    __instance.BChar.BuffAdd(GDEItemKeys.Buff_B_S4_King_P1_Half, __instance.BChar, false, 0, false, -1, false);
+                    if (__instance.MainAI.Phase == 1)
+                    {
+                        (__instance.BChar as BattleEnemy).ChangeSprite(((__instance.BChar as BattleEnemy).MyComponent as C_King).Phase_1_2);
+                        __instance.BChar.UI.CharShake.ShakeEndbled(50f, 20f, 60);
+                    }
+                }
+                return true;
+            }
+        }
 
-        // TFK: Shackle stuns 2 people
         // This code doesnt work
+        // TFK: Shackle stuns 2 people
         //[HarmonyPatch(typeof(S_S4_King_P1_0))]
         //class TFKPatch
         //{
@@ -1050,9 +1056,9 @@ namespace BossChanges
         //    }
         //}
 
-       //TFK Shackle: Starts at 2 stacks
-       [HarmonyPatch(typeof(S_S4_King_P1_0))]
-        class TFKPatch
+        //TFK Shackle: Starts at 2 stacks
+        [HarmonyPatch(typeof(S_S4_King_P1_0))]
+        class TFKShacklePatch
         {
             [HarmonyPatch(nameof(S_S4_King_P1_0.Del))]
             [HarmonyPostfix]
@@ -1061,7 +1067,7 @@ namespace BossChanges
                 Mybutton.Myskill.Master.BuffAdd(GDEItemKeys.Buff_B_S4_King_minion_0_0_T, __instance.BChar, false, 0, false, -1, false);
             }
         }
-
+        // (This one is the shackle from phase 2)
         [HarmonyPatch(typeof(S_S4_King_P2Start))]
         class TFKPatch2
         {
@@ -1073,7 +1079,7 @@ namespace BossChanges
             }
         }
 
-        // Shackle: Receiving Crit Chance +100%, Debuff Resist -100%
+        // Shackle: Receiving Crit Chance +100%, Debuff Resist -100%, Aggro Greatly Increased
         [HarmonyPatch(typeof(B_S4_King_minion_0_0_T))]
         class ShacklePatch
         {
@@ -1081,10 +1087,48 @@ namespace BossChanges
             [HarmonyPostfix]
             static void Postfix(B_S4_King_minion_0_0_T __instance)
             {
+                __instance.PlusStat.AggroPer = 80;
                 __instance.PlusStat.crihit = 100;
-                __instance.PlusStat.RES_CC = -100f;
-                __instance.PlusStat.RES_DEBUFF = -100f;
-                __instance.PlusStat.RES_DOT = -100f;
+            }
+        }
+
+        // TFK: Impale someone at the beginning of 3rd phase
+        [HarmonyPatch(typeof(S_S4_King_P2_1))]
+        class ImpalePatch
+        {
+
+            [HarmonyPatch(nameof(S_S4_King_P2_1.SkillUseSingle))]
+            [HarmonyPrefix]
+
+            static bool Prefix(S_S4_King_P2_1 __instance)
+            {
+
+                void Del(SkillButton Mybutton)
+                {
+                    Mybutton.CharData.Dead(false);
+                    Debug.Log("Del");
+                }
+
+                if (!__instance.BChar.BuffFind(GDEItemKeys.Buff_B_S4_King_P2_P, false))
+                {
+                    if(BattleSystem.instance.AllyTeam.AliveChars.Count > 2)
+                    {
+                        List<BattleChar> list = new List<BattleChar>();
+                        list.AddRange(BattleSystem.instance.AllyTeam.AliveChars);
+                        List<Skill> list2 = new List<Skill>();
+                        Skill s = new Skill();
+                        foreach (BattleChar battleChar in list)
+                        {
+                            s = Skill.TempSkill(GDEItemKeys.Skill_S_S4_King_LastAttack, battleChar, battleChar.MyTeam);
+                            list2.Add(s);
+                        }
+                        BattleSystem.DelayInput(BattleSystem.I_OtherSkillSelect(list2, new SkillButton.SkillClickDel(Del), string.Empty, false, false, true, false, true));
+                    }
+                    __instance.BChar.BuffAdd(GDEItemKeys.Buff_B_S4_King_P2_P, __instance.BChar, false, 0, false, -1, false);
+                    __instance.BChar.BuffAdd(GDEItemKeys.Buff_B_Armor_P_1, __instance.BChar, false, 0, false, -1, false);
+                    (__instance.BChar as BattleEnemy).ChangeSprite(((__instance.BChar as BattleEnemy).MyComponent as C_King).Phase_2);
+                }
+                    return false;
             }
         }
 
@@ -1103,8 +1147,8 @@ namespace BossChanges
         //    }
         //}
 
-       //Sir Dorchi: final move leaf slash damage increased
-       [HarmonyPatch(typeof(S_DorchiX_0))]
+        //Sir Dorchi: final move leaf slash damage increased
+        [HarmonyPatch(typeof(S_DorchiX_0))]
         class DorchiXSummonPatch
         {
             [HarmonyPatch(nameof(S_DorchiX_0.AttackEffectSingle))]
@@ -1150,11 +1194,10 @@ namespace BossChanges
                 }
 
                 BattleSystem.instance.AllyTeam.Draw(1);
-                Debug.Log("Discard and Draw");
             }
         }
 
-        //Change Imitate Desc
+        //Change Double Tap Desc
         [HarmonyPatch(typeof(Skill_Extended))]
         class ImitateDesc_Patch
         {
@@ -1165,6 +1208,21 @@ namespace BossChanges
                 if (__instance is S_Gunman_1)
                 {
                     __result = "If the target is not at death's door, attack the target again. Discard the top skill in your hand and draw 1.";
+                }
+            }
+        }
+
+        //Change Impale Desc
+        [HarmonyPatch(typeof(Skill_Extended))]
+        class LastAttack_Patch
+        {
+            [HarmonyPatch(nameof(Skill_Extended.DescExtended))]
+            [HarmonyPostfix]
+            static void DescExtendedPostfix(ref string __result, Skill_Extended __instance)
+            {
+                if (__instance is S4_King_LastAttack)
+                {
+                    __result = "<color=red>Execute the target.</color>";
                 }
             }
         }

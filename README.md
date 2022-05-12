@@ -55,7 +55,7 @@ Go to BepInEx -> config -> open in Notepad: org.windy.chronoark.recruitmod.recru
 
 # [Remove Fixed Skill Limit]
 
-Removes 'Cannot be Fixed' keyword from all skills. 
+Remove 'Cannot be Fixed' keyword from all skills. 
 
 
 # [windy's mod]

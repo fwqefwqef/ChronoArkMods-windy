@@ -256,10 +256,19 @@ namespace ExpertPlusMod
                     __instance.WaitCount = 1;
                 }
 
+
                 // Here: Mana reduced by 1 per charcter dead. Cannot fall below 3.
-                int diff = BattleSystem.instance.AllyTeam.Chars.Count - BattleSystem.instance.AllyTeam.AliveChars.Count;
-                Debug.Log("Number of dead allies: " + diff);
-                __instance.AP = (__instance.MAXAP-diff >= 3) ? __instance.MAXAP - diff : 3;
+                Debug.Log("Stage: "+StageSystem.instance.Map.StageData.Key);
+                if (StageSystem.instance.Map.StageData.Key != GDEItemKeys.Stage_Stage_Crimson)
+                {
+                    int diff = BattleSystem.instance.AllyTeam.Chars.Count - BattleSystem.instance.AllyTeam.AliveChars.Count;
+                    Debug.Log("Number of dead allies: " + diff);
+                    __instance.AP = (__instance.MAXAP - diff >= 3) ? __instance.MAXAP - diff : 3;
+                }
+                else
+                {
+                    __instance.AP = __instance.MAXAP;
+                }
 
                 __instance.TurnActionNum = 0;
                 List<BattleChar> list = new List<BattleChar>();
@@ -390,8 +399,12 @@ namespace ExpertPlusMod
                     __instance.Dead(false);
 
                     //Here
-                    BattleSystem.instance.AllyTeam.AP--;
-                    Debug.Log("Mana decreased due to death");
+                    Debug.Log("Stage: " + StageSystem.instance.Map.StageData.Key);
+                    if (StageSystem.instance.Map.StageData.Key != GDEItemKeys.Stage_Stage_Crimson)
+                    {
+                        BattleSystem.instance.AllyTeam.AP--;
+                        Debug.Log("Mana decreased due to death");
+                    }
                 }
                 else
                 {

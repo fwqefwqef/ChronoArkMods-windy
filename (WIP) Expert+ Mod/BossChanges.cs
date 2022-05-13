@@ -1107,7 +1107,11 @@ namespace BossChanges
                 {
                     Mybutton.CharData.Dead(false);
                     Debug.Log("Dead");
-                    BattleSystem.instance.AllyTeam.AP--;
+                    Debug.Log("Stage: " + StageSystem.instance.Map.StageData.Key);
+                    if (StageSystem.instance.Map.StageData.Key != GDEItemKeys.Stage_Stage_Crimson)
+                    {
+                        BattleSystem.instance.AllyTeam.AP--;
+                    }
                 }
 
                 if (!__instance.BChar.BuffFind(GDEItemKeys.Buff_B_S4_King_P2_P, false))

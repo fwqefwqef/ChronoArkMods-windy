@@ -1106,7 +1106,8 @@ namespace BossChanges
                 void Del(SkillButton Mybutton)
                 {
                     Mybutton.CharData.Dead(false);
-                    Debug.Log("Del");
+                    Debug.Log("Dead");
+                    BattleSystem.instance.AllyTeam.AP--;
                 }
 
                 if (!__instance.BChar.BuffFind(GDEItemKeys.Buff_B_S4_King_P2_P, false))

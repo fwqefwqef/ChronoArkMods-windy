@@ -362,7 +362,7 @@ namespace BossChanges
                         //Godo Revolver Panning: Damage increased
                         if (e.Key == "SE_Gunmman_2_T")
                         {
-                            (masterJson[e.Key] as Dictionary<string, object>)["DMG_Per"] = 70;
+                            (masterJson[e.Key] as Dictionary<string, object>)["DMG_Per"] = 100;
                         }
 
                         //Impale: Changed to Null
@@ -1165,57 +1165,57 @@ namespace BossChanges
             }
         }
 
-        //Duelist Godo : Revolver Pannning draw 4 skills
-        [HarmonyPatch(typeof(AI_Gunman))]
-        class GodoPatch
-        {
-            [HarmonyPatch(nameof(AI_Gunman.SkillSelect))]
-            [HarmonyPostfix]
-            static void Postfix(AI_Gunman __instance, int ActionCount)
-            {
-                if (__instance.Phase == 2 && ActionCount == 0)
-                {
-                    int num = 10 - BattleSystem.instance.AllyTeam.Skills.Count;
+        ////Duelist Godo : Revolver Pannning draws skills
+        //[HarmonyPatch(typeof(AI_Gunman))]
+        //class GodoPatch
+        //{
+        //    [HarmonyPatch(nameof(AI_Gunman.SkillSelect))]
+        //    [HarmonyPostfix]
+        //    static void Postfix(AI_Gunman __instance, int ActionCount)
+        //    {
+        //        if (__instance.Phase == 2 && ActionCount == 0)
+        //        {
+        //            int num = 10 - BattleSystem.instance.AllyTeam.Skills.Count;
 
-                    BattleSystem.instance.AllyTeam.Draw(num);
-                    Debug.Log("Draw!!!!");
-                }
-            }
-        }
+        //            BattleSystem.instance.AllyTeam.Draw(num);
+        //            Debug.Log("Draw!!!!");
+        //        }
+        //    }
+        //}
 
-        //Duelist Godo Double Tap : discard and draw 1 skill
-        [HarmonyPatch(typeof(S_Gunman_1))]
-        class DoubleTapPatch
-        {
-            [HarmonyPatch(nameof(S_Gunman_1.SkillUseSingle))]
-            [HarmonyPostfix]
-            static void Postfix(S_Gunman_1 __instance, List<BattleChar> Targets)
-            {
+        ////Duelist Godo Double Tap : discard and draw 1 skill
+        //[HarmonyPatch(typeof(S_Gunman_1))]
+        //class DoubleTapPatch
+        //{
+        //    [HarmonyPatch(nameof(S_Gunman_1.SkillUseSingle))]
+        //    [HarmonyPostfix]
+        //    static void Postfix(S_Gunman_1 __instance, List<BattleChar> Targets)
+        //    {
 
-                if (Targets[0].MyTeam.Skills.Count >= 1)
-                {
-                    Skill skill = Targets[0].MyTeam.Skills[0];
-                    skill.Delete(false);
-                }
+        //        if (Targets[0].MyTeam.Skills.Count >= 1)
+        //        {
+        //            Skill skill = Targets[0].MyTeam.Skills[0];
+        //            skill.Delete(false);
+        //        }
 
-                BattleSystem.instance.AllyTeam.Draw(1);
-            }
-        }
+        //        BattleSystem.instance.AllyTeam.Draw(1);
+        //    }
+        //}
 
-        //Change Double Tap Desc
-        [HarmonyPatch(typeof(Skill_Extended))]
-        class ImitateDesc_Patch
-        {
-            [HarmonyPatch(nameof(Skill_Extended.DescExtended))]
-            [HarmonyPostfix]
-            static void DescExtendedPostfix(ref string __result, Skill_Extended __instance)
-            {
-                if (__instance is S_Gunman_1)
-                {
-                    __result = "If the target is not at death's door, attack the target again. Discard the top skill in your hand and draw 1.";
-                }
-            }
-        }
+        ////Change Double Tap Desc
+        //[HarmonyPatch(typeof(Skill_Extended))]
+        //class ImitateDesc_Patch
+        //{
+        //    [HarmonyPatch(nameof(Skill_Extended.DescExtended))]
+        //    [HarmonyPostfix]
+        //    static void DescExtendedPostfix(ref string __result, Skill_Extended __instance)
+        //    {
+        //        if (__instance is S_Gunman_1)
+        //        {
+        //            __result = "If the target is not at death's door, attack the target again. Discard the top skill in your hand and draw 1.";
+        //        }
+        //    }
+        //}
 
         //Change Impale Desc
         [HarmonyPatch(typeof(Skill_Extended))]
@@ -1232,27 +1232,27 @@ namespace BossChanges
             }
         }
 
-        //Gunman Speed Change : Change to Action Count 1->2
-        [HarmonyPatch(typeof(AI_Gunman))]
-        class SpeedGunman
-        {
-            [HarmonyPatch(nameof(AI_Gunman.SpeedChange))]
-            [HarmonyPrefix]
-            static bool Prefix(Skill skill, int ActionCount, int OriginSpeed, ref int __result)
-            {
-                if (skill.MySkill.KeyID == GDEItemKeys.Skill_S_Gunman_2)
-                {
-                    __result = 2;
-                    Debug.Log("Speed Changed");
-                }
-                else
-                {
-                    __result = OriginSpeed;
-                    Debug.Log("Origin Speed");
-                }
-                return false;
-            }
-        }
+        //Godo Speed Change : Change to Action Count 1->2
+        //[HarmonyPatch(typeof(AI_Gunman))]
+        //class SpeedGunman
+        //{
+        //    [HarmonyPatch(nameof(AI_Gunman.SpeedChange))]
+        //    [HarmonyPrefix]
+        //    static bool Prefix(Skill skill, int ActionCount, int OriginSpeed, ref int __result)
+        //    {
+        //        if (skill.MySkill.KeyID == GDEItemKeys.Skill_S_Gunman_2)
+        //        {
+        //            __result = 2;
+        //            Debug.Log("Speed Changed");
+        //        }
+        //        else
+        //        {
+        //            __result = OriginSpeed;
+        //            Debug.Log("Origin Speed");
+        //        }
+        //        return false;
+        //    }
+        //}
 
         //Duelist Godo Ultimate : attack 2 times
         //[HarmonyPatch(typeof(S_Gunmman_2))]

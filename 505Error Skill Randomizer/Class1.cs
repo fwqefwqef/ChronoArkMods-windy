@@ -43,10 +43,10 @@ namespace Alternative_ShadowCurtain
                 foreach (var e in masterJson)
                 {
                     //Debug.Log(e);
-                    if (((Dictionary<string, object>)e.Value).ContainsKey("NoBasicSkill"))
-                    {
-                        (masterJson[e.Key] as Dictionary<string, object>)["NoBasicSkill"] = "false";
-                    }
+                    //if (((Dictionary<string, object>)e.Value).ContainsKey("NoBasicSkill"))
+                    //{
+                    //    (masterJson[e.Key] as Dictionary<string, object>)["NoBasicSkill"] = "false";
+                    //}
                 }
                 dataString = Json.Serialize(masterJson);
             }

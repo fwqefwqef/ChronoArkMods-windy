@@ -419,7 +419,13 @@ namespace BossChanges
             }
             MasterAudio.PlaySound("Laugh_03", 1f, null, 0f, null, null, false, false);
             List<Skill> temp = new List<Skill>();
-            temp.AddRange(BattleSystem.instance.AllyTeam.Skills);
+            foreach (Skill skill in BattleSystem.instance.AllyTeam.Skills)
+            {
+                if (skill.MySkill.KeyID != GDEItemKeys.Skill_S_Joker_0)
+                {
+                    temp.Add(skill);
+                }
+            }
             BattleSystem.DelayInput(BattleSystem.I_OtherSkillSelect(temp, new SkillButton.SkillClickDel(__instance.Del), "......", false, true, true, false, true));
             yield break;
         }
@@ -1116,7 +1122,7 @@ namespace BossChanges
 
                 if (!__instance.BChar.BuffFind(GDEItemKeys.Buff_B_S4_King_P2_P, false))
                 {
-                    if(BattleSystem.instance.AllyTeam.AliveChars.Count > 2)
+                    if(BattleSystem.instance.AllyTeam.AliveChars.Count > 2 && !(__instance.BChar.HP<100))
                     {
                         List<BattleChar> list = new List<BattleChar>();
                         list.AddRange(BattleSystem.instance.AllyTeam.AliveChars);

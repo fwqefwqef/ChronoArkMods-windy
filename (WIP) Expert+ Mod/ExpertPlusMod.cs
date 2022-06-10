@@ -20,18 +20,20 @@ namespace ExpertPlusMod
     [BepInProcess("ChronoArk.exe")]
     public class ExpertPlusPlugin : BaseUnityPlugin
     {
-        public const string GUID = "org.windy.chronoark.difficultymod.expertplus";
+        public const string GUID = "windy.expertplus";
         public const string version = "1.0.0";
 
         private static readonly Harmony harmony = new Harmony(GUID);
 
         private static ConfigEntry<bool> DespairMode;
         private static ConfigEntry<bool> VanillaCurses;
+        private static ConfigEntry<bool> AscensionMode;
 
         void Awake()
         {
-            DespairMode = Config.Bind("Generation config", "Despair Mode", false, "A very difficult gameplay mode. Campfires can no longer revive allies. Golden Apples cannot be used in battle but can revive allies. (true/false)");
-            VanillaCurses = Config.Bind("Generation config", "Vanilla Curses", false, "Reverts the nerfs to Cursed Mob stats. The challenge is designed around weaker cursed mobs, but if you don't want that, toggle this on. (true/false)");
+            DespairMode = Config.Bind("Generation config", "Despair Mode", false, "Despair Mode\nCampfires can no longer revive allies. All enemies Atk+1 Accuracy+5%. Golden Apples cannot be used in battle but can revive allies. (true/false)");
+            AscensionMode = Config.Bind("Generation config", "Ascension Mode", false, "Ascension Mode\nA mimic of Slay The Spire's Ascension Mode. More features coming soon. (true/false)\n1. Add Slow Response Curse to deck at the start of the game.");
+            VanillaCurses = Config.Bind("Generation config", "Vanilla Curses", false, "Vanilla Curses\nReverts the nerfs to Cursed Mob stats. The challenge is designed around weaker cursed mobs, but if you don't want that, toggle this on. (true/false)");
             harmony.PatchAll();
         }
         void OnDestroy()
@@ -186,6 +188,23 @@ namespace ExpertPlusMod
                     CharInfo.Hp = 0;
                 }
                 return true;
+            }
+        }
+
+        // Ascension Mode: Add Slow Response to deck
+        [HarmonyPatch(typeof(StartPartySelect))]
+        class Ascension_Patch
+        {
+            [HarmonyPatch(nameof(StartPartySelect.Apply))]
+            [HarmonyPostfix]
+            static void Postfix()
+            {
+                // If Ascension Mode, add Slow Response
+                if(AscensionMode.Value)
+                {
+                    Debug.Log("Added Slow Response");
+                    PlayData.TSavedata.LucySkills.Add(GDEItemKeys.Skill_S_LucyCurse_Late);
+                }
             }
         }
 

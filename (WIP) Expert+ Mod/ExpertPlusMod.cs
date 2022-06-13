@@ -266,6 +266,36 @@ namespace ExpertPlusMod
                 }
             }
         }
+        // Ascension Mode: Ilya Swords buff (compensation for equip slot reduced)
+        [HarmonyPatch(typeof(EItem.Ilya_Sword_0))]
+        class Ascension_Patch4
+        {
+            [HarmonyPatch(nameof(EItem.Ilya_Sword_0.Init))]
+            [HarmonyPostfix]
+            static void Postfix(EItem.Ilya_Sword_0 __instance)
+            {
+                // If Ascension Mode, buff stats
+                if (AscensionMode.Value)
+                {
+                    __instance.PlusStat.cri = 15f;
+                }
+            }
+        }
+
+        [HarmonyPatch(typeof(EItem.Ilya_Sword_1))]
+        class Ascension_Patch5
+        {
+            [HarmonyPatch(nameof(EItem.Ilya_Sword_1.Init))]
+            [HarmonyPostfix]
+            static void Postfix(EItem.Ilya_Sword_1 __instance)
+            {
+                // If Ascension Mode, buff stats
+                if (AscensionMode.Value)
+                {
+                    __instance.PlusStat.hit = 10f;
+                }
+            }
+        }
 
         // Sniper Curse can be removed by lifting scroll
         [HarmonyPatch(typeof(SkillExtended_UnCurse))]

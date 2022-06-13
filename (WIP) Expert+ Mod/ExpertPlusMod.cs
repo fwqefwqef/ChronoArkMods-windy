@@ -32,8 +32,8 @@ namespace ExpertPlusMod
         void Awake()
         {
             DespairMode = Config.Bind("Generation config", "Despair Mode", false, "Despair Mode\nCampfires can no longer revive allies. All enemies Atk+1 Accuracy+5%. Golden Apples cannot be used in battle but can revive allies. (true/false)");
-            AscensionMode = Config.Bind("Generation config", "Ascension Mode", false, "Ascension Mode\nA mimic of Slay The Spire's Ascension Mode. More features coming soon. (true/false)\n1. Add Slow Response Curse to deck at the start of the game.");
             VanillaCurses = Config.Bind("Generation config", "Vanilla Curses", false, "Vanilla Curses\nReverts the nerfs to Cursed Mob stats. The challenge is designed around weaker cursed mobs, but if you don't want that, toggle this on. (true/false)");
+            AscensionMode = Config.Bind("Generation config", "Ascension Mode", false, "Ascension Mode\nA mimic of Slay The Spire's Ascension Mode. More features coming soon. (true/false)\n1. Add Slow Response Curse to deck at the start of the game.\n2. Maximum potion uses per battle reduced to 2.\n3. Character Equipment Slots reduced to 1.\n4. Relic Slots reduced to 1.");
             harmony.PatchAll();
         }
         void OnDestroy()
@@ -153,11 +153,11 @@ namespace ExpertPlusMod
         class FieldSystem_Patch
         {
             [HarmonyPatch(nameof(FieldSystem.StageStart))]
-            [HarmonyPrefix]
-            static void StageStartPrefix()
+            [HarmonyPostfix]
+            static void StageStartPostfix()
             {
                 // copied from FieldSystem.StageStart
-                if (PlayData.TSavedata.StageNum == 0 && !PlayData.TSavedata.GameStarted)
+                if (PlayData.TSavedata.StageNum == 0 /*&& !PlayData.TSavedata.GameStarted*/)
                 {
                     // identifies lifting scroll
                     if (PlayData.TSavedata.IdentifyItems.Find((string x) => x == GDEItemKeys.Item_Scroll_Scroll_Uncurse) == null)
@@ -197,13 +197,71 @@ namespace ExpertPlusMod
         {
             [HarmonyPatch(nameof(StartPartySelect.Apply))]
             [HarmonyPostfix]
-            static void Postfix()
+            static void Postfix(StartPartySelect __instance)
             {
                 // If Ascension Mode, add Slow Response
-                if(AscensionMode.Value)
+                if(AscensionMode.Value && PlayData.TSavedata.StageNum == 0)
                 {
                     Debug.Log("Added Slow Response");
                     PlayData.TSavedata.LucySkills.Add(GDEItemKeys.Skill_S_LucyCurse_Late);
+
+                    Debug.Log("Relic Slots reduced");
+                    PlayData.TSavedata.Passive_Itembase.Remove(null);
+                    PlayData.TSavedata.Passive_Itembase.Remove(null);
+                    PlayData.TSavedata.Passive_Itembase.Remove(null);
+                    PlayData.TSavedata.ArkPassivePlus -= 3;
+
+                }
+            }
+        }
+
+        // Ascension Mode: Equip Slots reduced
+        [HarmonyPatch(typeof(FieldSystem))]
+        class Ascension_Patch2
+        {
+            [HarmonyPatch(nameof(FieldSystem.PartyAdd), new Type[] { typeof(GDECharacterData), typeof(int)} )]
+            [HarmonyPrefix]
+            static bool Prefix(GDECharacterData CData, int Levelup = 0)
+            {
+                // If Ascension Mode, reduce potion num
+                if (AscensionMode.Value)
+                {
+                    Character character = new Character();
+                    character.Set_AllyData(CData);
+                    character.Hp = character.get_stat.maxhp;
+                    PlayData.TSavedata.DonAliveChars.Add(CData.Key);
+                    PlayData.TSavedata.Party.Add(character);
+                    if (FieldSystem.instance != null)
+                    {
+                        FieldSystem.instance.PartyWindowInit();
+                    }
+                    UIManager.inst.CharstatUI.GetComponent<CharStatV3>().Init();
+                    for (int i = 0; i < Levelup; i++)
+                    {
+                        UIManager.inst.CharstatUI.GetComponent<CharStatV3>().CWindows[PlayData.TSavedata.Party.Count - 1].Upgrade(true);
+                    }
+
+                    //Remove equip slot here
+                    Debug.Log("Removed equip slot");
+                    character.Equip.Remove(null);
+                }
+                return false;
+            }
+        }
+
+        // Ascension Mode: Add Slow Response to deck
+        [HarmonyPatch(typeof(BattleSystem))]
+        class Ascension_Patch3
+        {
+            [HarmonyPatch(nameof(BattleSystem.Start))]
+            [HarmonyPostfix]
+            static void Postfix()
+            {
+                // If Ascension Mode, reduce potion num
+                if (AscensionMode.Value)
+                {
+                    //Debug.Log("Potion Slots reduced");
+                    BattleSystem.instance.AllyTeam.MaxPotionNum = 2;
                 }
             }
         }

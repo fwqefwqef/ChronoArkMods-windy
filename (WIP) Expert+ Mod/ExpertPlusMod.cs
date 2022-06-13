@@ -244,12 +244,13 @@ namespace ExpertPlusMod
                     //Remove equip slot here
                     Debug.Log("Removed equip slot");
                     character.Equip.Remove(null);
+                    return false;
                 }
-                return false;
+                return true;
             }
         }
 
-        // Ascension Mode: Add Slow Response to deck
+        // Ascension Mode: Reduce Potion Num
         [HarmonyPatch(typeof(BattleSystem))]
         class Ascension_Patch3
         {

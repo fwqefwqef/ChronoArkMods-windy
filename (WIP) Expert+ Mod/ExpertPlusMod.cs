@@ -202,10 +202,10 @@ namespace ExpertPlusMod
                 // If Ascension Mode, add Slow Response
                 if(AscensionMode.Value && PlayData.TSavedata.StageNum == 0)
                 {
-                    Debug.Log("Added Slow Response");
+                    //Debug.Log("Added Slow Response");
                     PlayData.TSavedata.LucySkills.Add(GDEItemKeys.Skill_S_LucyCurse_Late);
 
-                    Debug.Log("Relic Slots reduced");
+                    //Debug.Log("Relic Slots reduced");
                     PlayData.TSavedata.Passive_Itembase.Remove(null);
                     PlayData.TSavedata.Passive_Itembase.Remove(null);
                     PlayData.TSavedata.Passive_Itembase.Remove(null);
@@ -223,7 +223,6 @@ namespace ExpertPlusMod
             [HarmonyPrefix]
             static bool Prefix(GDECharacterData CData, int Levelup = 0)
             {
-                // If Ascension Mode, reduce potion num
                 if (AscensionMode.Value)
                 {
                     Character character = new Character();
@@ -240,9 +239,9 @@ namespace ExpertPlusMod
                     {
                         UIManager.inst.CharstatUI.GetComponent<CharStatV3>().CWindows[PlayData.TSavedata.Party.Count - 1].Upgrade(true);
                     }
-
+ 
                     //Remove equip slot here
-                    Debug.Log("Removed equip slot");
+                    //Debug.Log("Removed equip slot");
                     character.Equip.Remove(null);
                     return false;
                 }
@@ -293,6 +292,29 @@ namespace ExpertPlusMod
                 if (AscensionMode.Value)
                 {
                     __instance.PlusStat.hit = 10f;
+                }
+            }
+        }
+
+        //Ascension Mode : Equip Slot Centered
+        [HarmonyPatch(typeof(ChildClear), "Start")]
+        class CenterItemSlotPatch
+        {
+            static void Postfix(ChildClear __instance)
+            {
+                var transform = __instance.GetComponent<Transform>();
+                if (transform.name == "EquipAlign")
+                {
+                    // party view
+                    if (transform.parent.parent.name == "CloseView")
+                    {
+                        transform.localPosition = new Vector3(transform.localPosition.x + 58f, transform.localPosition.y, transform.localPosition.z);
+                    }
+                    // blacksmith
+                    if (transform.parent.name == "EquipView")
+                    {
+                        transform.localPosition = new Vector3(transform.localPosition.x + 70f, transform.localPosition.y, transform.localPosition.z);
+                    }
                 }
             }
         }

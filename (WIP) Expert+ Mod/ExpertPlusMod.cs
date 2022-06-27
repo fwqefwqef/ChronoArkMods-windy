@@ -33,7 +33,7 @@ namespace ExpertPlusMod
         {
             DespairMode = Config.Bind("Generation config", "Despair Mode", false, "Despair Mode\nCampfires can no longer revive allies. All enemies Atk+1 Accuracy+5%. Golden Apples cannot be used in battle but can revive allies. (true/false)");
             VanillaCurses = Config.Bind("Generation config", "Vanilla Curses", false, "Vanilla Curses\nReverts the nerfs to Cursed Mob stats. The challenge is designed around weaker cursed mobs, but if you don't want that, toggle this on. (true/false)");
-            AscensionMode = Config.Bind("Generation config", "Ascension Mode", false, "Ascension Mode\nA mimic of Slay The Spire's Ascension Mode. More features coming soon. (true/false)\n1. Add Slow Response Curse to deck at the start of the game.\n2. Maximum potion uses per battle reduced to 2.\n3. Character Equipment Slots reduced to 1.\n4. Relic Slots reduced to 1.");
+            AscensionMode = Config.Bind("Generation config", "Ascension Mode", false, "Ascension Mode\nA mimic of Slay The Spire's Ascension Mode. More features coming soon. (true/false)\n1. Add Slow Response Curse to deck at the start of the game.\n2. Maximum potion uses per battle reduced to 2.\n3. Character Equipment Slots reduced to 1. (Equipment Drop Rates reduced)\n4. Relic Slots reduced to 1.");
             harmony.PatchAll();
         }
         void OnDestroy()
@@ -107,6 +107,29 @@ namespace ExpertPlusMod
                             (masterJson[e.Key] as Dictionary<string, object>)["Wave2Turn"] = 2;
                         }
 
+                        // Ascension Mode, drop rates reduced
+                        if (e.Key == "BossEquipRandomDrop")
+                        {
+                            if (AscensionMode.Value)
+                            {
+                                /* 0/8/55/30/5 -> 0/4/35/10/1 */
+                                (masterJson[e.Key] as Dictionary<string, object>)["Common"] = 0;
+                                (masterJson[e.Key] as Dictionary<string, object>)["UnCommon"] = 4;
+                                (masterJson[e.Key] as Dictionary<string, object>)["Rare"] = 35;
+                                (masterJson[e.Key] as Dictionary<string, object>)["Unique"] = 10;
+                                (masterJson[e.Key] as Dictionary<string, object>)["Legendary"] = 1;
+                                (masterJson[e.Key] as Dictionary<string, object>)["NoItem"] = 50;
+                            }
+                        }
+
+                        if (e.Key == "BattleRandomDrop")
+                        {
+                            if (AscensionMode.Value)
+                            {
+                                (masterJson[e.Key] as Dictionary<string, object>)["NoItem"] = 100;
+                            }  
+                        }
+
                         ///// Misty Garden 1 ///
 
                         //// 1 maid fight: Add another maid 
@@ -130,7 +153,7 @@ namespace ExpertPlusMod
                         //}
 
                         ///// Bloody Park 1 ///
-                        
+
                         //// 2 Robot Hedgehogs + Horse: Spawn another Horse in Wave 2
                         //if (e.Key == "FQ_3_3")
                         //{
@@ -302,18 +325,21 @@ namespace ExpertPlusMod
         {
             static void Postfix(ChildClear __instance)
             {
-                var transform = __instance.GetComponent<Transform>();
-                if (transform.name == "EquipAlign")
+                if (AscensionMode.Value)
                 {
-                    // party view
-                    if (transform.parent.parent.name == "CloseView")
+                    var transform = __instance.GetComponent<Transform>();
+                    if (transform.name == "EquipAlign")
                     {
-                        transform.localPosition = new Vector3(transform.localPosition.x + 58f, transform.localPosition.y, transform.localPosition.z);
-                    }
-                    // blacksmith
-                    if (transform.parent.name == "EquipView")
-                    {
-                        transform.localPosition = new Vector3(transform.localPosition.x + 70f, transform.localPosition.y, transform.localPosition.z);
+                        // party view
+                        if (transform.parent.parent.name == "CloseView")
+                        {
+                            transform.localPosition = new Vector3(transform.localPosition.x + 58f, transform.localPosition.y, transform.localPosition.z);
+                        }
+                        // blacksmith
+                        if (transform.parent.name == "EquipView")
+                        {
+                            transform.localPosition = new Vector3(transform.localPosition.x + 70f, transform.localPosition.y, transform.localPosition.z);
+                        }
                     }
                 }
             }
@@ -388,11 +414,11 @@ namespace ExpertPlusMod
 
 
                 // Here: Mana reduced by 1 per charcter dead. Cannot fall below 3.
-                Debug.Log("Stage: "+StageSystem.instance.Map.StageData.Key);
+                //Debug.Log("Stage: "+StageSystem.instance.Map.StageData.Key);
                 if (StageSystem.instance.Map.StageData.Key != GDEItemKeys.Stage_Stage_Crimson)
                 {
                     int diff = BattleSystem.instance.AllyTeam.Chars.Count - BattleSystem.instance.AllyTeam.AliveChars.Count;
-                    Debug.Log("Number of dead allies: " + diff);
+                    //Debug.Log("Number of dead allies: " + diff);
                     __instance.AP = (__instance.MAXAP - diff >= 3) ? __instance.MAXAP - diff : 3;
                 }
                 else

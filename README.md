@@ -37,7 +37,7 @@ Healing 101: Gives 2 Healing 101 at the start of the game to help support charac
 
 # [Boss Rush Mode]
 
-Despawn all regular encounters and give their rewards at the start of the stage.
+Despawn all regular encounters and give their rewards at the start of the stage. Suited for quick playthroughs.
 
 Extra Settings
 

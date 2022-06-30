@@ -35,6 +35,14 @@ Healing 101: Gives 2 Healing 101 at the start of the game to help support charac
 
 (Go to BepInEx -> config -> open in Notepad: org.windy.chronoark.cardmod.randomskillmod.cfg)
 
+# [Boss Rush Mode]
+
+Despawn all regular encounters and give their rewards at the start of the stage.
+
+Extra Settings
+
+Easy Crimson Wilderness: Receive ??? for free in Bloody Park 1. Receive 2 less Soulstones, remove starting gold, and remove guaranteed shop key in Misty Garden 2 and Bloody Park 1.
+
 # [Fox Orb Genderlock Removal]
 
 Fox Orb can be used on male characters.
@@ -49,6 +57,7 @@ You can obtain parrying attack skillbook from Lian even after unlocking her. It 
 # [Recruit Select Num]
 
 Change the number of party members available in campfire recruit. 
+
 Default 8 characters. To change the number,
 
 Go to BepInEx -> config -> open in Notepad: org.windy.chronoark.recruitmod.recruitselectnum
@@ -56,7 +65,6 @@ Go to BepInEx -> config -> open in Notepad: org.windy.chronoark.recruitmod.recru
 # [Remove Fixed Skill Limit]
 
 Remove 'Cannot be Fixed' keyword from all skills. 
-
 
 # [windy's mod]
 

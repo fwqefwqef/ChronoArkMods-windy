@@ -43,6 +43,8 @@ Extra Settings
 
 Easy Crimson Wilderness: Receive ??? for free in Bloody Park 1. Receive 2 less Soulstones, remove starting gold, and remove guaranteed shop key in Misty Garden 2 and Bloody Park 1.
 
+(Go to BepInEx -> config -> open in Notepad: windy.bossrush.cfg)
+
 # [Fox Orb Genderlock Removal]
 
 Fox Orb can be used on male characters.

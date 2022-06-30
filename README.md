@@ -41,7 +41,7 @@ Despawn all regular encounters and give their rewards at the start of the stage.
 
 Extra Settings
 
-Easy Crimson Wilderness: Receive ??? for free in Bloody Park 1. Receive 2 less Soulstones, remove starting gold, and remove guaranteed shop key in Misty Garden 2 and Bloody Park 1.
+Easy Crimson Wilderness: Receive ??? for free in Bloody Park 1. Receive 2 less Soulstones, remove starting gold, and remove guaranteed shop key in Misty Garden 2 and Bloody Park 1. (Default OFF)
 
 (Go to BepInEx -> config -> open in Notepad: windy.bossrush.cfg)
 

@@ -181,6 +181,19 @@ namespace ExpertPlusMod
             }
         }
 
+        // Easy Crimson - Disable Vending Machines
+        [HarmonyPatch(typeof(HiddenDoor), "Start")]
+        class Vending_Patch
+        {
+            static void Postfix(HiddenDoor __instance)
+            {
+                if (EasyCrimson.Value)
+                {
+                    __instance.MainEvob.Useless();
+                }
+            }
+        }
+
         // Sanctuary - despawn all regular battles
         [HarmonyPatch(typeof(HexGenerator))]
         class HexGen_Patch

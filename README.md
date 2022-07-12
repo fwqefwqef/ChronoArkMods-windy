@@ -52,7 +52,9 @@ Fox Orb can be used on male characters.
 # [Minimum Skill Num]
 
 Change the number of minimum skills a character can have on their deck.
+
 Default 1. To change the number,
+
 Go to BepInEx -> config -> open in Notepad: windy.minskill.cfg
 
 

@@ -49,6 +49,12 @@ Easy Crimson Wilderness: Receive ??? for free in Bloody Park 1. Receive 2 less S
 
 Fox Orb can be used on male characters.
 
+# [Minimum Skill Num]
+
+Change the number of minimum skills a character can have on their deck.
+Default 1. To change the number,
+Go to BepInEx -> config -> open in Notepad: windy.minskill.cfg
+
 
 # [Parry Skill Book]
 

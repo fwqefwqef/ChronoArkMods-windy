@@ -231,9 +231,7 @@ namespace ExpertPlusMod
                     //Debug.Log("Relic Slots reduced");
                     PlayData.TSavedata.Passive_Itembase.Remove(null);
                     PlayData.TSavedata.Passive_Itembase.Remove(null);
-                    PlayData.TSavedata.Passive_Itembase.Remove(null);
-                    PlayData.TSavedata.ArkPassivePlus -= 3;
-
+                    PlayData.TSavedata.ArkPassivePlus -= 2;
                 }
             }
         }

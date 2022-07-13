@@ -318,30 +318,30 @@ namespace ExpertPlusMod
         }
 
         //Ascension Mode : Equip Slot Centered
-        [HarmonyPatch(typeof(ChildClear), "Start")]
-        class CenterItemSlotPatch
-        {
-            static void Postfix(ChildClear __instance)
-            {
-                if (AscensionMode.Value)
-                {
-                    var transform = __instance.GetComponent<Transform>();
-                    if (transform.name == "EquipAlign")
-                    {
-                        // party view
-                        if (transform.parent.parent.name == "CloseView")
-                        {
-                            transform.localPosition = new Vector3(transform.localPosition.x + 58f, transform.localPosition.y, transform.localPosition.z);
-                        }
-                        // blacksmith
-                        if (transform.parent.name == "EquipView")
-                        {
-                            transform.localPosition = new Vector3(transform.localPosition.x + 70f, transform.localPosition.y, transform.localPosition.z);
-                        }
-                    }
-                }
-            }
-        }
+        //[HarmonyPatch(typeof(ChildClear), "Start")]
+        //class CenterItemSlotPatch
+        //{
+        //    static void Postfix(ChildClear __instance)
+        //    {
+        //        if (AscensionMode.Value)
+        //        {
+        //            var transform = __instance.GetComponent<Transform>();
+        //            if (transform.name == "EquipAlign")
+        //            {
+        //                // party view
+        //                if (transform.parent.parent.name == "CloseView")
+        //                {
+        //                    transform.localPosition = new Vector3(transform.localPosition.x + 58f, transform.localPosition.y, transform.localPosition.z);
+        //                }
+        //                // blacksmith
+        //                if (transform.parent.name == "EquipView")
+        //                {
+        //                    transform.localPosition = new Vector3(transform.localPosition.x + 70f, transform.localPosition.y, transform.localPosition.z);
+        //                }
+        //            }
+        //        }
+        //    }
+        //}
 
         // Sniper Curse can be removed by lifting scroll
         [HarmonyPatch(typeof(SkillExtended_UnCurse))]

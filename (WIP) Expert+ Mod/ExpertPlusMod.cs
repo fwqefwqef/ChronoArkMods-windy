@@ -318,30 +318,30 @@ namespace ExpertPlusMod
         }
 
         //Ascension Mode : Equip Slot Centered
-        //[HarmonyPatch(typeof(ChildClear), "Start")]
-        //class CenterItemSlotPatch
-        //{
-        //    static void Postfix(ChildClear __instance)
-        //    {
-        //        if (AscensionMode.Value)
-        //        {
-        //            var transform = __instance.GetComponent<Transform>();
-        //            if (transform.name == "EquipAlign")
-        //            {
-        //                // party view
-        //                if (transform.parent.parent.name == "CloseView")
-        //                {
-        //                    transform.localPosition = new Vector3(transform.localPosition.x + 58f, transform.localPosition.y, transform.localPosition.z);
-        //                }
-        //                // blacksmith
-        //                if (transform.parent.name == "EquipView")
-        //                {
-        //                    transform.localPosition = new Vector3(transform.localPosition.x + 70f, transform.localPosition.y, transform.localPosition.z);
-        //                }
-        //            }
-        //        }
-        //    }
-        //}
+        [HarmonyPatch(typeof(ChildClear), "Start")]
+        class CenterItemSlotPatch
+        {
+            static void Postfix(ChildClear __instance)
+            {
+                if (AscensionMode.Value)
+                {
+                    var transform = __instance.GetComponent<Transform>();
+                    if (transform.name == "EquipAlign")
+                    {
+                        // party view
+                        if (transform.parent.parent.name == "CloseView")
+                        {
+                            transform.localPosition = new Vector3(transform.localPosition.x - 30f, transform.localPosition.y, transform.localPosition.z);
+                        }
+                        // blacksmith
+                        //if (transform.parent.name == "EquipView")
+                        //{
+                        //    transform.localPosition = new Vector3(transform.localPosition.x - 35f, transform.localPosition.y, transform.localPosition.z);
+                        //}
+                    }
+                }
+            }
+        }
 
         // Sniper Curse can be removed by lifting scroll
         [HarmonyPatch(typeof(SkillExtended_UnCurse))]
@@ -409,21 +409,11 @@ namespace ExpertPlusMod
                 {
                     __instance.WaitCount = 1;
                 }
-
-
-                // Here: Mana reduced by 1 per charcter dead. Cannot fall below 3.
-                //Debug.Log("Stage: "+StageSystem.instance.Map.StageData.Key);
-                if (StageSystem.instance.Map.StageData.Key != GDEItemKeys.Stage_Stage_Crimson)
+                if (__instance.AliveChars.Find((BattleChar a) => a.Info.KeyData == GDEItemKeys.Character_LucyC) != null)
                 {
-                    int diff = BattleSystem.instance.AllyTeam.Chars.Count - BattleSystem.instance.AllyTeam.AliveChars.Count;
-                    //Debug.Log("Number of dead allies: " + diff);
-                    __instance.AP = (__instance.MAXAP - diff >= 3) ? __instance.MAXAP - diff : 3;
+                    __instance.WaitCount = 1;
                 }
-                else
-                {
-                    __instance.AP = __instance.MAXAP;
-                }
-
+                __instance.AP = __instance.MAXAP;
                 __instance.TurnActionNum = 0;
                 List<BattleChar> list = new List<BattleChar>();
                 AccessTools.FieldRef<BattleTeam, List<BattleChar>> G_Ref = AccessTools.FieldRefAccess<List<BattleChar>>(typeof(BattleTeam), "G_AliveChars");
@@ -435,53 +425,56 @@ namespace ExpertPlusMod
                 }
                 for (int j = 0; j < list.Count; j++)
                 {
-                    list[j].TickUpdate(list2[j]);
-                }
-                for (int k = 0; k < list.Count; k++)
-                {
                     List<Buff> list3 = new List<Buff>();
-                    list3.AddRange(list[k].Buffs);
-                    for (int l = 0; l < list3.Count; l++)
+                    list3.AddRange(list[j].Buffs);
+                    for (int k = 0; k < list3.Count; k++)
                     {
-                        Buff buff = list3[l];
-                        list3[l].TurnUpdate();
+                        Buff buff = list3[k];
+                        list3[k].TurnUpdate();
                         if (list3.Count == 0)
                         {
                             break;
                         }
-                        if (l >= list3.Count)
+                        if (k >= list3.Count)
                         {
-                            l--;
+                            k--;
                         }
-                        else if (buff != list3[l])
+                        else if (buff != list3[k])
                         {
-                            l--;
+                            k--;
                         }
                     }
+                }
+                for (int l = 0; l < list.Count; l++)
+                {
+                    list[l].TickUpdate(list2[l]);
                 }
                 foreach (BattleChar battleChar2 in list)
                 {
                     battleChar2.BattleUpdate();
                 }
-                __instance.LucyChar.TickUpdate(__instance.LucyChar.TickDamageReturn());
-                __instance.LucyChar.BattleUpdate();
-                List<Buff> list4 = new List<Buff>();
-                list4.AddRange(__instance.LucyChar.Buffs);
-                for (int m = 0; m < list4.Count; m++)
+                if (__instance.LucyChar.IsLucyNoC)
                 {
-                    Buff buff2 = list4[m];
-                    list4[m].TurnUpdate();
-                    if (list4.Count == 0)
+                    __instance.LucyChar.TickUpdate(__instance.LucyChar.TickDamageReturn());
+                    __instance.LucyChar.BattleUpdate();
+                    List<Buff> list4 = new List<Buff>();
+                    list4.AddRange(__instance.LucyChar.Buffs);
+                    for (int m = 0; m < list4.Count; m++)
                     {
-                        break;
-                    }
-                    if (m >= list4.Count)
-                    {
-                        m--;
-                    }
-                    else if (buff2 != list4[m])
-                    {
-                        m--;
+                        Buff buff2 = list4[m];
+                        list4[m].TurnUpdate();
+                        if (list4.Count == 0)
+                        {
+                            break;
+                        }
+                        if (m >= list4.Count)
+                        {
+                            m--;
+                        }
+                        else if (buff2 != list4[m])
+                        {
+                            m--;
+                        }
                     }
                 }
                 AccessTools.FieldRef<BattleTeam, int> G2_Ref = AccessTools.FieldRefAccess<int>(typeof(BattleTeam), "G_AliveCharGetFrame");
@@ -491,6 +484,10 @@ namespace ExpertPlusMod
                 if (BattleSystem.instance.TurnNum == 0)
                 {
                     num = PlayData.GetDraw + __instance.AliveChars.Count;
+                    if (PlayData.TSavedata.SpRule != null)
+                    {
+                        num += PlayData.TSavedata.SpRule.RuleChange.PlusFirstTurnDraw;
+                    }
                     List<Skill> list5 = new List<Skill>();
                     list5.AddRange(__instance.Skills_Deck);
                     foreach (Skill skill in list5)
@@ -513,7 +510,6 @@ namespace ExpertPlusMod
                 {
                     __instance.BasicSkillRefill(__instance.Chars[n], __instance.Skills_Basic[n]);
                 }
-
                 return false;
             }
         }

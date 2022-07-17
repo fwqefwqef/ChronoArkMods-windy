@@ -49,6 +49,14 @@ Easy Crimson Wilderness: Receive ??? for free in Bloody Park 1. Receive 2 less S
 
 Fox Orb can be used on male characters.
 
+# [Helia Selena Split]
+
+Make Helia and Selena viable as seperate characters. They can be selected seperately in the starting recruit screen, and they can be selected in Lone Wolf challenge. They do not appear in campfire (yet). 
+
+Helia's skillpool: https://cdn.discordapp.com/attachments/903418098437226527/997927721969651792/unknown.png
+
+Selena's skillpool: https://cdn.discordapp.com/attachments/903418098437226527/997927722414264430/unknown.png
+
 # [Minimum Skill Num]
 
 Change the number of minimum skills a character can have on their deck.

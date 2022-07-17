@@ -146,6 +146,9 @@ namespace ExpertPlusMod
             }
         }
 
+        // Not a good injection point but I needed to put this here in case the player loads from save.
+        // StartPartySelect.Init is an alternative, but doesn't cover loading from save
+
         [HarmonyPatch(typeof(StageSystem), nameof(StageSystem.StageStart))]
         class AddSkillsPatch2
         {

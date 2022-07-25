@@ -1112,11 +1112,18 @@ namespace ExpertPlusMod
                 }
                 if (PlayData.TSavedata.StageNum == 1 || PlayData.TSavedata.StageNum == 3)
                 {
-                    if (SaveManager.NowData.GameOptions.CasualMode)
+                    if (PlayData.TSavedata.SpRule == null || !PlayData.TSavedata.SpRule.RuleChange.CantNewPartymember)
                     {
-                        __instance.CasualPartyAdd = true;
+                        if (SaveManager.NowData.GameOptions.CasualMode)
+                        {
+                            __instance.CasualPartyAdd = true;
+                        }
+                        __instance.Button_AddParty.gameObject.SetActive(true);
                     }
-                    __instance.Button_AddParty.gameObject.SetActive(true);
+                    else
+                    {
+                        __instance.Button_AddParty.gameObject.SetActive(false);
+                    }
                     __instance.MainCampScript.Enforce = true;
                 }
                 else

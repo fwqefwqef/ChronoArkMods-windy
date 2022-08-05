@@ -25,15 +25,17 @@ namespace ExpertPlusMod
 
         private static readonly Harmony harmony = new Harmony(GUID);
 
-        private static ConfigEntry<bool> DespairMode;
+        private static ConfigEntry<bool> PermaMode;
         private static ConfigEntry<bool> VanillaCurses;
         private static ConfigEntry<bool> AscensionMode;
+        private static ConfigEntry<bool> DespairMode;
 
         void Awake()
         {
-            DespairMode = Config.Bind("Generation config", "Despair Mode", false, "Despair Mode\nCampfires can no longer revive allies. All enemies Atk+1 Accuracy+5%. Golden Apples cannot be used in battle but can revive allies. (true/false)");
+            PermaMode = Config.Bind("Generation config", "Permadeath Mode", false, "Permadeath Mode\nCampfires cannot revive allies. Removed revive option in Medical Tent. (true/false)");
             VanillaCurses = Config.Bind("Generation config", "Vanilla Curses", false, "Vanilla Curses\nReverts the nerfs to Cursed Mob stats. The challenge is designed around weaker cursed mobs, but if you don't want that, toggle this on. (true/false)");
-            AscensionMode = Config.Bind("Generation config", "Ascension Mode", false, "Ascension Mode\nA mimic of Slay The Spire's Ascension Mode. More features coming soon. (true/false)\n1. Add Slow Response Curse to deck at the start of the game.\n2. Maximum potion uses per battle reduced to 2.\n3. Character Equipment Slots reduced to 1. (Equipment Drop Rates reduced)\n4. Relic Slots reduced to 1.");
+            AscensionMode = Config.Bind("Generation config", "Ascension Mode", false, "Ascension Mode\nA mimic of Slay The Spire's Ascension Mode. More features coming soon. (true/false)\n1. Add Slow Response Curse to deck at the start of the game.\n2. Maximum potion uses per battle reduced to 2.\n3. Character Equipment Slots reduced to 1. (Equipment Drop Rates reduced)\n4. Relic Slots reduced to 2.");
+            DespairMode = Config.Bind("Generation config", "Despair Mode", false, "Despair Mode\n(This option does nothing right now.)\nWarning: Extremely Difficult. (true/false)");
             harmony.PatchAll();
         }
         void OnDestroy()
@@ -51,30 +53,27 @@ namespace ExpertPlusMod
                 Dictionary<string, object> masterJson = (Json.Deserialize(dataString) as Dictionary<string, object>);
                 foreach (var e in masterJson)
                 {
-                    
-                    /// Despair Mode ///
-                    
                     if (((Dictionary<string, object>)e.Value).ContainsKey("_gdeSchema"))
                     {
                         //Despair Mode: Give Stat Bonuses
-                        if (((Dictionary<string, object>)e.Value)["_gdeSchema"].Equals("Enemy"))
-                        {
-                            if (DespairMode.Value)
-                            {
-                                (masterJson[e.Key] as Dictionary<string, object>)["atk"] = (long)((masterJson[e.Key] as Dictionary<string, object>)["atk"]) + 1;
-                                (masterJson[e.Key] as Dictionary<string, object>)["hit"] = (long)((masterJson[e.Key] as Dictionary<string, object>)["hit"]) + 5;
-                            }
-                        }
+                        //if (((Dictionary<string, object>)e.Value)["_gdeSchema"].Equals("Enemy"))
+                        //{
+                        //    if (DespairMode.Value)
+                        //    {
+                        //        (masterJson[e.Key] as Dictionary<string, object>)["atk"] = (long)((masterJson[e.Key] as Dictionary<string, object>)["atk"]) + 1;
+                        //        (masterJson[e.Key] as Dictionary<string, object>)["hit"] = (long)((masterJson[e.Key] as Dictionary<string, object>)["hit"]) + 5;
+                        //    }
+                        //}
 
                         // Despair Mode: Golden Apple can be used on fallen allies, cannot be used in battle
-                        if (e.Key == "GoldenApple")
-                        {
-                            if (DespairMode.Value)
-                            {
-                                (masterJson[e.Key] as Dictionary<string, object>)["Target"] = "deathally";
-                                (masterJson[e.Key] as Dictionary<string, object>)["active_battle"] = false;
-                            }
-                        }
+                        //if (e.Key == "GoldenApple")
+                        //{
+                        //    if (DespairMode.Value)
+                        //    {
+                        //        (masterJson[e.Key] as Dictionary<string, object>)["Target"] = "deathally";
+                        //        (masterJson[e.Key] as Dictionary<string, object>)["active_battle"] = false;
+                        //    }
+                        //}
 
                         /// Enemy Hordes ///
 
@@ -195,22 +194,19 @@ namespace ExpertPlusMod
             }
         }
 
-        // Despair Mode: Golden Apple now revives ally
-        [HarmonyPatch(typeof(UseItem.GoldenApple))]
-        class GoldenApple_Patch
+        // Permadeath Mode: Ban Medical Tent
+        [HarmonyPatch(typeof(RandomEventBaseScript))]
+        class MedTent_Patch
         {
-            [HarmonyPatch(nameof(UseItem.GoldenApple.Use))]
-            [HarmonyPrefix]
-            static bool Prefix(Character CharInfo, UseItem.GoldenApple __instance)
+            [HarmonyPatch(nameof(RandomEventBaseScript.EventOpen_Base))]
+            [HarmonyPostfix]
+            static void Postfix(RandomEventBaseScript __instance)
             {
-                // If Despair Mode, revive effect
-                if (DespairMode.Value && CharInfo.Incapacitated)
+                if (__instance is RE_Medicaltent)
                 {
-                    Debug.Log("Revived Using Golden Apple");
-                    CharInfo.Incapacitated = false;
-                    CharInfo.Hp = 0;
+                    //Debug.Log("Here");
+                    __instance.ButtonOff(0);
                 }
-                return true;
             }
         }
 
@@ -604,45 +600,6 @@ namespace ExpertPlusMod
             }
         }
 
-        //[HarmonyPatch]
-        //class GoldenAppleDesc
-        //{
-        //    static MethodBase TargetMethod()
-        //    {
-        //        return AccessTools.PropertyGetter(typeof(ItemBase), "GetDescription");
-        //    }
-        //    static void Postfix(ref string __result, ItemBase __instance)
-        //    {
-        //        Debug.Log("Hereeee");
-        //            if (DespairMode.Value)
-        //            {
-        //                if (__instance is UseItem.GoldenApple)
-        //                {
-        //                   __result = "Overheal an ally by 25 and cure faint status.\nCan also be used as an ingredient for reforging equipment.\nWhen used in a campfire: Increases Accuracy and Crit.Chance of all allies by 4%, including allies recruited in the future.";
-        //                }
-        //            }
-        //    }   
-        //}
-
-        //[HarmonyPatch]
-        //class RobustDesc
-        //{
-        //    static MethodBase TargetMethod()
-        //    {
-        //        return AccessTools.PropertyGetter(typeof(PassiveBase), "GetDescription");
-        //    }
-        //    static void Postfix(ref string __result, PassiveBase __instance)
-        //    {
-        //        if (!VanillaCurses.Value)
-        //        {
-        //            if (__instance is B_CursedMob_2)
-        //            {
-        //                __result = "Gain 1 action count\nBlock one incoming attack.";
-        //            }
-        //        }
-        //    }
-        //}
-
         // Change stats for cursed mob, change rewards
         [HarmonyPatch(typeof(B_CursedMob))]
         class Curse_Reward_Patch
@@ -1017,7 +974,7 @@ namespace ExpertPlusMod
 
 
         // Despair Mode: No revival in campfire
-        // This implementation is kinda stinky but hey it works
+        // This implementation is kinda stinky but it works
         [HarmonyPatch(typeof(CampUI))]
         class CampfireRevival_Patch
         {
@@ -1036,7 +993,7 @@ namespace ExpertPlusMod
                         if (character.Incapacitated)
                         {
                             // If Despair Mode is on, don't revive allies in campfire
-                            if (!DespairMode.Value)
+                            if (!PermaMode.Value)
                             {
                                 character.Incapacitated = false;
                                 character.Hp = 1;

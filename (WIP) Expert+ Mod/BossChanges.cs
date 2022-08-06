@@ -18,7 +18,7 @@ namespace BossChanges
     [BepInProcess("ChronoArk.exe")]
     public class ExpertPlusBossPlugin : BaseUnityPlugin
     {
-        public const string GUID = "org.windy.chronoark.difficultymod.bosschanges";
+        public const string GUID = "windy.bosschanges";
         public const string version = "1.0.0";
 
         private static readonly Harmony harmony = new Harmony(GUID);
@@ -135,6 +135,12 @@ namespace BossChanges
                             (masterJson[e.Key] as Dictionary<string, object>)["BuffPlusTagPer"] = b;
                         }
 
+                        // Parade Tank: Kaboom! gained Tracking
+                        if (e.Key == "S_MBoss2_0_1")
+                        {
+                            (masterJson[e.Key] as Dictionary<string, object>)["Track"] = true;
+                        }
+
                         // TFK Shield Pulse: Damange Doubled, 100% Stun Chance
                         if (e.Key == "SE_S4_King_P2Start_T")
                         {
@@ -241,13 +247,26 @@ namespace BossChanges
                             (masterJson[e.Key] as Dictionary<string, object>)["SkillExtended"] = a;
                             //Debug.Log("Updated DeathScythe");
                         }
+                        // Death Sentence: Applies Deep Bleeding
+                        if (e.Key == "SE_Boss_Reaper_0_PlusHit_T")
+                        {
+                            // Add Deep Bleeding
+                            List<string> a = new List<string>();
+                            a.Add("B_Animatronics_1_T");
+                            (masterJson[e.Key] as Dictionary<string, object>)["Buffs"] = a;
+
+                            // Bleed Chance
+                            List<int> b = new List<int>();
+                            b.Add(120);
+                            (masterJson[e.Key] as Dictionary<string, object>)["BuffPlusTagPer"] = b;
+                        }
 
                         //Pharos Leader: Add enemies in beginning
                         if (e.Key == "Queue_S3_PharosLeader")
                         {
                             List<string> a = new List<string>();
                             //a.Add("S3_Wolf");
-                            a.Add("S2_Pharos_Mage");
+                            a.Add("S2_PharosWitch");
                             a.Add("S3_Boss_Pope");
                             (masterJson[e.Key] as Dictionary<string, object>)["Enemys"] = a;
                             //Vector3 pos1 = new Vector3();
@@ -295,12 +314,12 @@ namespace BossChanges
                             (masterJson[e.Key] as Dictionary<string, object>)["MaxStack"] = 3;
                         }
 
-                        // Karaela Burn Debuff: Lifetime and Max Stack + 1
-                        //if (e.Key == "B_TheLight_2_T")
-                        //{
-                        //    (masterJson[e.Key] as Dictionary<string, object>)["LifeTime"] = 4;
-                        //    (masterJson[e.Key] as Dictionary<string, object>)["MaxStack"] = 4;
-                        //}
+                        // Karaela Burn Debuff: Lifetime and Max Stack +1
+                        if (e.Key == "B_TheLight_2_T")
+                        {
+                            (masterJson[e.Key] as Dictionary<string, object>)["LifeTime"] = 4;
+                            (masterJson[e.Key] as Dictionary<string, object>)["MaxStack"] = 4;
+                        }
 
                         // Burning Cross: +5HP
                         if (e.Key == "S3_Boss_TheLight_Cross")
@@ -955,7 +974,7 @@ namespace BossChanges
             [HarmonyPrefix]
             static bool Prefix(Extended_Azar_2 __instance)
             {
-                BattleSystem.DelayInput(BattleSystem.instance.NewEnemyAutoPos(GDEItemKeys.Enemy_S2_Pharos_Mage));
+                BattleSystem.DelayInput(BattleSystem.instance.NewEnemyAutoPos(GDEItemKeys.Enemy_S2_PharosWitch));
                 //BattleSystem.DelayInput(BattleSystem.instance.NewEnemyAutoPos(GDEItemKeys.Enemy_S3_Wolf));
                 //BattleSystem.DelayInput(BattleSystem.instance.NewEnemyAutoPos(GDEItemKeys.Enemy_S3_Wolf));
                 

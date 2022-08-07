@@ -55,13 +55,14 @@ namespace ExpertPlusMod
                 {
                     if (((Dictionary<string, object>)e.Value).ContainsKey("_gdeSchema"))
                     {
-                        //Despair Mode: Give Stat Bonuses
+                        // Despair Mode: Give Stat Bonuses
                         //if (((Dictionary<string, object>)e.Value)["_gdeSchema"].Equals("Enemy"))
                         //{
                         //    if (DespairMode.Value)
                         //    {
-                        //        (masterJson[e.Key] as Dictionary<string, object>)["atk"] = (long)((masterJson[e.Key] as Dictionary<string, object>)["atk"]) + 1;
-                        //        (masterJson[e.Key] as Dictionary<string, object>)["hit"] = (long)((masterJson[e.Key] as Dictionary<string, object>)["hit"]) + 5;
+                        //        (masterJson[e.Key] as Dictionary<string, object>)["atk"] = (long)((masterJson[e.Key] as Dictionary<string, object>)["maxhp"]) * 1.2;
+                        //        (masterJson[e.Key] as Dictionary<string, object>)["atk"] = (long)((masterJson[e.Key] as Dictionary<string, object>)["atk"]) * 1.2;
+                        //        (masterJson[e.Key] as Dictionary<string, object>)["atk"] = (long)((masterJson[e.Key] as Dictionary<string, object>)["reg"]) * 2;
                         //    }
                         //}
 
@@ -75,21 +76,162 @@ namespace ExpertPlusMod
                         //    }
                         //}
 
+                        /// Despair Mode
+                        if (e.Key == "Queue_Witch")
+                        {
+                            if (DespairMode.Value)
+                            {
+                                List<string> a = new List<string>();
+                                a.Add("Boss_Golem");
+                                (masterJson[e.Key] as Dictionary<string, object>)["Wave2"] = a;
+                                (masterJson[e.Key] as Dictionary<string, object>)["Wave2Turn"] = 99;
+                                (masterJson[e.Key] as Dictionary<string, object>)["CustomeFogTurn"] = 13;
+                            }
+                        }
+
+                        if (e.Key == "Stage1_2")
+                        {
+                            if (DespairMode.Value)
+                            {
+                                List<string> a = new List<string>();
+                                a.Add("Queue_Witch");
+                                (masterJson[e.Key] as Dictionary<string, object>)["Bosses"] = a;
+                            }
+                        }
+
+                        if (e.Key == "Queue_S2_Joker")
+                        {
+                            if (DespairMode.Value)
+                            {
+                                List<string> a = new List<string>();
+                                a.Add("MBoss2_0");
+                                (masterJson[e.Key] as Dictionary<string, object>)["Wave2"] = a;
+                                (masterJson[e.Key] as Dictionary<string, object>)["Wave2Turn"] = 99;
+                                (masterJson[e.Key] as Dictionary<string, object>)["CustomeFogTurn"] = 12;
+                            }
+                        }
+
+                        if (e.Key == "Stage2_1")
+                        {
+                            if (DespairMode.Value)
+                            {
+                                List<string> a = new List<string>();
+                                a.Add("Queue_S2_Joker");
+                                (masterJson[e.Key] as Dictionary<string, object>)["Bosses"] = a;
+                            }
+                        }
+
+                        if (e.Key == "Queue_S2_MainBoss_Luby")
+                        {
+                            if (DespairMode.Value)
+                            {
+                                List<string> a = new List<string>();
+                                a.Add("S2_BombClownBoss");
+                                (masterJson[e.Key] as Dictionary<string, object>)["Wave2"] = a;
+                                (masterJson[e.Key] as Dictionary<string, object>)["Wave2Turn"] = 99;
+                                (masterJson[e.Key] as Dictionary<string, object>)["CustomeFogTurn"] = 16;
+
+
+                                List<string> b = new List<string>();
+                                b.Add("MBoss2_1");
+                                (masterJson[e.Key] as Dictionary<string, object>)["Wave3"] = b;
+                                (masterJson[e.Key] as Dictionary<string, object>)["Wave3Turn"] = 100;
+                            }
+                        }
+
+                        if (e.Key == "Stage2_2")
+                        {
+                            if (DespairMode.Value)
+                            {
+                                List<string> a = new List<string>();
+                                a.Add("Queue_S2_MainBoss_Luby");
+                                (masterJson[e.Key] as Dictionary<string, object>)["Bosses"] = a;
+                            }
+                        }
+
+                        if (e.Key == "Queue_S3_Reaper")
+                        {
+                            if (DespairMode.Value)
+                            {
+                                List<string> a = new List<string>();
+                                a.Add("S3_Boss_TheLight");
+                                (masterJson[e.Key] as Dictionary<string, object>)["Wave2"] = a;
+                                (masterJson[e.Key] as Dictionary<string, object>)["Lock"] = false;
+                                (masterJson[e.Key] as Dictionary<string, object>)["UseCustomPosition"] = false;
+                                (masterJson[e.Key] as Dictionary<string, object>)["Wave2Turn"] = 99;
+                                (masterJson[e.Key] as Dictionary<string, object>)["CustomeFogTurn"] = 16;
+
+                                List<string> b = new List<string>();
+                                b.Add("Queue_S3_PharosLeader");
+                                (masterJson[e.Key] as Dictionary<string, object>)["Wave3"] = b;
+                                (masterJson[e.Key] as Dictionary<string, object>)["Wave3Turn"] = 100;
+                            }
+                        }
+
+                        if (e.Key == "Queue_S3_TheLight")
+                        {
+                            if (DespairMode.Value)
+                            {
+                                List<string> a = new List<string>();
+                                a.Add("Queue_S3_PharosLeader");
+                                (masterJson[e.Key] as Dictionary<string, object>)["Wave2"] = a;
+                                (masterJson[e.Key] as Dictionary<string, object>)["Lock"] = false;
+                                (masterJson[e.Key] as Dictionary<string, object>)["UseCustomPosition"] = false;
+                                (masterJson[e.Key] as Dictionary<string, object>)["Wave2Turn"] = 99;
+                                (masterJson[e.Key] as Dictionary<string, object>)["CustomeFogTurn"] = 16;
+
+                                List<string> b = new List<string>();
+                                b.Add("S3_Pharos_HighPriest");
+                                b.Add("S3_Boss_Reaper");
+                                (masterJson[e.Key] as Dictionary<string, object>)["Wave3"] = b;
+                                (masterJson[e.Key] as Dictionary<string, object>)["Wave3Turn"] = 100;
+                            }
+                        }
+
+                        if (e.Key == "Queue_S3_PharosLeader")
+                        {
+                            if (DespairMode.Value)
+                            {
+                                List<string> a = new List<string>();
+                                a.Add("S3_Boss_TheLight");
+                                (masterJson[e.Key] as Dictionary<string, object>)["Wave2"] = a;
+                                (masterJson[e.Key] as Dictionary<string, object>)["Lock"] = false;
+                                (masterJson[e.Key] as Dictionary<string, object>)["UseCustomPosition"] = false;
+                                (masterJson[e.Key] as Dictionary<string, object>)["Wave2Turn"] = 99;
+                                (masterJson[e.Key] as Dictionary<string, object>)["CustomeFogTurn"] = 16;
+
+                                List<string> b = new List<string>();
+                                b.Add("S3_Pharos_HighPriest");
+                                b.Add("S3_Boss_Reaper");
+                                (masterJson[e.Key] as Dictionary<string, object>)["Wave3"] = b;
+                                (masterJson[e.Key] as Dictionary<string, object>)["Wave3Turn"] = 100;
+                            }
+                        }
+
+                        if (e.Key == "Stage3")
+                        {
+                            if (DespairMode.Value)
+                            {
+                                List<string> a = new List<string>();
+                                a.Add("Queue_S3_PharosLeader");
+                                (masterJson[e.Key] as Dictionary<string, object>)["Bosses"] = a;
+                            }
+                        }
+
                         /// Enemy Hordes ///
 
                         /// Sanctuary ///
-                        
+
                         // Pikachu Living Armor Horde: Send Pikachu in Wave 2
                         if (e.Key == "FQ_6_5")
                         {
                             List<string> a = new List<string>();
                             a.Add("S4_AngryDochi");
                             (masterJson[e.Key] as Dictionary<string, object>)["Wave2"] = a;
-                            //(masterJson[e.Key] as Dictionary<string, object>)["Wave3"] = a;
-
                             (masterJson[e.Key] as Dictionary<string, object>)["Lock"] = false;
                             (masterJson[e.Key] as Dictionary<string, object>)["UseCustomPosition"] = false;
                             (masterJson[e.Key] as Dictionary<string, object>)["Wave2Turn"] = 2;
+                            //(masterJson[e.Key] as Dictionary<string, object>)["Wave3"] = a;
                             //(masterJson[e.Key] as Dictionary<string, object>)["Wave3Turn"] = 3;
                         }
 
@@ -126,7 +268,7 @@ namespace ExpertPlusMod
                             if (AscensionMode.Value)
                             {
                                 (masterJson[e.Key] as Dictionary<string, object>)["NoItem"] = 100;
-                            }  
+                            }
                         }
 
                         ///// Misty Garden 1 ///
@@ -150,20 +292,6 @@ namespace ExpertPlusMod
                         //    a.Add("S1_Pharos_Mage");
                         //    (masterJson[e.Key] as Dictionary<string, object>)["Enemys"] = a;
                         //}
-
-                        ///// Bloody Park 1 ///
-
-                        //// 2 Robot Hedgehogs + Horse: Spawn another Horse in Wave 2
-                        //if (e.Key == "FQ_3_3")
-                        //{
-                        //    List<string> a = new List<string>();
-                        //    a.Add("S2_Horse");
-                        //    (masterJson[e.Key] as Dictionary<string, object>)["Wave2"] = a;
-
-                        //    (masterJson[e.Key] as Dictionary<string, object>)["Lock"] = false;
-                        //    (masterJson[e.Key] as Dictionary<string, object>)["UseCustomPosition"] = false;
-                        //    (masterJson[e.Key] as Dictionary<string, object>)["Wave2Turn"] = 2;
-                        //}
                     }
                 }
                 dataString = Json.Serialize(masterJson);
@@ -178,162 +306,19 @@ namespace ExpertPlusMod
             [HarmonyPostfix]
             static void StageStartPostfix()
             {
-                // copied from FieldSystem.StageStart
-                if (PlayData.TSavedata.StageNum == 0 /*&& !PlayData.TSavedata.GameStarted*/)
+                if (!DespairMode.Value)
                 {
-                    // identifies lifting scroll
-                    if (PlayData.TSavedata.IdentifyItems.Find((string x) => x == GDEItemKeys.Item_Scroll_Scroll_Uncurse) == null)
+                    if (PlayData.TSavedata.StageNum == 0 /*&& !PlayData.TSavedata.GameStarted*/)
                     {
-                        PlayData.TSavedata.IdentifyItems.Add(GDEItemKeys.Item_Scroll_Scroll_Uncurse);
-                    }
-
-                    // Add 1 lifting scroll
-                    PartyInventory.InvenM.AddNewItem(ItemBase.GetItem(GDEItemKeys.Item_Scroll_Scroll_Uncurse, 1));
-
-                }
-            }
-        }
-
-        // Permadeath Mode: Ban Medical Tent
-        [HarmonyPatch(typeof(RandomEventBaseScript))]
-        class MedTent_Patch
-        {
-            [HarmonyPatch(nameof(RandomEventBaseScript.EventOpen_Base))]
-            [HarmonyPostfix]
-            static void Postfix(RandomEventBaseScript __instance)
-            {
-                if (__instance is RE_Medicaltent)
-                {
-                    //Debug.Log("Here");
-                    __instance.ButtonOff(0);
-                }
-            }
-        }
-
-        // Ascension Mode: Add Slow Response to deck
-        [HarmonyPatch(typeof(StartPartySelect))]
-        class Ascension_Patch
-        {
-            [HarmonyPatch(nameof(StartPartySelect.Apply))]
-            [HarmonyPostfix]
-            static void Postfix(StartPartySelect __instance)
-            {
-                // If Ascension Mode, add Slow Response
-                if(AscensionMode.Value && PlayData.TSavedata.StageNum == 0)
-                {
-                    //Debug.Log("Added Slow Response");
-                    PlayData.TSavedata.LucySkills.Add(GDEItemKeys.Skill_S_LucyCurse_Late);
-
-                    //Debug.Log("Relic Slots reduced");
-                    PlayData.TSavedata.Passive_Itembase.Remove(null);
-                    PlayData.TSavedata.Passive_Itembase.Remove(null);
-                    PlayData.TSavedata.ArkPassivePlus -= 2;
-                }
-            }
-        }
-
-        // Ascension Mode: Equip Slots reduced
-        [HarmonyPatch(typeof(FieldSystem))]
-        class Ascension_Patch2
-        {
-            [HarmonyPatch(nameof(FieldSystem.PartyAdd), new Type[] { typeof(GDECharacterData), typeof(int)} )]
-            [HarmonyPrefix]
-            static bool Prefix(GDECharacterData CData, int Levelup = 0)
-            {
-                if (AscensionMode.Value)
-                {
-                    Character character = new Character();
-                    character.Set_AllyData(CData);
-                    character.Hp = character.get_stat.maxhp;
-                    PlayData.TSavedata.DonAliveChars.Add(CData.Key);
-                    PlayData.TSavedata.Party.Add(character);
-                    if (FieldSystem.instance != null)
-                    {
-                        FieldSystem.instance.PartyWindowInit();
-                    }
-                    UIManager.inst.CharstatUI.GetComponent<CharStatV3>().Init();
-                    for (int i = 0; i < Levelup; i++)
-                    {
-                        UIManager.inst.CharstatUI.GetComponent<CharStatV3>().CWindows[PlayData.TSavedata.Party.Count - 1].Upgrade(true);
-                    }
- 
-                    //Remove equip slot here
-                    //Debug.Log("Removed equip slot");
-                    character.Equip.Remove(null);
-                    return false;
-                }
-                return true;
-            }
-        }
-
-        // Ascension Mode: Reduce Potion Num
-        [HarmonyPatch(typeof(BattleSystem))]
-        class Ascension_Patch3
-        {
-            [HarmonyPatch(nameof(BattleSystem.Start))]
-            [HarmonyPostfix]
-            static void Postfix()
-            {
-                // If Ascension Mode, reduce potion num
-                if (AscensionMode.Value)
-                {
-                    //Debug.Log("Potion Slots reduced");
-                    BattleSystem.instance.AllyTeam.MaxPotionNum = 2;
-                }
-            }
-        }
-        // Ascension Mode: Ilya Swords buff (compensation for equip slot reduced)
-        [HarmonyPatch(typeof(EItem.Ilya_Sword_0))]
-        class Ascension_Patch4
-        {
-            [HarmonyPatch(nameof(EItem.Ilya_Sword_0.Init))]
-            [HarmonyPostfix]
-            static void Postfix(EItem.Ilya_Sword_0 __instance)
-            {
-                // If Ascension Mode, buff stats
-                if (AscensionMode.Value)
-                {
-                    __instance.PlusStat.cri = 15f;
-                }
-            }
-        }
-
-        [HarmonyPatch(typeof(EItem.Ilya_Sword_1))]
-        class Ascension_Patch5
-        {
-            [HarmonyPatch(nameof(EItem.Ilya_Sword_1.Init))]
-            [HarmonyPostfix]
-            static void Postfix(EItem.Ilya_Sword_1 __instance)
-            {
-                // If Ascension Mode, buff stats
-                if (AscensionMode.Value)
-                {
-                    __instance.PlusStat.hit = 10f;
-                }
-            }
-        }
-
-        //Ascension Mode : Equip Slot Centered
-        [HarmonyPatch(typeof(ChildClear), "Start")]
-        class CenterItemSlotPatch
-        {
-            static void Postfix(ChildClear __instance)
-            {
-                if (AscensionMode.Value)
-                {
-                    var transform = __instance.GetComponent<Transform>();
-                    if (transform.name == "EquipAlign")
-                    {
-                        // party view
-                        if (transform.parent.parent.name == "CloseView")
+                        // identifies lifting scroll
+                        if (PlayData.TSavedata.IdentifyItems.Find((string x) => x == GDEItemKeys.Item_Scroll_Scroll_Uncurse) == null)
                         {
-                            transform.localPosition = new Vector3(transform.localPosition.x - 30f, transform.localPosition.y, transform.localPosition.z);
+                            PlayData.TSavedata.IdentifyItems.Add(GDEItemKeys.Item_Scroll_Scroll_Uncurse);
                         }
-                        // blacksmith
-                        //if (transform.parent.name == "EquipView")
-                        //{
-                        //    transform.localPosition = new Vector3(transform.localPosition.x - 35f, transform.localPosition.y, transform.localPosition.z);
-                        //}
+
+                        // Add 1 lifting scroll
+                        PartyInventory.InvenM.AddNewItem(ItemBase.GetItem(GDEItemKeys.Item_Scroll_Scroll_Uncurse, 1));
+
                     }
                 }
             }
@@ -347,7 +332,7 @@ namespace ExpertPlusMod
             [HarmonyPrefix]
             static bool Prefix(SkillExtended_UnCurse __instance)
             {
-                Debug.Log("Vanished Char");
+                //Debug.Log("Vanished Char");
                 foreach (BattleEnemy battleEnemy in BattleSystem.instance.EnemyTeam.AliveChars_Vanish)
                 {
                     foreach (Buff buff in battleEnemy.Buffs)
@@ -545,11 +530,11 @@ namespace ExpertPlusMod
                     __instance.Dead(false);
 
                     //Here
-                    Debug.Log("Stage: " + StageSystem.instance.Map.StageData.Key);
+                    //Debug.Log("Stage: " + StageSystem.instance.Map.StageData.Key);
                     if (StageSystem.instance.Map.StageData.Key != GDEItemKeys.Stage_Stage_Crimson)
                     {
                         BattleSystem.instance.AllyTeam.AP--;
-                        Debug.Log("Mana decreased due to death");
+                        //Debug.Log("Mana decreased due to death");
                     }
                 }
                 else
@@ -636,12 +621,9 @@ namespace ExpertPlusMod
                 {
                     if (___Itemviews.RemoveAll(x => x.GetisEquip) > 0 || PlayData.TSavedata.StageNum == 3)
                     {
-                        //ItemBase item = ItemBase.GetItem(PlayData.GetEquipRandom(1));
-                        //(item as Item_Equip).Curse = EquipCurse.RandomCurse(item as Item_Equip);
-
                         Random rand = new Random();
 
-                        int a = rand.Next(1,101); // 1-100
+                        int a = rand.Next(1, 101); // 1-100
                         // 59% 100G, 25% Useful Scrap Metal, 5% Herb, 5% Tablet, 5% Shield Generator, 1% Celestial
                         if (a <= 59)
                         {
@@ -683,7 +665,7 @@ namespace ExpertPlusMod
                     }
                 }
 
-                // Hard Sanctuary Fights
+                // Hard Sanctuary Fights: Extra Reward
                 flag = false;
                 if ((__instance.BChar.Info.KeyData == GDEItemKeys.Enemy_S4_Guard_1 /*|| __instance.BChar.Info.KeyData == GDEItemKeys.Enemy_S4_Golem || __instance.BChar.Info.KeyData == GDEItemKeys.Enemy_S4_Golem2 || __instance.BChar.Info.KeyData == GDEItemKeys.Enemy_S4_Summoner*/))
                 {
@@ -740,15 +722,15 @@ namespace ExpertPlusMod
         //    }
 
 
-            //[HarmonyPatch(nameof(Buff.DescExtended))]
-            //[HarmonyPostfix]
-            //static void DescExtendedPostfix(ref string __result, Buff __instance)
-            //{
-            //    if (__instance is B_CursedMob_2)
-            //    {
-            //        __result = "Gain 1 action count\nBlock one incoming attack.";
-            //    }
-            //}
+        //[HarmonyPatch(nameof(Buff.DescExtended))]
+        //[HarmonyPostfix]
+        //static void DescExtendedPostfix(ref string __result, Buff __instance)
+        //{
+        //    if (__instance is B_CursedMob_2)
+        //    {
+        //        __result = "Gain 1 action count\nBlock one incoming attack.";
+        //    }
+        //}
         //}
 
 
@@ -781,6 +763,305 @@ namespace ExpertPlusMod
         //}
 
         /// <summary>
+        /// Despair Mode
+        /// </summary>
+        /// 
+
+        // Despair Mode: Do not spawn Lifting Scroll in battle
+        [HarmonyPatch(typeof(B_CursedMob), "BattleStart")]
+        class CursedStart_Patch
+        {
+            static bool Prefix()
+            {
+                if (DespairMode.Value)
+                {
+                    return false;
+                }
+                return true;
+            }
+        }
+
+        // Witch -> Golem
+        [HarmonyPatch(typeof(B_Reaper_3), "Init")]
+        class TWGO_Patch
+        {
+            static void Postfix()
+            {
+                if (DespairMode.Value)
+                {
+                    foreach (BattleChar b in BattleSystem.instance.AllyTeam.Chars)
+                    {
+                        b.BuffRemove("B_Witch_P_0_T", true);
+                        b.BuffRemove("B_Witch_P_0_T", true);
+                        b.BuffRemove("B_Witch_P_0_T", true);
+                        b.BuffRemove("B_Witch_P_0_T", true);
+                        b.BuffRemove("B_Witch_P_0_T", true);
+                        b.BuffRemove("B_Witch_P_0_T", true);
+                        b.BuffRemove("B_Witch_P_0_T", true);
+                        b.BuffRemove("B_Witch_P_0_T", true);
+                        b.BuffRemove("B_Witch_P_0_T", true);
+                        b.BuffRemove("B_Witch_P_0_T", true);
+                        b.BuffRemove("B_Witch_2_T", true);
+                        b.BuffRemove("B_Witch_2_T", true);
+                        b.BuffRemove("B_Witch_2_T", true);
+                        b.BuffRemove("B_Witch_2_T", true);
+                        b.BuffRemove("B_Witch_2_T", true);
+                        b.BuffRemove("B_Witch_2_T", true);
+                        b.BuffRemove("B_Witch_2_T", true);
+                        b.BuffRemove("B_Witch_2_T", true);
+                        b.BuffRemove("B_Witch_2_T", true);
+                        b.BuffRemove("B_Witch_2_T", true);
+                    }
+                }
+            }
+        }
+
+        // Bomber Clown -> Time Eater
+        [HarmonyPatch(typeof(B_MBoss2_1_P), "Init")]
+        class BCTE_Patch
+        {
+            static void Postfix()
+            {
+                if (DespairMode.Value)
+                {
+                    List<Skill> Tempskill = new List<Skill>();
+                    Tempskill.AddRange(BattleSystem.instance.AllyTeam.Skills);
+                    foreach (Skill skill in Tempskill)
+                    {
+                        // Remove time bombs
+                        if (skill.ExtendedFind("S_BombClown_B_0", true) is S_BombClown_B_0)
+                        {
+                            skill.MyButton.Waste();
+                        }
+                    }
+                }
+            }
+        }
+
+        // RS -> Bomber Clown
+        [HarmonyPatch(typeof(P_BombClown_0), "Init")]
+        class RSBC_Patch
+        {
+            static void Postfix()
+            {
+                if (DespairMode.Value)
+                {
+                    foreach (BattleChar b in BattleSystem.instance.AllyTeam.Chars)
+                    {
+                        b.BuffRemove("B_S2_Mainboss_1_LeftDebuff", true);
+                        b.BuffRemove("B_S2_Mainboss_1_RightDebuf", true);
+                    }
+
+                    List<Skill> Tempskill = new List<Skill>();
+                    Tempskill.AddRange(BattleSystem.instance.AllyTeam.Skills);
+                    foreach (Skill skill in Tempskill)
+                    {
+                        // Remove cleanse
+                        if (skill.ExtendedFind("Extended_S2_MainBoss_1_Lucy_0", true) is Extended_S2_MainBoss_1_Lucy_0)
+                        {
+                            skill.MyButton.Waste();
+                        }
+                    }
+                }
+            }
+        }
+
+        // Pharos->Karaela
+        [HarmonyPatch(typeof(B_S3_Pope_P_2), "TurnEnd")]
+        class PLSK_Patch
+        {
+            static void Postfix(B_S3_Pope_P_2 __instance)
+            {
+                if (DespairMode.Value)
+                {
+                    if (BattleSystem.instance.EnemyTeam.AliveChars.Count == 0)
+                    {
+                        __instance.SelfDestroy();
+                    }
+                }
+            }
+        }
+
+        // Karaela -> Reaper
+        [HarmonyPatch(typeof(B_TheLight_P_0), nameof(B_TheLight_P_0.FixedUpdate))]
+        class SKTR_Patch
+        {
+            static void Postfix(B_TheLight_P_0 __instance)
+            {
+                if (DespairMode.Value)
+                {
+                    if (BattleSystem.instance.EnemyTeam.AliveChars.Count == 0)
+                    {
+                        __instance.SelfDestroy();
+                        List<Skill> Tempskill = new List<Skill>();
+                        Tempskill.AddRange(BattleSystem.instance.AllyTeam.Skills);
+                        foreach (Skill skill in Tempskill)
+                        {
+                            if (skill.ExtendedFind("SkillExtended_S_S_TheLight_P_1", true) is SkillExtended_S_S_TheLight_P_1)
+                            {
+                                skill.MyButton.Waste();
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        /// <summary>
+        /// Permadeath Mode
+        /// </summary>
+
+        // Permadeath Mode: Ban Medical Tent
+        [HarmonyPatch(typeof(RandomEventBaseScript))]
+        class MedTent_Patch
+        {
+            [HarmonyPatch(nameof(RandomEventBaseScript.EventOpen_Base))]
+            [HarmonyPostfix]
+            static void Postfix(RandomEventBaseScript __instance)
+            {
+                if (__instance is RE_Medicaltent)
+                {
+                    //Debug.Log("Here");
+                    __instance.ButtonOff(0);
+                }
+            }
+        }
+
+        /// <summary>
+        /// Ascension Mode
+        /// </summary>
+
+        // Ascension Mode: Add Slow Response to deck
+        [HarmonyPatch(typeof(StartPartySelect))]
+        class Ascension_Patch
+        {
+            [HarmonyPatch(nameof(StartPartySelect.Apply))]
+            [HarmonyPostfix]
+            static void Postfix(StartPartySelect __instance)
+            {
+                // If Ascension Mode, add Slow Response
+                if (AscensionMode.Value && PlayData.TSavedata.StageNum == 0)
+                {
+                    //Debug.Log("Added Slow Response");
+                    PlayData.TSavedata.LucySkills.Add(GDEItemKeys.Skill_S_LucyCurse_Late);
+
+                    //Debug.Log("Relic Slots reduced");
+                    PlayData.TSavedata.Passive_Itembase.Remove(null);
+                    PlayData.TSavedata.Passive_Itembase.Remove(null);
+                    PlayData.TSavedata.ArkPassivePlus -= 2;
+                }
+            }
+        }
+
+        // Ascension Mode: Equip Slots reduced
+        [HarmonyPatch(typeof(FieldSystem))]
+        class Ascension_Patch2
+        {
+            [HarmonyPatch(nameof(FieldSystem.PartyAdd), new Type[] { typeof(GDECharacterData), typeof(int) })]
+            [HarmonyPrefix]
+            static bool Prefix(GDECharacterData CData, int Levelup = 0)
+            {
+                if (AscensionMode.Value)
+                {
+                    Character character = new Character();
+                    character.Set_AllyData(CData);
+                    character.Hp = character.get_stat.maxhp;
+                    PlayData.TSavedata.DonAliveChars.Add(CData.Key);
+                    PlayData.TSavedata.Party.Add(character);
+                    if (FieldSystem.instance != null)
+                    {
+                        FieldSystem.instance.PartyWindowInit();
+                    }
+                    UIManager.inst.CharstatUI.GetComponent<CharStatV3>().Init();
+                    for (int i = 0; i < Levelup; i++)
+                    {
+                        UIManager.inst.CharstatUI.GetComponent<CharStatV3>().CWindows[PlayData.TSavedata.Party.Count - 1].Upgrade(true);
+                    }
+
+                    //Remove equip slot here
+                    //Debug.Log("Removed equip slot");
+                    character.Equip.Remove(null);
+                    return false;
+                }
+                return true;
+            }
+        }
+
+        // Ascension Mode: Reduce Potion Num
+        [HarmonyPatch(typeof(BattleSystem))]
+        class Ascension_Patch3
+        {
+            [HarmonyPatch(nameof(BattleSystem.Start))]
+            [HarmonyPostfix]
+            static void Postfix()
+            {
+                // If Ascension Mode, reduce potion num
+                if (AscensionMode.Value)
+                {
+                    //Debug.Log("Potion Slots reduced");
+                    BattleSystem.instance.AllyTeam.MaxPotionNum = 2;
+                }
+            }
+        }
+        // Ascension Mode: Ilya Swords buff (compensation for equip slot reduced)
+        [HarmonyPatch(typeof(EItem.Ilya_Sword_0))]
+        class Ascension_Patch4
+        {
+            [HarmonyPatch(nameof(EItem.Ilya_Sword_0.Init))]
+            [HarmonyPostfix]
+            static void Postfix(EItem.Ilya_Sword_0 __instance)
+            {
+                // If Ascension Mode, buff stats
+                if (AscensionMode.Value)
+                {
+                    __instance.PlusStat.cri = 15f;
+                }
+            }
+        }
+
+        // Ascension Mode: Ilya Swords buff (compensation for equip slot reduced)
+        [HarmonyPatch(typeof(EItem.Ilya_Sword_1))]
+        class Ascension_Patch5
+        {
+            [HarmonyPatch(nameof(EItem.Ilya_Sword_1.Init))]
+            [HarmonyPostfix]
+            static void Postfix(EItem.Ilya_Sword_1 __instance)
+            {
+                // If Ascension Mode, buff stats
+                if (AscensionMode.Value)
+                {
+                    __instance.PlusStat.hit = 10f;
+                }
+            }
+        }
+
+        //Ascension Mode : Equip Slot Centered
+        [HarmonyPatch(typeof(ChildClear), "Start")]
+        class CenterItemSlotPatch
+        {
+            static void Postfix(ChildClear __instance)
+            {
+                if (AscensionMode.Value)
+                {
+                    var transform = __instance.GetComponent<Transform>();
+                    if (transform.name == "EquipAlign")
+                    {
+                        // party view
+                        if (transform.parent.parent.name == "CloseView")
+                        {
+                            transform.localPosition = new Vector3(transform.localPosition.x - 30f, transform.localPosition.y, transform.localPosition.z);
+                        }
+                        // blacksmith
+                        //if (transform.parent.name == "EquipView")
+                        //{
+                        //    transform.localPosition = new Vector3(transform.localPosition.x - 35f, transform.localPosition.y, transform.localPosition.z);
+                        //}
+                    }
+                }
+            }
+        }
+
+        /// <summary>
         /// Below is Neo's Stuff
         /// </summary>
 
@@ -809,26 +1090,26 @@ namespace ExpertPlusMod
                 {
                     //if (___Map.StageData.Key != GDEItemKeys.Stage_Stage_Crimson)
                     //{
-                        // checks are required for both tile battles and building battles
-                        List<MapTile> battleList =
-                            ___Map.EventTileList.FindAll(x => (x.Info.Type is Monster) ||
-                            (x.TileEventObject != null && x.TileEventObject.ObjectData != null && x.TileEventObject.Monster));
+                    // checks are required for both tile battles and building battles
+                    List<MapTile> battleList =
+                        ___Map.EventTileList.FindAll(x => (x.Info.Type is Monster) ||
+                        (x.TileEventObject != null && x.TileEventObject.ObjectData != null && x.TileEventObject.Monster));
 
-                        ogCursedTiles = battleList.FindAll(x => x.Info.Cursed == true);
-                        int curseCount = ogCursedTiles.Count;
+                    ogCursedTiles = battleList.FindAll(x => x.Info.Cursed == true);
+                    int curseCount = ogCursedTiles.Count;
 
-                        KnuthShuffle(battleList);
-                        foreach (MapTile mt in battleList)
+                    KnuthShuffle(battleList);
+                    foreach (MapTile mt in battleList)
+                    {
+                        // curses all fights
+                        if (curseCount >= 4)
+                            break;
+                        if (mt.Info.Cursed == false)
                         {
-                            // curses all fights
-                            if (curseCount >= 4)
-                                break;
-                            if (mt.Info.Cursed == false)
-                            {
-                                mt.Info.Cursed = true;
-                                curseCount++;
-                            }
+                            mt.Info.Cursed = true;
+                            curseCount++;
                         }
+                    }
                     //}
                 }
             }
@@ -970,7 +1251,6 @@ namespace ExpertPlusMod
                 }
             }
         }
-
 
 
         // Despair Mode: No revival in campfire

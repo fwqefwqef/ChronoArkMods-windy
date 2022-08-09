@@ -77,6 +77,14 @@ namespace ExpertPlusMod
                         //}
 
                         /// Despair Mode
+                        if (e.Key == "S4_King_0")
+                        {
+                            if (DespairMode.Value)
+                            {
+                                (masterJson[e.Key] as Dictionary<string, object>)["maxhp"] = 1500;
+                                (masterJson[e.Key] as Dictionary<string, object>)["CustomeFogTurn"] = 18;
+                            }
+                        }
                         if (e.Key == "Queue_Witch")
                         {
                             if (DespairMode.Value)
@@ -85,7 +93,7 @@ namespace ExpertPlusMod
                                 a.Add("Boss_Golem");
                                 (masterJson[e.Key] as Dictionary<string, object>)["Wave2"] = a;
                                 (masterJson[e.Key] as Dictionary<string, object>)["Wave2Turn"] = 99;
-                                (masterJson[e.Key] as Dictionary<string, object>)["CustomeFogTurn"] = 13;
+                                (masterJson[e.Key] as Dictionary<string, object>)["CustomeFogTurn"] = 12;
                             }
                         }
 
@@ -96,6 +104,23 @@ namespace ExpertPlusMod
                                 List<string> a = new List<string>();
                                 a.Add("Queue_Witch");
                                 (masterJson[e.Key] as Dictionary<string, object>)["Bosses"] = a;
+                            }
+                        }
+
+                        if (e.Key == "Queue_DorchiX")
+                        {
+                            if (DespairMode.Value)
+                            {
+                                List<string> a = new List<string>();
+                                a.Add("S1_WitchBoss");
+                                (masterJson[e.Key] as Dictionary<string, object>)["Wave2"] = a;
+                                (masterJson[e.Key] as Dictionary<string, object>)["Wave2Turn"] = 99;
+                                (masterJson[e.Key] as Dictionary<string, object>)["CustomeFogTurn"] = 18;
+
+                                List<string> b = new List<string>();
+                                b.Add("Boss_Golem");
+                                (masterJson[e.Key] as Dictionary<string, object>)["Wave3"] = b;
+                                (masterJson[e.Key] as Dictionary<string, object>)["Wave3Turn"] = 100;
                             }
                         }
 
@@ -118,6 +143,49 @@ namespace ExpertPlusMod
                                 List<string> a = new List<string>();
                                 a.Add("Queue_S2_Joker");
                                 (masterJson[e.Key] as Dictionary<string, object>)["Bosses"] = a;
+                            }
+                        }
+
+                        if (e.Key == "CrimsonQueue_GunManBoss")
+                        {
+                            if (DespairMode.Value)
+                            {
+                                List<string> a = new List<string>();
+                                a.Add("SR_Shotgun");
+                                a.Add("SR_Outlaw");
+                                a.Add("SR_Blade");
+                                a.Add("SR_Sniper");
+                                (masterJson[e.Key] as Dictionary<string, object>)["Enemys"] = a;
+
+                                List<string> b = new List<string>();
+                                b.Add("SR_GunManBoss");
+                                (masterJson[e.Key] as Dictionary<string, object>)["Wave2"] = b;
+                                (masterJson[e.Key] as Dictionary<string, object>)["Wave2Turn"] = 4;
+
+                                (masterJson[e.Key] as Dictionary<string, object>)["UseCustomPosition"] = true;
+                                Dictionary<string, int> pos1 = new Dictionary<string, int>();
+                                pos1.Add("x", -10);
+                                pos1.Add("y", 0);
+                                pos1.Add("z", 6);
+                                Dictionary<string, int> pos2 = new Dictionary<string, int>();
+                                pos2.Add("x", 5);
+                                pos2.Add("y", 0);
+                                pos2.Add("z", 0);
+                                Dictionary<string, int> pos3 = new Dictionary<string, int>();
+                                pos3.Add("x", 0);
+                                pos3.Add("y", 0);
+                                pos3.Add("z", 2);
+                                Dictionary<string, int> pos4 = new Dictionary<string, int>();
+                                pos4.Add("x", -4);
+                                pos4.Add("y", 0);
+                                pos4.Add("z", -1);
+                                List<Dictionary<string, int>> c = new List<Dictionary<string, int>>();
+                                c.Add(pos2);
+                                c.Add(pos3);
+                                c.Add(pos4);
+                                c.Add(pos1);
+                                (masterJson[e.Key] as Dictionary<string, object>)["Pos"] = c;
+                                (masterJson[e.Key] as Dictionary<string, object>)["CustomeFogTurn"] = 11;
                             }
                         }
 
@@ -687,6 +755,15 @@ namespace ExpertPlusMod
                     }
                 }
 
+                // Despair Mode: Sniper remove action count
+                //if (DespairMode.Value)
+                //{
+                //    if (__instance.BChar.Info.KeyData == GDEItemKeys.Enemy_SR_Sniper)
+                //    {
+                //        __instance.BChar.Info.PlusActCount.RemoveAt(__instance.BChar.Info.PlusActCount.Count - 1);
+                //    }
+                //}
+
             }
         }
 
@@ -778,6 +855,48 @@ namespace ExpertPlusMod
                     return false;
                 }
                 return true;
+            }
+        }
+
+        // Dorchi->Witch
+        [HarmonyPatch(typeof(P_DorchiX), "HPChange")]
+        class DHP_Patch
+        {
+            static bool Prefix(P_DorchiX __instance)
+            {
+                if (DespairMode.Value)
+                {
+                    if (!__instance.Phase)
+                    {
+                        if (__instance.BChar.HP <= 1)
+                        {
+                            __instance.BChar.Info.Hp = 1;
+                            __instance.Phase = true;
+                            __instance.BChar.BuffAdd(GDEItemKeys.Buff_B_DorchiX_Barrier, __instance.BChar, false, 0, false, -1, false);
+                            ((__instance.BChar as BattleEnemy).MyComponent as C_DorchiX).Battle3.Activate();
+                            BattleSystem.DelayInput(__instance.DorchiX3After());
+                        }
+                    }
+                    else if (__instance.BChar.HP <= 0)
+                    {
+                        //Revive, heal everyone by 200% (66%)
+                        foreach (BattleChar b in BattleSystem.instance.AllyTeam.Chars)
+                        {
+                            if (b.Info.Incapacitated)
+                            {
+                                b.Info.Incapacitated = false;
+                                b.HP = 1;
+                            }
+                            int num = (int)Misc.PerToNum((float)b.GetStat.maxhp, 200f);
+                            b.Heal(b, (float)num, false);
+                        }
+                    }
+                    return false;
+                }
+                else
+                {
+                    return true;
+                }
             }
         }
 
@@ -949,6 +1068,63 @@ namespace ExpertPlusMod
                         }
                     }
                 }
+            }
+        }
+
+        // Crimson Boss Battle: Spawn 2 Decisive Strike
+        [HarmonyPatch(typeof(B_Sniper_0), nameof(B_Sniper_0.Turn1))]
+        class SniperDrawFire_Patch
+        {
+            static bool Prefix(B_Sniper_0 __instance)
+            {
+                if (DespairMode.Value)
+                {
+                    
+                    if (BattleSystem.instance.TurnNum == 1)
+                    {
+                        for (int i = 0; i < 2; i++)
+                        {
+                            BattleSystem.instance.AllyTeam.Add(Skill.TempSkill(GDEItemKeys.Skill_S_Sniper_1, BattleSystem.instance.AllyTeam.LucyChar, BattleSystem.instance.AllyTeam), true);
+                        }
+                        // Crimson Boss Fight
+                        if (!BattleSystem.instance.CurseBattle)
+                        {
+                            Skill s = Skill.TempSkill(GDEItemKeys.Skill_S_Lucy_25, BattleSystem.instance.AllyTeam.LucyChar, BattleSystem.instance.AllyTeam);
+                            s.AP = -1;
+                            BattleSystem.instance.AllyTeam.Add(s, true);
+                            Skill s2 = Skill.TempSkill(GDEItemKeys.Skill_S_Lucy_25, BattleSystem.instance.AllyTeam.LucyChar, BattleSystem.instance.AllyTeam);
+                            s2.AP = -1;
+                            BattleSystem.instance.AllyTeam.Add(s2, true);
+                        }
+                    }
+                        return false;
+                }
+                return true;
+            }
+        }
+
+        //TFK: Phase 2 starts at 750HP
+        [HarmonyPatch(typeof(P_King))]
+        class TFKPatch
+        {
+            [HarmonyPatch(nameof(P_King.HPChange))]
+            [HarmonyPrefix]
+            static bool Prefix(P_King __instance)
+            {
+                if (DespairMode.Value)
+                {
+                    if (__instance.MainAI.Phase == 1 && __instance.BChar.HP <= 750)
+                    {
+                        __instance.BChar.Info.Hp = 750;
+                        __instance.BChar.BuffAdd(GDEItemKeys.Buff_B_S4_King_P1_Half, __instance.BChar, false, 0, false, -1, false);
+                        if (__instance.MainAI.Phase == 1)
+                        {
+                            (__instance.BChar as BattleEnemy).ChangeSprite(((__instance.BChar as BattleEnemy).MyComponent as C_King).Phase_1_2);
+                            __instance.BChar.UI.CharShake.ShakeEndbled(50f, 20f, 60);
+                        }
+                    }
+                }
+                return true;
             }
         }
 
@@ -1424,5 +1600,3 @@ namespace ExpertPlusMod
     }
 
 }
-
-

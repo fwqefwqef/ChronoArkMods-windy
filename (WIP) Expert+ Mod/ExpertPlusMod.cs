@@ -816,6 +816,43 @@ namespace ExpertPlusMod
             }
         }
 
+        // Joker -> Parade Tank
+        [HarmonyPatch(typeof(B_S2_Tank_P), "Init")]
+        class TJPT_Patch
+        {
+            static void Postfix()
+            {
+                if (DespairMode.Value)
+                {
+                    // Remove Joker Card from deck
+                    while (true)
+                    {
+                        Skill skill = BattleSystem.instance.AllyTeam.Skills_Deck.Find((Skill a) => a.ExtendedFind("SkillExtended_Joker_0", false) is SkillExtended_Joker_0);
+                        if (skill == null)
+                        {
+                            break;
+                        }
+                        else
+                        {
+                            BattleSystem.instance.AllyTeam.Skills_Deck.Remove(skill);
+                        }
+                    }
+                    while (true)
+                    {
+                        Skill skill = BattleSystem.instance.AllyTeam.Skills_UsedDeck.Find((Skill a) => a.ExtendedFind("SkillExtended_Joker_0", false) is SkillExtended_Joker_0);
+                        if (skill == null)
+                        {
+                            break;
+                        }
+                        else
+                        {
+                            BattleSystem.instance.AllyTeam.Skills_UsedDeck.Remove(skill);
+                        }
+                    }
+                }
+            }
+        }
+
         // Bomber Clown -> Time Eater
         [HarmonyPatch(typeof(B_MBoss2_1_P), "Init")]
         class BCTE_Patch
@@ -901,6 +938,14 @@ namespace ExpertPlusMod
                             {
                                 skill.MyButton.Waste();
                             }
+                        }
+                        // Remove Karaela Burn
+                        foreach (BattleChar b in BattleSystem.instance.AllyTeam.Chars)
+                        {
+                            b.BuffRemove("B_TheLight_2_T", true);
+                            b.BuffRemove("B_TheLight_2_T", true);
+                            b.BuffRemove("B_TheLight_2_T", true);
+                            b.BuffRemove("B_TheLight_2_T", true);
                         }
                     }
                 }

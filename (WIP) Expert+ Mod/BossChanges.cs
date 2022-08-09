@@ -376,9 +376,10 @@ namespace BossChanges
                         if (e.Key == "S4_King_0")
                         {
                             (masterJson[e.Key] as Dictionary<string, object>)["maxhp"] = 1000;
+
                         }
 
-                        //Godo Revolver Panning: Damage increased
+                        //Godo Revolver Fanning: Damage increased
                         if (e.Key == "SE_Gunmman_2_T")
                         {
                             (masterJson[e.Key] as Dictionary<string, object>)["DMG_Per"] = 100;

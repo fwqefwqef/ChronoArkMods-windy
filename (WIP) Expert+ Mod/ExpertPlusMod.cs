@@ -25,10 +25,12 @@ namespace ExpertPlusMod
 
         private static readonly Harmony harmony = new Harmony(GUID);
 
-        private static ConfigEntry<bool> PermaMode;
-        private static ConfigEntry<bool> VanillaCurses;
-        private static ConfigEntry<bool> AscensionMode;
-        private static ConfigEntry<bool> DespairMode;
+        public static ConfigEntry<bool> PermaMode;
+        public static ConfigEntry<bool> VanillaCurses;
+        public static ConfigEntry<bool> AscensionMode;
+        public static ConfigEntry<bool> DespairMode;
+        public static ConfigEntry<bool> hardTransitions;
+
 
         void Awake()
         {
@@ -36,6 +38,8 @@ namespace ExpertPlusMod
             VanillaCurses = Config.Bind("Generation config", "Vanilla Curses", false, "Vanilla Curses\nReverts the nerfs to Cursed Mob stats. The challenge is designed around weaker cursed mobs, but toggle this on if you want.");
             AscensionMode = Config.Bind("Generation config", "Ascension Mode", false, "Ascension Mode\nA mimic of Slay The Spire's Ascension Mode.\n1. Add Slow Response Curse to deck at the start of the game.\n2. Maximum potion uses per battle reduced to 2.\n3. Character Equipment Slots reduced to 1. (Equipment Drop Rates reduced)\n4. Relic Slots reduced to 2.");
             DespairMode = Config.Bind("Generation config", "Despair Mode", false, "Despair Mode\nWarning: Very Difficult.\n1. Lifting Scrolls do not spawn in battle.\n2. After Misty Garden 1, fight all possible bosses for each stage. Godo and TFK fight is harder.\n3. More features coming soon.");
+            hardTransitions = Config.Bind("Generation config", "Hard transitions", false, "Removes most of the boss transition handicap. Enable Despair Mode to enable multiple bosses.");
+
             harmony.PatchAll();
         }
         void OnDestroy()
@@ -858,218 +862,7 @@ namespace ExpertPlusMod
             }
         }
 
-        // Dorchi->Witch
-        [HarmonyPatch(typeof(P_DorchiX), "HPChange")]
-        class DHP_Patch
-        {
-            static bool Prefix(P_DorchiX __instance)
-            {
-                if (DespairMode.Value)
-                {
-                    if (!__instance.Phase)
-                    {
-                        if (__instance.BChar.HP <= 1)
-                        {
-                            __instance.BChar.Info.Hp = 1;
-                            __instance.Phase = true;
-                            __instance.BChar.BuffAdd(GDEItemKeys.Buff_B_DorchiX_Barrier, __instance.BChar, false, 0, false, -1, false);
-                            ((__instance.BChar as BattleEnemy).MyComponent as C_DorchiX).Battle3.Activate();
-                            BattleSystem.DelayInput(__instance.DorchiX3After());
-                        }
-                    }
-                    else if (__instance.BChar.HP <= 0)
-                    {
-                        //Revive, heal everyone by 200% (66%)
-                        foreach (BattleChar b in BattleSystem.instance.AllyTeam.Chars)
-                        {
-                            if (b.Info.Incapacitated)
-                            {
-                                b.Info.Incapacitated = false;
-                                b.HP = 1;
-                            }
-                            int num = (int)Misc.PerToNum((float)b.GetStat.maxhp, 200f);
-                            b.Heal(b, (float)num, false);
-                        }
-                    }
-                    return false;
-                }
-                else
-                {
-                    return true;
-                }
-            }
-        }
-
-        // Witch -> Golem
-        [HarmonyPatch(typeof(B_Reaper_3), "Init")]
-        class TWGO_Patch
-        {
-            static void Postfix()
-            {
-                if (DespairMode.Value)
-                {
-                    foreach (BattleChar b in BattleSystem.instance.AllyTeam.Chars)
-                    {
-                        b.BuffRemove("B_Witch_P_0_T", true);
-                        b.BuffRemove("B_Witch_P_0_T", true);
-                        b.BuffRemove("B_Witch_P_0_T", true);
-                        b.BuffRemove("B_Witch_P_0_T", true);
-                        b.BuffRemove("B_Witch_P_0_T", true);
-                        b.BuffRemove("B_Witch_P_0_T", true);
-                        b.BuffRemove("B_Witch_P_0_T", true);
-                        b.BuffRemove("B_Witch_P_0_T", true);
-                        b.BuffRemove("B_Witch_P_0_T", true);
-                        b.BuffRemove("B_Witch_P_0_T", true);
-                        b.BuffRemove("B_Witch_2_T", true);
-                        b.BuffRemove("B_Witch_2_T", true);
-                        b.BuffRemove("B_Witch_2_T", true);
-                        b.BuffRemove("B_Witch_2_T", true);
-                        b.BuffRemove("B_Witch_2_T", true);
-                        b.BuffRemove("B_Witch_2_T", true);
-                        b.BuffRemove("B_Witch_2_T", true);
-                        b.BuffRemove("B_Witch_2_T", true);
-                        b.BuffRemove("B_Witch_2_T", true);
-                        b.BuffRemove("B_Witch_2_T", true);
-                    }
-                }
-            }
-        }
-
-        // Joker -> Parade Tank
-        [HarmonyPatch(typeof(B_S2_Tank_P), "Init")]
-        class TJPT_Patch
-        {
-            static void Postfix()
-            {
-                if (DespairMode.Value)
-                {
-                    // Remove Joker Card from deck
-                    while (true)
-                    {
-                        Skill skill = BattleSystem.instance.AllyTeam.Skills_Deck.Find((Skill a) => a.ExtendedFind("SkillExtended_Joker_0", false) is SkillExtended_Joker_0);
-                        if (skill == null)
-                        {
-                            break;
-                        }
-                        else
-                        {
-                            BattleSystem.instance.AllyTeam.Skills_Deck.Remove(skill);
-                        }
-                    }
-                    while (true)
-                    {
-                        Skill skill = BattleSystem.instance.AllyTeam.Skills_UsedDeck.Find((Skill a) => a.ExtendedFind("SkillExtended_Joker_0", false) is SkillExtended_Joker_0);
-                        if (skill == null)
-                        {
-                            break;
-                        }
-                        else
-                        {
-                            BattleSystem.instance.AllyTeam.Skills_UsedDeck.Remove(skill);
-                        }
-                    }
-                }
-            }
-        }
-
-        // Bomber Clown -> Time Eater
-        [HarmonyPatch(typeof(B_MBoss2_1_P), "Init")]
-        class BCTE_Patch
-        {
-            static void Postfix()
-            {
-                if (DespairMode.Value)
-                {
-                    List<Skill> Tempskill = new List<Skill>();
-                    Tempskill.AddRange(BattleSystem.instance.AllyTeam.Skills);
-                    foreach (Skill skill in Tempskill)
-                    {
-                        // Remove time bombs
-                        if (skill.ExtendedFind("S_BombClown_B_0", true) is S_BombClown_B_0)
-                        {
-                            skill.MyButton.Waste();
-                        }
-                    }
-                }
-            }
-        }
-
-        // RS -> Bomber Clown
-        [HarmonyPatch(typeof(P_BombClown_0), "Init")]
-        class RSBC_Patch
-        {
-            static void Postfix()
-            {
-                if (DespairMode.Value)
-                {
-                    foreach (BattleChar b in BattleSystem.instance.AllyTeam.Chars)
-                    {
-                        b.BuffRemove("B_S2_Mainboss_1_LeftDebuff", true);
-                        b.BuffRemove("B_S2_Mainboss_1_RightDebuf", true);
-                    }
-
-                    List<Skill> Tempskill = new List<Skill>();
-                    Tempskill.AddRange(BattleSystem.instance.AllyTeam.Skills);
-                    foreach (Skill skill in Tempskill)
-                    {
-                        // Remove cleanse
-                        if (skill.ExtendedFind("Extended_S2_MainBoss_1_Lucy_0", true) is Extended_S2_MainBoss_1_Lucy_0)
-                        {
-                            skill.MyButton.Waste();
-                        }
-                    }
-                }
-            }
-        }
-
-        // Pharos->Karaela
-        [HarmonyPatch(typeof(B_S3_Pope_P_2), "TurnEnd")]
-        class PLSK_Patch
-        {
-            static void Postfix(B_S3_Pope_P_2 __instance)
-            {
-                if (DespairMode.Value)
-                {
-                    if (BattleSystem.instance.EnemyTeam.AliveChars.Count == 0)
-                    {
-                        __instance.SelfDestroy();
-                    }
-                }
-            }
-        }
-
-        // Karaela -> Reaper
-        [HarmonyPatch(typeof(B_TheLight_P_0), nameof(B_TheLight_P_0.FixedUpdate))]
-        class SKTR_Patch
-        {
-            static void Postfix(B_TheLight_P_0 __instance)
-            {
-                if (DespairMode.Value)
-                {
-                    if (BattleSystem.instance.EnemyTeam.AliveChars.Count == 0)
-                    {
-                        __instance.SelfDestroy();
-                        List<Skill> Tempskill = new List<Skill>();
-                        Tempskill.AddRange(BattleSystem.instance.AllyTeam.Skills);
-                        foreach (Skill skill in Tempskill)
-                        {
-                            if (skill.ExtendedFind("SkillExtended_S_S_TheLight_P_1", true) is SkillExtended_S_S_TheLight_P_1)
-                            {
-                                skill.MyButton.Waste();
-                            }
-                        }
-                        // Remove Karaela Burn
-                        foreach (BattleChar b in BattleSystem.instance.AllyTeam.Chars)
-                        {
-                            b.BuffRemove("B_TheLight_2_T", true);
-                            b.BuffRemove("B_TheLight_2_T", true);
-                            b.BuffRemove("B_TheLight_2_T", true);
-                            b.BuffRemove("B_TheLight_2_T", true);
-                        }
-                    }
-                }
-            }
-        }
+       
 
         // Crimson Boss Battle: Spawn 2 Decisive Strike
         [HarmonyPatch(typeof(B_Sniper_0), nameof(B_Sniper_0.Turn1))]
@@ -1092,9 +885,12 @@ namespace ExpertPlusMod
                             Skill s = Skill.TempSkill(GDEItemKeys.Skill_S_Lucy_25, BattleSystem.instance.AllyTeam.LucyChar, BattleSystem.instance.AllyTeam);
                             s.AP = -1;
                             BattleSystem.instance.AllyTeam.Add(s, true);
-                            Skill s2 = Skill.TempSkill(GDEItemKeys.Skill_S_Lucy_25, BattleSystem.instance.AllyTeam.LucyChar, BattleSystem.instance.AllyTeam);
-                            s2.AP = -1;
-                            BattleSystem.instance.AllyTeam.Add(s2, true);
+                            if (!hardTransitions.Value)
+                            {
+                                Skill s2 = Skill.TempSkill(GDEItemKeys.Skill_S_Lucy_25, BattleSystem.instance.AllyTeam.LucyChar, BattleSystem.instance.AllyTeam);
+                                s2.AP = -1;
+                                BattleSystem.instance.AllyTeam.Add(s2, true); 
+                            }
                         }
                     }
                         return false;

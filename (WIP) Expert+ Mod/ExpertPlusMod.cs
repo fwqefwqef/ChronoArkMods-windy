@@ -32,7 +32,7 @@ namespace ExpertPlusMod
 
         void Awake()
         {
-            PermaMode = Config.Bind("Generation config", "Permadeath Mode", false, "Permadeath Mode\nCampfires cannot revive allies. Removed revive option in Medical Tent.");
+            PermaMode = Config.Bind("Generation config", "Permadeath Mode", false, "Permadeath Mode\nCampfires cannot revive allies. Removed revive option in Medical Tent. Golden Bread cannot be used on fallen allies.");
             VanillaCurses = Config.Bind("Generation config", "Vanilla Curses", false, "Vanilla Curses\nReverts the nerfs to Cursed Mob stats. The challenge is designed around weaker cursed mobs, but toggle this on if you want.");
             AscensionMode = Config.Bind("Generation config", "Ascension Mode", false, "Ascension Mode\nA mimic of Slay The Spire's Ascension Mode.\n1. Add Slow Response Curse to deck at the start of the game.\n2. Maximum potion uses per battle reduced to 2.\n3. Character Equipment Slots reduced to 1. (Equipment Drop Rates reduced)\n4. Relic Slots reduced to 2.");
             DespairMode = Config.Bind("Generation config", "Despair Mode", false, "Despair Mode\nWarning: Very Difficult.\n1. Lifting Scrolls do not spawn in battle.\n2. After Misty Garden 1, fight all possible bosses for each stage. Godo and TFK fight is harder.\n3. More features coming soon.");
@@ -283,6 +283,14 @@ namespace ExpertPlusMod
                                 List<string> a = new List<string>();
                                 a.Add("Queue_S3_PharosLeader");
                                 (masterJson[e.Key] as Dictionary<string, object>)["Bosses"] = a;
+                            }
+                        }
+
+                        if (e.Key == "GoldenBread")
+                        {
+                            if (PermaMode.Value)
+                            {
+                                (masterJson[e.Key] as Dictionary<string, object>)["Target"] = "ally";
                             }
                         }
 

@@ -174,7 +174,6 @@ namespace ExpertPlusMod
                 }
             }
 
-
         }
 
 
@@ -258,6 +257,20 @@ namespace ExpertPlusMod
                         {
                             if (!ExpertPlusPlugin.hardTransitions.Value)
                             {
+                                // Remove Witch Curse from hand
+                                while (true)
+                                {
+                                    Skill skill = BattleSystem.instance.AllyTeam.Skills.Find((Skill a) => (a.AP == 0 && a.isExcept == true && a.NoExchange == true));
+                                    Debug.Log("ayy");
+                                    if (skill == null)
+                                    {
+                                        break;
+                                    }
+                                    else
+                                    {
+                                        skill.MyButton.Waste();
+                                    }
+                                }
                                 b.BuffRemove("B_Witch_P_0_T", true);
                                 b.BuffRemove("B_Witch_P_0_T", true);
                                 b.BuffRemove("B_Witch_P_0_T", true);

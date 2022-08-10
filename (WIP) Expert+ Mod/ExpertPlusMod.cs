@@ -1136,6 +1136,23 @@ namespace ExpertPlusMod
             }
         }
 
+        // Godo 20 soulstones
+        [HarmonyPatch(typeof(BattleSystem), "ClearBattle")]
+        class GD20_Patch
+        {
+            static void Postfix(BattleSystem __instance)
+            {
+                Debug.Log(__instance.MainQueueData.Key);
+                if (DespairMode.Value)
+                {
+                        if (__instance.MainQueueData.Key == GDEItemKeys.EnemyQueue_CrimsonQueue_GunManBoss)
+                        {
+                            __instance.Reward.Add(ItemBase.GetItem(GDEItemKeys.Item_Misc_Soul,20));
+                        }
+                }
+            }
+        }
+
         // Time Trial: time adjusted
         [HarmonyPatch(typeof(EventBattle_TrialofTime), "SetTimer")]
 

@@ -1481,6 +1481,22 @@ namespace ExpertPlusMod
             }
         }
 
+        // Ban Miniboss Curse from CW
+        [HarmonyPatch(typeof(BattleSystem), nameof(BattleSystem.CurseEnemySelect))]
+
+        class CurseCWminiBosses
+        {
+            static void Postfix(ref string __result, List<GDEEnemyData> Enemydatas, BattleSystem __instance)
+            {
+                var cwMiniBosses = new HashSet<string>() { GDEItemKeys.Enemy_SR_GuitarList, GDEItemKeys.Enemy_SR_Shotgun, GDEItemKeys.Enemy_SR_Blade, GDEItemKeys.Enemy_SR_Outlaw, GDEItemKeys.Enemy_SR_Sniper };
+                var mbList = Enemydatas.FindAll(data => !cwMiniBosses.Contains(data.Key));
+                if (mbList.Count > 0)
+                {
+                    __result = mbList.Random().Key;
+                }
+            }
+        }
+
 
         // Despair Mode: No revival in campfire
         // This implementation is kinda stinky but it works

@@ -1136,6 +1136,63 @@ namespace ExpertPlusMod
             }
         }
 
+        // Time Trial: time adjusted
+        [HarmonyPatch(typeof(EventBattle_TrialofTime), "SetTimer")]
+
+        class TimeTrialBosses
+        {
+            static bool Prefix(ref float __result)
+            {
+                if (DespairMode.Value)
+                {
+                    float result = 601f;
+                    if (BattleSystem.instance.MainQueueData.Key == GDEItemKeys.EnemyQueue_Garden_Midboss)
+                    {
+                        result = 30f;
+                    }
+                    else if (BattleSystem.instance.MainQueueData.Key == GDEItemKeys.EnemyQueue_Queue_MBoss_0)
+                    {
+                        result = 40f;
+                    }
+                    else if (BattleSystem.instance.MainQueueData.Key == GDEItemKeys.EnemyQueue_Queue_Witch)
+                    {
+                        result = 385f;
+                    }
+                    else if (BattleSystem.instance.MainQueueData.Key == GDEItemKeys.EnemyQueue_Queue_Golem)
+                    {
+                        result = 385f;
+                    }
+                    else if (BattleSystem.instance.MainQueueData.Key == GDEItemKeys.EnemyQueue_Queue_DorchiX)
+                    {
+                        result = 385f;
+                    }
+                    else if (BattleSystem.instance.MainQueueData.Key == GDEItemKeys.EnemyQueue_Queue_S2_Joker)
+                    {
+                        result = 160f;
+                    }
+                    else if (BattleSystem.instance.MainQueueData.Key == GDEItemKeys.EnemyQueue_Queue_MBoss2_0)
+                    {
+                        result = 160f;
+                    }
+                    else if (BattleSystem.instance.MainQueueData.Key == GDEItemKeys.EnemyQueue_Queue_S2_MainBoss_Luby)
+                    {
+                        result = 420f;
+                    }
+                    else if (BattleSystem.instance.MainQueueData.Key == GDEItemKeys.EnemyQueue_Queue_S2_BombClown)
+                    {
+                        result = 420f;
+                    }
+                    else if (BattleSystem.instance.MainQueueData.Key == GDEItemKeys.EnemyQueue_Queue_S2_TimeEater)
+                    {
+                        result = 420f;
+                    }
+                    __result = result;
+                    return false;
+                }
+                return true;
+            }
+        }
+
         /// <summary>
         /// Permadeath Mode
         /// </summary>

@@ -371,6 +371,7 @@ namespace ExpertPlusMod
                     // timer yeater
                     else if (__instance is B_MBoss2_1_P)
                     {
+                        RemoveCards("S_LucyCurse_CursedClock");
                         // remove amplify time
                         // skill countdown still remains until used
                         foreach (var bc in BattleSystem.instance.AllyTeam.AliveChars)

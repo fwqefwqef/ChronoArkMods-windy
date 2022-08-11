@@ -86,8 +86,11 @@ namespace ExpertPlusMod
                             if (DespairMode.Value)
                             {
                                 (masterJson[e.Key] as Dictionary<string, object>)["maxhp"] = 1500;
-                                (masterJson[e.Key] as Dictionary<string, object>)["CustomeFogTurn"] = 18;
                             }
+                        }
+                        if (e.Key == "Queue_S4_King")
+                        {
+                            (masterJson[e.Key] as Dictionary<string, object>)["CustomeFogTurn"] = 18;
                         }
                         if (e.Key == "Queue_Witch")
                         {

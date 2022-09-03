@@ -873,7 +873,7 @@ namespace ExpertPlusMod
             }
         }
 
-       
+
 
         // Crimson Boss Battle: Spawn 2 Decisive Strike
         [HarmonyPatch(typeof(B_Sniper_0), nameof(B_Sniper_0.Turn1))]
@@ -883,7 +883,7 @@ namespace ExpertPlusMod
             {
                 if (DespairMode.Value)
                 {
-                    
+
                     if (BattleSystem.instance.TurnNum == 1)
                     {
                         for (int i = 0; i < 2; i++)
@@ -900,11 +900,11 @@ namespace ExpertPlusMod
                             {
                                 Skill s2 = Skill.TempSkill(GDEItemKeys.Skill_S_Lucy_25, BattleSystem.instance.AllyTeam.LucyChar, BattleSystem.instance.AllyTeam);
                                 s2.AP = -1;
-                                BattleSystem.instance.AllyTeam.Add(s2, true); 
+                                BattleSystem.instance.AllyTeam.Add(s2, true);
                             }
                         }
                     }
-                        return false;
+                    return false;
                 }
                 return true;
             }
@@ -944,10 +944,10 @@ namespace ExpertPlusMod
                 Debug.Log(__instance.MainQueueData.Key);
                 if (DespairMode.Value)
                 {
-                        if (__instance.MainQueueData.Key == GDEItemKeys.EnemyQueue_CrimsonQueue_GunManBoss)
-                        {
-                            __instance.Reward.Add(ItemBase.GetItem(GDEItemKeys.Item_Misc_Soul,20));
-                        }
+                    if (__instance.MainQueueData.Key == GDEItemKeys.EnemyQueue_CrimsonQueue_GunManBoss)
+                    {
+                        __instance.Reward.Add(ItemBase.GetItem(GDEItemKeys.Item_Misc_Soul, 20));
+                    }
                 }
             }
         }
@@ -1372,128 +1372,32 @@ namespace ExpertPlusMod
 
 
         // Despair Mode: No revival in campfire
-        // This implementation is kinda stinky but it works
         [HarmonyPatch(typeof(CampUI))]
+        [HarmonyPatch(nameof(CampUI.Init))]
         class CampfireRevival_Patch
         {
-
-            [HarmonyPatch(nameof(CampUI.Init))]
-            [HarmonyPrefix]
-            static bool Prefix(CampUI __instance, Camp Sc)
+            static bool CheckIncapacitated(bool incapacitated)
             {
-                __instance.MainCampScript = Sc;
-                if (!__instance.MainCampScript.Healed)
+                return incapacitated && !PermaMode.Value;
+            }
+
+            static IEnumerable<CodeInstruction> Transpiler(IEnumerable<CodeInstruction> instructions)
+            {
+                foreach (var ci in instructions)
                 {
-                    __instance.MainCampScript.Healed = true;
-                    foreach (Character character in PlayData.TSavedata.Party)
+                    if (ci.Is(OpCodes.Ldfld, AccessTools.Field(typeof(Character), nameof(Character.Incapacitated))))
                     {
-                        bool flag = false;
-                        if (character.Incapacitated)
-                        {
-                            // If Despair Mode is on, don't revive allies in campfire
-                            if (!PermaMode.Value)
-                            {
-                                character.Incapacitated = false;
-                                character.Hp = 1;
-                                flag = true;
-                                if (SaveManager.NowData.GameOptions.Difficulty == 0)
-                                {
-                                    character.HealHP((int)Misc.PerToNum((float)character.get_stat.maxhp, 18f), true);
-                                }
-                                else if (SaveManager.NowData.GameOptions.Difficulty == 2)
-                                {
-                                    character.HealHP((int)Misc.PerToNum((float)character.get_stat.maxhp, 10f), true);
-                                }
-                            }
-                            // Logger
-                            else Debug.Log("Revival Blocked");
-                        }
-                        if (SaveManager.NowData.GameOptions.Difficulty == 2)
-                        {
-                            if (!flag)
-                            {
-                                character.HealHP((int)Misc.PerToNum((float)character.get_stat.maxhp, 20f), true);
-                            }
-                        }
-                        else if (SaveManager.NowData.GameOptions.Difficulty == 1)
-                        {
-                            character.HealHP((int)Misc.PerToNum((float)character.get_stat.maxhp, 60f), true);
-                        }
-                        else if (!flag)
-                        {
-                            character.HealHP((int)Misc.PerToNum((float)character.get_stat.maxhp, 35f), true);
-                        }
-                        if (character.Passive != null)
-                        {
-                            IP_CampFire ip_CampFire = character.Passive as IP_CampFire;
-                            if (ip_CampFire != null)
-                            {
-                                ip_CampFire.Camp();
-                            }
-                        }
-                        foreach (ItemBase itemBase in character.Equip)
-                        {
-                            if (itemBase != null)
-                            {
-                                IP_CampFire ip_CampFire2 = (itemBase as Item_Equip).ItemScript as IP_CampFire;
-                                if (ip_CampFire2 != null)
-                                {
-                                    ip_CampFire2.Camp();
-                                }
-                            }
-                        }
-                    }
-                    foreach (ItemBase itemBase2 in PlayData.TSavedata.Inventory)
-                    {
-                        if (itemBase2 is Item_Equip)
-                        {
-                            IP_CampFire ip_CampFire3 = (itemBase2 as Item_Equip).ItemScript as IP_CampFire;
-                            if (ip_CampFire3 != null)
-                            {
-                                ip_CampFire3.Camp();
-                            }
-                        }
-                    }
-                }
-                if (SaveManager.Difficalty != 2)
-                {
-                    foreach (ItemBase itemBase3 in PartyInventory.InvenM.InventoryItems)
-                    {
-                        if (itemBase3 != null && (itemBase3.itemkey == GDEItemKeys.Item_Active_LucysNecklace || itemBase3.itemkey == GDEItemKeys.Item_Active_LucysNecklace2 || itemBase3.itemkey == GDEItemKeys.Item_Active_LucysNecklace3 || itemBase3.itemkey == GDEItemKeys.Item_Active_LucysNecklace4))
-                        {
-                            (itemBase3 as Item_Active).ChargeNow++;
-                        }
-                    }
-                }
-                if (PlayData.TSavedata.StageNum == 1 || PlayData.TSavedata.StageNum == 3)
-                {
-                    if (PlayData.TSavedata.SpRule == null || !PlayData.TSavedata.SpRule.RuleChange.CantNewPartymember)
-                    {
-                        if (SaveManager.NowData.GameOptions.CasualMode)
-                        {
-                            __instance.CasualPartyAdd = true;
-                        }
-                        __instance.Button_AddParty.gameObject.SetActive(true);
+                        Debug.Log("inject");
+                        yield return ci;
+                        yield return new CodeInstruction(OpCodes.Call, AccessTools.Method(typeof(CampfireRevival_Patch), nameof(CampfireRevival_Patch.CheckIncapacitated)));
+
                     }
                     else
                     {
-                        __instance.Button_AddParty.gameObject.SetActive(false);
+                        yield return ci;
                     }
-                    __instance.MainCampScript.Enforce = true;
                 }
-                else
-                {
-                    __instance.Button_AddParty.gameObject.SetActive(false);
-                    __instance.Button_Enforce.gameObject.SetActive(true);
-                }
-                __instance.VerticalLayout.enabled = false;
-                __instance.VerticalLayout.SetLayoutVertical();
-                __instance.VerticalLayout.enabled = true;
-
-                return false;
             }
         }
-
     }
-
 }

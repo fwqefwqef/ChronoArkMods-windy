@@ -13,7 +13,7 @@ Full Documentation:
 
 https://docs.google.com/document/d/1v1eJqPntX5T-lnDV4tWOFE66_IVwi6GWcdjPKxF9kL0/edit?usp=sharing
 
-Special Thanks: Neoshrimp, FantasyJared
+Special Thanks: Neoshrimp
 
 # [505Error Skill Randomizer]
 

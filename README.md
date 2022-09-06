@@ -9,8 +9,6 @@ Check here for how to use mods: https://github.com/Neoshrimp/ChronoArk-gameplay-
 ---
 # [Expert+ Mod]
 
-Made with Neoshrimp.
-
 Full Documentation:
 
 https://docs.google.com/document/d/1v1eJqPntX5T-lnDV4tWOFE66_IVwi6GWcdjPKxF9kL0/edit?usp=sharing

@@ -13,6 +13,8 @@ Full Documentation:
 
 https://docs.google.com/document/d/1v1eJqPntX5T-lnDV4tWOFE66_IVwi6GWcdjPKxF9kL0/edit?usp=sharing
 
+Special Thanks: Neoshrimp, FantasyJared
+
 # [505Error Skill Randomizer]
 
 This is Chrono Ark but 505Error taken to the extreme.

@@ -242,6 +242,8 @@ namespace ExpertPlusMod
                     }
                     else
                     {
+                        skill.isExcept = true;
+                        skill.AllExtendeds.Clear();
                         skill.MyButton.Waste();
                     }
                 }

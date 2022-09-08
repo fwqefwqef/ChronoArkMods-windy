@@ -247,12 +247,11 @@ namespace BossChanges
                             (masterJson[e.Key] as Dictionary<string, object>)["SkillExtended"] = a;
                             //Debug.Log("Updated DeathScythe");
                         }
-                        // Death Sentence: Applies Deep Bleeding
+                        // Death Sentence: Applies Healing Reduction
                         if (e.Key == "SE_Boss_Reaper_0_PlusHit_T")
                         {
-                            // Add Deep Bleeding
                             List<string> a = new List<string>();
-                            a.Add("B_Animatronics_1_T");
+                            a.Add("B_S4_King_P1_1_T");
                             (masterJson[e.Key] as Dictionary<string, object>)["Buffs"] = a;
 
                             // Bleed Chance
@@ -1020,16 +1019,16 @@ namespace BossChanges
             [HarmonyPrefix]
             static bool Prefix(P_King __instance)
             {
-                if (__instance.MainAI.Phase == 1 && __instance.BChar.HP <= 500)
-                {
-                    __instance.BChar.Info.Hp = 500;
-                    __instance.BChar.BuffAdd(GDEItemKeys.Buff_B_S4_King_P1_Half, __instance.BChar, false, 0, false, -1, false);
-                    if (__instance.MainAI.Phase == 1)
+                    if (__instance.MainAI.Phase == 1 && __instance.BChar.HP <= 500)
                     {
-                        (__instance.BChar as BattleEnemy).ChangeSprite(((__instance.BChar as BattleEnemy).MyComponent as C_King).Phase_1_2);
-                        __instance.BChar.UI.CharShake.ShakeEndbled(50f, 20f, 60);
+                        __instance.BChar.Info.Hp = 500;
+                        __instance.BChar.BuffAdd(GDEItemKeys.Buff_B_S4_King_P1_Half, __instance.BChar, false, 0, false, -1, false);
+                        if (__instance.MainAI.Phase == 1)
+                        {
+                            (__instance.BChar as BattleEnemy).ChangeSprite(((__instance.BChar as BattleEnemy).MyComponent as C_King).Phase_1_2);
+                            __instance.BChar.UI.CharShake.ShakeEndbled(50f, 20f, 60);
+                        }
                     }
-                }
                 return true;
             }
         }

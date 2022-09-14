@@ -188,7 +188,6 @@ namespace ExpertPlusMod
             {
                 if(__instance is B_Enemy_Boss_Reaper_P)
                 {
-                    
                     if(BattleSystem.instance != null && BattleSystem.instance.TurnNum >= 2)
                     {
                         UnityEngine.Object.Instantiate<GameObject>(new GDEGameobjectDatasData(GDEItemKeys.GameobjectDatas_GUI_ReaperBattleUI).Gameobject, BattleSystem.instance.MainUICanvas.transform);
@@ -209,6 +208,7 @@ namespace ExpertPlusMod
         {
             static void RemoveCards(string extendKey)
             {
+                // Draw Pile
                 while (true)
                 {
                     Skill skill = BattleSystem.instance.AllyTeam.Skills_Deck.Find((Skill a) => a.ExtendedFind(extendKey, false) != null);
@@ -221,6 +221,7 @@ namespace ExpertPlusMod
                         BattleSystem.instance.AllyTeam.Skills_Deck.Remove(skill);
                     }
                 }
+                // Discard Pile
                 while (true)
                 {
                     Skill skill = BattleSystem.instance.AllyTeam.Skills_UsedDeck.Find((Skill a) => a.ExtendedFind(extendKey, false) != null);
@@ -233,6 +234,7 @@ namespace ExpertPlusMod
                         BattleSystem.instance.AllyTeam.Skills_UsedDeck.Remove(skill);
                     }
                 }
+                // Hand
                 while (true)
                 {
                     Skill skill = BattleSystem.instance.AllyTeam.Skills.Find((Skill a) => a.ExtendedFind(extendKey, false) != null);
@@ -257,91 +259,62 @@ namespace ExpertPlusMod
                     {
                         foreach (BattleChar b in BattleSystem.instance.AllyTeam.Chars)
                         {
-                            if (!ExpertPlusPlugin.hardTransitions.Value)
+                            // Remove Witch Curse from hand
+                            while (true)
                             {
-                                // Remove Witch Curse from hand
-                                while (true)
+                                Skill skill = BattleSystem.instance.AllyTeam.Skills.Find((Skill a) => (a.AP == 0 && a.isExcept == true && a.NoExchange == true));
+                                Debug.Log("ayy");
+                                if (skill == null)
                                 {
-                                    Skill skill = BattleSystem.instance.AllyTeam.Skills.Find((Skill a) => (a.AP == 0 && a.isExcept == true && a.NoExchange == true));
-                                    Debug.Log("ayy");
-                                    if (skill == null)
-                                    {
-                                        break;
-                                    }
-                                    else
-                                    {
-                                        skill.MyButton.Waste();
-                                    }
+                                    break;
                                 }
-                                b.BuffRemove("B_Witch_P_0_T", true);
-                                b.BuffRemove("B_Witch_P_0_T", true);
-                                b.BuffRemove("B_Witch_P_0_T", true);
-                                b.BuffRemove("B_Witch_P_0_T", true);
-                                b.BuffRemove("B_Witch_P_0_T", true);
-                                b.BuffRemove("B_Witch_P_0_T", true);
-                                b.BuffRemove("B_Witch_P_0_T", true);
-                                b.BuffRemove("B_Witch_P_0_T", true);
-                                b.BuffRemove("B_Witch_P_0_T", true);
-                                b.BuffRemove("B_Witch_P_0_T", true);
-                                b.BuffRemove("B_Witch_2_T", true);
-                                b.BuffRemove("B_Witch_2_T", true);
-                                b.BuffRemove("B_Witch_2_T", true);
-                                b.BuffRemove("B_Witch_2_T", true);
-                                b.BuffRemove("B_Witch_2_T", true);
-                                b.BuffRemove("B_Witch_2_T", true);
-                                b.BuffRemove("B_Witch_2_T", true);
-                                b.BuffRemove("B_Witch_2_T", true);
-                                b.BuffRemove("B_Witch_2_T", true);
-                                b.BuffRemove("B_Witch_2_T", true);
-                            }
-                            else
-                            {
-                                // reduces debuff lifetime rather than outright removing it
-                                if (b.BuffFind("B_Witch_P_0_T", false))
-                                    foreach (var si in b.BuffReturn("B_Witch_P_0_T").StackInfo)
-                                        si.RemainTime = Math.Min(si.RemainTime, 2);
-
-                                if (b.BuffFind("B_Witch_2_T", false))
+                                else
                                 {
-                                    var buff = b.BuffReturn("B_Witch_2_T");
-                                    buff.TimeUseless = false;
-                                    buff.CantDisable = false;
-                                    foreach (var si in buff.StackInfo)
-                                        si.RemainTime = 2;
+                                    skill.MyButton.Waste();
                                 }
-                                    
                             }
+                            b.BuffRemove("B_Witch_P_0_T", true);
+                            b.BuffRemove("B_Witch_P_0_T", true);
+                            b.BuffRemove("B_Witch_P_0_T", true);
+                            b.BuffRemove("B_Witch_P_0_T", true);
+                            b.BuffRemove("B_Witch_P_0_T", true);
+                            b.BuffRemove("B_Witch_P_0_T", true);
+                            b.BuffRemove("B_Witch_P_0_T", true);
+                            b.BuffRemove("B_Witch_P_0_T", true);
+                            b.BuffRemove("B_Witch_P_0_T", true);
+                            b.BuffRemove("B_Witch_P_0_T", true);
+                            b.BuffRemove("B_Witch_2_T", true);
+                            b.BuffRemove("B_Witch_2_T", true);
+                            b.BuffRemove("B_Witch_2_T", true);
+                            b.BuffRemove("B_Witch_2_T", true);
+                            b.BuffRemove("B_Witch_2_T", true);
+                            b.BuffRemove("B_Witch_2_T", true);
+                            b.BuffRemove("B_Witch_2_T", true);
+                            b.BuffRemove("B_Witch_2_T", true);
+                            b.BuffRemove("B_Witch_2_T", true);
+                            b.BuffRemove("B_Witch_2_T", true);
                         }
                     }
+
                     else if (__instance is P_DorchiX)
                     {
-                        if (!ExpertPlusPlugin.hardTransitions.Value)
+                        //Revive, heal everyone by 200% (66%)
+                        foreach (BattleChar b in BattleSystem.instance.AllyTeam.Chars)
                         {
-                            //Revive, heal everyone by 200% (66%)
-                            foreach (BattleChar b in BattleSystem.instance.AllyTeam.Chars)
+                            if (b.Info.Incapacitated)
                             {
-                                if (b.Info.Incapacitated)
-                                {
-                                    b.Info.Incapacitated = false;
-                                    b.HP = 1;
-                                }
-                                int num = (int)Misc.PerToNum((float)b.GetStat.maxhp, 200f);
-                                b.Heal(b, (float)num, false);
-                            } 
-                        }
+                                b.Info.Incapacitated = false;
+                                b.HP = 1;
+                            }
+                            int num = (int)Misc.PerToNum((float)b.GetStat.maxhp, 200f);
+                            b.Heal(b, (float)num, false);
+                        } 
                     }
+                    
                     else if (__instance is B_Joker_P_0)
                     {
-                        if (!ExpertPlusPlugin.hardTransitions.Value)
-                        {
-                            // Remove Joker Card from deck
-                            RemoveCards("SkillExtended_Joker_0");
-                        }
-                        else
-                        {
-                            // rewards pills immediately 
-                            InventoryManager.Reward(ItemBase.GetItem(GDEItemKeys.Item_Consume_SodaWater, 1));
-                        }
+                        // Remove Joker Card from deck
+                        RemoveCards("SkillExtended_Joker_0");
                     }
 
                     else if (__instance is P_S2_MainBoss_1_Left) // || __instance is P_S2_MainBoss_1_Right
@@ -357,19 +330,16 @@ namespace ExpertPlusMod
                             b.BuffRemove("B_S2_Mainboss_1_RightDebuf", true);
                         }
 
-
                         // Remove cleanse
                         RemoveCards("Extended_S2_MainBoss_1_Lucy_0");
-
                     }
+                    
                     else if (__instance is P_BombClown_0)
                     {
-                        if (!ExpertPlusPlugin.hardTransitions.Value)
-                        {
-                            // Remove time bombs
-                            RemoveCards("S_BombClown_B_0"); 
-                        }
+                        // Remove time bombs
+                        RemoveCards("S_BombClown_B_0"); 
                     }
+                    
                     // timer yeater
                     else if (__instance is B_MBoss2_1_P)
                     {
@@ -382,17 +352,16 @@ namespace ExpertPlusMod
                                 bc.BuffRemove(GDEItemKeys.Buff_B_Mboss2_1_P2, true);
                         }
                     }
+
                     else if (__instance is B_S3_Boss_Pope_P_0)
                     {
-                        if (!ExpertPlusPlugin.hardTransitions.Value)
+                        foreach (var bc in BattleSystem.instance.AllyTeam.AliveChars)
                         {
-                            foreach (var bc in BattleSystem.instance.AllyTeam.AliveChars)
-                            {
-                                while (bc.BuffFind(GDEItemKeys.Buff_B_S3_Pope_P_2, false))
-                                    bc.BuffRemove(GDEItemKeys.Buff_B_S3_Pope_P_2, true);
-                            } 
-                        }
+                            while (bc.BuffFind(GDEItemKeys.Buff_B_S3_Pope_P_2, false))
+                                bc.BuffRemove(GDEItemKeys.Buff_B_S3_Pope_P_2, true);
+                        } 
                     }
+
                     else if (__instance is TheLight_P_1)
                     {
                         foreach (var bc in BattleSystem.instance.AllyTeam.AliveChars)
@@ -402,19 +371,8 @@ namespace ExpertPlusMod
                         }
 
                         RemoveCards("SkillExtended_S_S_TheLight_P_1");
-
-                        if (!ExpertPlusPlugin.hardTransitions.Value)
-                        {
-                            // Remove Karaela Burn
-                            foreach (BattleChar b in BattleSystem.instance.AllyTeam.Chars)
-                            {
-                                b.BuffRemove("B_TheLight_2_T", true);
-                                b.BuffRemove("B_TheLight_2_T", true);
-                                b.BuffRemove("B_TheLight_2_T", true);
-                                b.BuffRemove("B_TheLight_2_T", true);
-                            } 
-                        }
                     }
+
                     else if (__instance is B_Enemy_Boss_Reaper_P)
                     {
                         var markTransform = BattleSystem.instance.MainUICanvas.transform.Find("ReaperBossUI(Clone)");
@@ -423,11 +381,12 @@ namespace ExpertPlusMod
                             GameObject.Destroy(markTransform.gameObject);
                         }
 
-
-                        // death sentences can stay ))
+                        foreach (var bc in BattleSystem.instance.AllyTeam.AliveChars)
+                        {
+                            while (bc.BuffFind(GDEItemKeys.Buff_B_Enemy_Boss_Reaper_P_0, false))
+                                bc.BuffRemove(GDEItemKeys.Buff_B_Enemy_Boss_Reaper_P_0, true);
+                        }
                     }
-
-
                 }
             }
         }

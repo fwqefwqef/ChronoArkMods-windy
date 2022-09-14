@@ -29,7 +29,6 @@ namespace ExpertPlusMod
         public static ConfigEntry<bool> VanillaCurses;
         public static ConfigEntry<bool> AscensionMode;
         public static ConfigEntry<bool> DespairMode;
-        public static ConfigEntry<bool> hardTransitions;
 
 
         void Awake()
@@ -38,8 +37,6 @@ namespace ExpertPlusMod
             VanillaCurses = Config.Bind("Generation config", "Vanilla Curses", false, "Vanilla Curses\nReverts the nerfs to Cursed Mob stats. The challenge is designed around weaker cursed mobs, but toggle this on if you want.");
             AscensionMode = Config.Bind("Generation config", "Ascension Mode", false, "Ascension Mode\nA mimic of Slay The Spire's Ascension Mode.\n1. Add Slow Response Curse to deck at the start of the game.\n2. Maximum potion uses per battle reduced to 2.\n3. Character Equipment Slots reduced to 1. (Equipment Drop Rates reduced)\n4. Relic Slots reduced to 2.");
             DespairMode = Config.Bind("Generation config", "Despair Mode", false, "Despair Mode\nWarning: Very Difficult.\n1. Lifting Scrolls do not spawn in battle.\n2. After Misty Garden 1, fight all possible bosses for each stage. Godo and TFK fight is harder.");
-            hardTransitions = Config.Bind("Generation config", "Hard Transitions", false, "Removes most of the boss transition handicap. Despair Mode needs to be on.");
-
             harmony.PatchAll();
         }
         void OnDestroy()
@@ -896,12 +893,9 @@ namespace ExpertPlusMod
                             Skill s = Skill.TempSkill(GDEItemKeys.Skill_S_Lucy_25, BattleSystem.instance.AllyTeam.LucyChar, BattleSystem.instance.AllyTeam);
                             s.AP = -1;
                             BattleSystem.instance.AllyTeam.Add(s, true);
-                            if (!hardTransitions.Value)
-                            {
-                                Skill s2 = Skill.TempSkill(GDEItemKeys.Skill_S_Lucy_25, BattleSystem.instance.AllyTeam.LucyChar, BattleSystem.instance.AllyTeam);
-                                s2.AP = -1;
-                                BattleSystem.instance.AllyTeam.Add(s2, true);
-                            }
+                            Skill s2 = Skill.TempSkill(GDEItemKeys.Skill_S_Lucy_25, BattleSystem.instance.AllyTeam.LucyChar, BattleSystem.instance.AllyTeam);
+                            s2.AP = -1;
+                            BattleSystem.instance.AllyTeam.Add(s2, true);
                         }
                     }
                     return false;

@@ -211,6 +211,11 @@ namespace ExpertPlusMod
                                 b.Add("MBoss2_1");
                                 (masterJson[e.Key] as Dictionary<string, object>)["Wave3"] = b;
                                 (masterJson[e.Key] as Dictionary<string, object>)["Wave3Turn"] = 100;
+
+                                List<Vector3> c = new List<Vector3>();
+                                (masterJson[e.Key] as Dictionary<string, object>)["Pos"] = c;
+                                (masterJson[e.Key] as Dictionary<string, object>)["UseCustomPosition"] = false;
+
                             }
                         }
 

@@ -198,7 +198,10 @@ namespace ExpertPlusMod
                             if (DespairMode.Value)
                             {
                                 List<string> a = new List<string>();
+                                a.Add("S2_BoomBalloon");
+                                a.Add("S2_BoomBalloon");
                                 a.Add("S2_BombClownBoss");
+                                a.Add("S2_BoomBalloon");
                                 (masterJson[e.Key] as Dictionary<string, object>)["Wave2"] = a;
                                 (masterJson[e.Key] as Dictionary<string, object>)["Wave2Turn"] = 99;
                                 (masterJson[e.Key] as Dictionary<string, object>)["CustomeFogTurn"] = 16;

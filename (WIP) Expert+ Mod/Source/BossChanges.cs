@@ -201,6 +201,7 @@ namespace BossChanges
                         if (e.Key == "Queue_S2_BombClown")
                         {
                             List<string> a = new List<string>();
+                            // Current Bug: bomb balloons will not spawn in despair mode and screw up bomber clown's position, this is a temp fix.
                             a.Add("S2_BoomBalloon");
                             a.Add("S2_BoomBalloon");
                             a.Add("S2_BombClownBoss");

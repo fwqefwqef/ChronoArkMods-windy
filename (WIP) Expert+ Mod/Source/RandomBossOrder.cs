@@ -350,6 +350,9 @@ namespace ExpertPlusMod
                         {
                             while (bc.BuffFind(GDEItemKeys.Buff_B_Mboss2_1_P2, false))
                                 bc.BuffRemove(GDEItemKeys.Buff_B_Mboss2_1_P2, true);
+
+                            while (bc.BuffFind(GDEItemKeys.Buff_B_Mboss2_1_P3, false))
+                                bc.BuffRemove(GDEItemKeys.Buff_B_Mboss2_1_P3, true);
                         }
                     }
 

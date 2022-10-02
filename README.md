@@ -11,13 +11,7 @@ Check here for how to use mods: https://github.com/Neoshrimp/ChronoArk-gameplay-
 
 Full Documentation:
 
-English: 
-
 https://docs.google.com/document/d/1v1eJqPntX5T-lnDV4tWOFE66_IVwi6GWcdjPKxF9kL0/edit?usp=sharing 
-
-한글:
-
-https://docs.google.com/document/d/1UKBINmK9NBKnNnfN67ZnnD2Db53LXPp1Lazy-PHjX08/edit?usp=sharing 
 
 Special Thanks: Neoshrimp
 

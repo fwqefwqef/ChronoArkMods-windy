@@ -1,0 +1,16 @@
+C:\Users\sjkim\source\repos\ParrySkillBook\ParrySkillBook\bin\Debug\ParrySkillBook.dll
+C:\Users\sjkim\source\repos\ParrySkillBook\ParrySkillBook\bin\Debug\ParrySkillBook.pdb
+C:\Users\sjkim\source\repos\ParrySkillBook\ParrySkillBook\bin\Debug\0Harmony.dll
+C:\Users\sjkim\source\repos\ParrySkillBook\ParrySkillBook\bin\Debug\Assembly-CSharp-firstpass.dll
+C:\Users\sjkim\source\repos\ParrySkillBook\ParrySkillBook\bin\Debug\Assembly-CSharp.dll
+C:\Users\sjkim\source\repos\ParrySkillBook\ParrySkillBook\bin\Debug\BepInEx.dll
+C:\Users\sjkim\source\repos\ParrySkillBook\ParrySkillBook\bin\Debug\UnityEngine.CoreModule.dll
+C:\Users\sjkim\source\repos\ParrySkillBook\ParrySkillBook\bin\Debug\UnityEngine.dll
+C:\Users\sjkim\source\repos\ParrySkillBook\ParrySkillBook\bin\Debug\UnityEngine.ParticleSystemModule.dll
+C:\Users\sjkim\source\repos\ParrySkillBook\ParrySkillBook\bin\Debug\UnityEngine.UI.dll
+C:\Users\sjkim\source\repos\ParrySkillBook\ParrySkillBook\bin\Debug\UnityEngine.SharedInternalsModule.dll
+C:\Users\sjkim\source\repos\ParrySkillBook\ParrySkillBook\obj\Debug\ParrySkillBook.csproj.AssemblyReference.cache
+C:\Users\sjkim\source\repos\ParrySkillBook\ParrySkillBook\obj\Debug\ParrySkillBook.csproj.CoreCompileInputs.cache
+C:\Users\sjkim\source\repos\ParrySkillBook\ParrySkillBook\obj\Debug\ParrySkillBook.csproj.CopyComplete
+C:\Users\sjkim\source\repos\ParrySkillBook\ParrySkillBook\obj\Debug\ParrySkillBook.dll
+C:\Users\sjkim\source\repos\ParrySkillBook\ParrySkillBook\obj\Debug\ParrySkillBook.pdb

@@ -1,0 +1,14 @@
+C:\Users\sjkim\source\repos\FoxOrbGenderLockRemoval\FoxOrbGenderLockRemoval\bin\Debug\FoxOrbGenderLockRemoval.dll
+C:\Users\sjkim\source\repos\FoxOrbGenderLockRemoval\FoxOrbGenderLockRemoval\bin\Debug\FoxOrbGenderLockRemoval.pdb
+C:\Users\sjkim\source\repos\FoxOrbGenderLockRemoval\FoxOrbGenderLockRemoval\bin\Debug\0Harmony.dll
+C:\Users\sjkim\source\repos\FoxOrbGenderLockRemoval\FoxOrbGenderLockRemoval\bin\Debug\Assembly-CSharp.dll
+C:\Users\sjkim\source\repos\FoxOrbGenderLockRemoval\FoxOrbGenderLockRemoval\bin\Debug\BepInEx.dll
+C:\Users\sjkim\source\repos\FoxOrbGenderLockRemoval\FoxOrbGenderLockRemoval\bin\Debug\UnityEngine.CoreModule.dll
+C:\Users\sjkim\source\repos\FoxOrbGenderLockRemoval\FoxOrbGenderLockRemoval\bin\Debug\UnityEngine.dll
+C:\Users\sjkim\source\repos\FoxOrbGenderLockRemoval\FoxOrbGenderLockRemoval\bin\Debug\UnityEngine.UI.dll
+C:\Users\sjkim\source\repos\FoxOrbGenderLockRemoval\FoxOrbGenderLockRemoval\bin\Debug\Assembly-CSharp-firstpass.dll
+C:\Users\sjkim\source\repos\FoxOrbGenderLockRemoval\FoxOrbGenderLockRemoval\obj\Debug\FoxOrbGenderLockRemoval.csproj.CoreCompileInputs.cache
+C:\Users\sjkim\source\repos\FoxOrbGenderLockRemoval\FoxOrbGenderLockRemoval\obj\Debug\FoxOrbGenderLockRemoval.csproj.CopyComplete
+C:\Users\sjkim\source\repos\FoxOrbGenderLockRemoval\FoxOrbGenderLockRemoval\obj\Debug\FoxOrbGenderLockRemoval.dll
+C:\Users\sjkim\source\repos\FoxOrbGenderLockRemoval\FoxOrbGenderLockRemoval\obj\Debug\FoxOrbGenderLockRemoval.pdb
+C:\Users\sjkim\source\repos\FoxOrbGenderLockRemoval\FoxOrbGenderLockRemoval\obj\Debug\FoxOrbGenderLockRemoval.csproj.AssemblyReference.cache

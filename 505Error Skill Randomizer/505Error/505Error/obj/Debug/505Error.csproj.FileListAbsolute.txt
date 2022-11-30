@@ -1,0 +1,14 @@
+C:\Users\sjkim\source\repos\505Error\505Error\bin\Debug\505Error.dll
+C:\Users\sjkim\source\repos\505Error\505Error\bin\Debug\505Error.pdb
+C:\Users\sjkim\source\repos\505Error\505Error\bin\Debug\0Harmony.dll
+C:\Users\sjkim\source\repos\505Error\505Error\bin\Debug\Assembly-CSharp-firstpass.dll
+C:\Users\sjkim\source\repos\505Error\505Error\bin\Debug\Assembly-CSharp.dll
+C:\Users\sjkim\source\repos\505Error\505Error\bin\Debug\BepInEx.dll
+C:\Users\sjkim\source\repos\505Error\505Error\bin\Debug\UnityEngine.CoreModule.dll
+C:\Users\sjkim\source\repos\505Error\505Error\bin\Debug\UnityEngine.dll
+C:\Users\sjkim\source\repos\505Error\505Error\bin\Debug\UnityEngine.UI.dll
+C:\Users\sjkim\source\repos\505Error\505Error\obj\Debug\505Error.csproj.CoreCompileInputs.cache
+C:\Users\sjkim\source\repos\505Error\505Error\obj\Debug\505Error.csproj.CopyComplete
+C:\Users\sjkim\source\repos\505Error\505Error\obj\Debug\505Error.dll
+C:\Users\sjkim\source\repos\505Error\505Error\obj\Debug\505Error.pdb
+C:\Users\sjkim\source\repos\505Error\505Error\obj\Debug\505Error.csproj.AssemblyReference.cache

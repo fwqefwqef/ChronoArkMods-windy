@@ -1,0 +1,14 @@
+C:\Users\sjkim\source\repos\RemoveFixLimit\RemoveFixLimit\bin\Debug\RemoveFixLimit.dll
+C:\Users\sjkim\source\repos\RemoveFixLimit\RemoveFixLimit\bin\Debug\RemoveFixLimit.pdb
+C:\Users\sjkim\source\repos\RemoveFixLimit\RemoveFixLimit\bin\Debug\0Harmony.dll
+C:\Users\sjkim\source\repos\RemoveFixLimit\RemoveFixLimit\bin\Debug\Assembly-CSharp.dll
+C:\Users\sjkim\source\repos\RemoveFixLimit\RemoveFixLimit\bin\Debug\BepInEx.dll
+C:\Users\sjkim\source\repos\RemoveFixLimit\RemoveFixLimit\bin\Debug\UnityEngine.CoreModule.dll
+C:\Users\sjkim\source\repos\RemoveFixLimit\RemoveFixLimit\bin\Debug\UnityEngine.dll
+C:\Users\sjkim\source\repos\RemoveFixLimit\RemoveFixLimit\bin\Debug\UnityEngine.UI.dll
+C:\Users\sjkim\source\repos\RemoveFixLimit\RemoveFixLimit\bin\Debug\Assembly-CSharp-firstpass.dll
+C:\Users\sjkim\source\repos\RemoveFixLimit\RemoveFixLimit\obj\Debug\RemoveFixLimit.csproj.CoreCompileInputs.cache
+C:\Users\sjkim\source\repos\RemoveFixLimit\RemoveFixLimit\obj\Debug\RemoveFixLimit.csproj.CopyComplete
+C:\Users\sjkim\source\repos\RemoveFixLimit\RemoveFixLimit\obj\Debug\RemoveFixLimit.dll
+C:\Users\sjkim\source\repos\RemoveFixLimit\RemoveFixLimit\obj\Debug\RemoveFixLimit.pdb
+C:\Users\sjkim\source\repos\RemoveFixLimit\RemoveFixLimit\obj\Debug\RemoveFixLimit.csproj.AssemblyReference.cache

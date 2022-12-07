@@ -87,7 +87,10 @@ namespace ExpertPlusMod
                         }
                         if (e.Key == "Queue_S4_King")
                         {
-                            (masterJson[e.Key] as Dictionary<string, object>)["CustomeFogTurn"] = 18;
+                            if (DespairMode.Value)
+                            {
+                                (masterJson[e.Key] as Dictionary<string, object>)["CustomeFogTurn"] = 18;
+                            }
                         }
                         if (e.Key == "Queue_Witch")
                         {
@@ -97,7 +100,7 @@ namespace ExpertPlusMod
                                 a.Add("Boss_Golem");
                                 (masterJson[e.Key] as Dictionary<string, object>)["Wave2"] = a;
                                 (masterJson[e.Key] as Dictionary<string, object>)["Wave2Turn"] = 99;
-                                (masterJson[e.Key] as Dictionary<string, object>)["CustomeFogTurn"] = 12;
+                                (masterJson[e.Key] as Dictionary<string, object>)["CustomeFogTurn"] = 14;
                             }
                         }
 
@@ -119,7 +122,7 @@ namespace ExpertPlusMod
                                 a.Add("S1_WitchBoss");
                                 (masterJson[e.Key] as Dictionary<string, object>)["Wave2"] = a;
                                 (masterJson[e.Key] as Dictionary<string, object>)["Wave2Turn"] = 99;
-                                (masterJson[e.Key] as Dictionary<string, object>)["CustomeFogTurn"] = 18;
+                                (masterJson[e.Key] as Dictionary<string, object>)["CustomeFogTurn"] = 21;
 
                                 List<string> b = new List<string>();
                                 b.Add("Boss_Golem");
@@ -136,7 +139,7 @@ namespace ExpertPlusMod
                                 a.Add("MBoss2_0");
                                 (masterJson[e.Key] as Dictionary<string, object>)["Wave2"] = a;
                                 (masterJson[e.Key] as Dictionary<string, object>)["Wave2Turn"] = 99;
-                                (masterJson[e.Key] as Dictionary<string, object>)["CustomeFogTurn"] = 12;
+                                (masterJson[e.Key] as Dictionary<string, object>)["CustomeFogTurn"] = 14;
                             }
                         }
 
@@ -204,7 +207,7 @@ namespace ExpertPlusMod
                                 a.Add("S2_BoomBalloon");
                                 (masterJson[e.Key] as Dictionary<string, object>)["Wave2"] = a;
                                 (masterJson[e.Key] as Dictionary<string, object>)["Wave2Turn"] = 99;
-                                (masterJson[e.Key] as Dictionary<string, object>)["CustomeFogTurn"] = 16;
+                                (masterJson[e.Key] as Dictionary<string, object>)["CustomeFogTurn"] = 21;
 
 
                                 List<string> b = new List<string>();
@@ -239,7 +242,7 @@ namespace ExpertPlusMod
                                 (masterJson[e.Key] as Dictionary<string, object>)["Lock"] = false;
                                 (masterJson[e.Key] as Dictionary<string, object>)["UseCustomPosition"] = false;
                                 (masterJson[e.Key] as Dictionary<string, object>)["Wave2Turn"] = 99;
-                                (masterJson[e.Key] as Dictionary<string, object>)["CustomeFogTurn"] = 16;
+                                (masterJson[e.Key] as Dictionary<string, object>)["CustomeFogTurn"] = 21;
 
                                 List<string> b = new List<string>();
                                 b.Add("Queue_S3_PharosLeader");
@@ -258,7 +261,7 @@ namespace ExpertPlusMod
                                 (masterJson[e.Key] as Dictionary<string, object>)["Lock"] = false;
                                 (masterJson[e.Key] as Dictionary<string, object>)["UseCustomPosition"] = false;
                                 (masterJson[e.Key] as Dictionary<string, object>)["Wave2Turn"] = 99;
-                                (masterJson[e.Key] as Dictionary<string, object>)["CustomeFogTurn"] = 16;
+                                (masterJson[e.Key] as Dictionary<string, object>)["CustomeFogTurn"] = 21;
 
                                 List<string> b = new List<string>();
                                 b.Add("S3_Pharos_HighPriest");
@@ -278,7 +281,7 @@ namespace ExpertPlusMod
                                 (masterJson[e.Key] as Dictionary<string, object>)["Lock"] = false;
                                 (masterJson[e.Key] as Dictionary<string, object>)["UseCustomPosition"] = false;
                                 (masterJson[e.Key] as Dictionary<string, object>)["Wave2Turn"] = 99;
-                                (masterJson[e.Key] as Dictionary<string, object>)["CustomeFogTurn"] = 16;
+                                (masterJson[e.Key] as Dictionary<string, object>)["CustomeFogTurn"] = 21;
 
                                 List<string> b = new List<string>();
                                 b.Add("S3_Pharos_HighPriest");

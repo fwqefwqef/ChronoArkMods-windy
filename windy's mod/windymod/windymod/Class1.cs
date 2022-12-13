@@ -10,6 +10,7 @@ using TileTypes;
 using System.Reflection.Emit;
 using System.Reflection;
 using I2.Loc;
+using DarkTonic.MasterAudio;
 
 namespace Alternative_ShadowCurtain
 {
@@ -259,6 +260,79 @@ namespace Alternative_ShadowCurtain
             public static bool Prefix(ref bool __result)
             {
                 __result = true;
+                return false;
+            }
+        }
+
+       //Helia Selena Split
+       [HarmonyPatch(typeof(StartPartySelect), "Select")]
+        class SelectPatch
+        {
+            static bool Prefix(StartPartySelect __instance)
+            {
+                MasterAudio.PlaySound("SE_ClickButton", 1f, null, 0f, null, null, false, false);
+                for (int i = __instance.Locked; i < __instance.Selected.Length; i++)
+                {
+                    if (__instance.Selected[i].CharacterNum == -1)
+                    {
+                        __instance.Selected[i].Input(__instance.NowSelectedVIew);
+                        break;
+                    }
+                }
+                __instance.CBListGrayOn();
+                return false;
+            }
+        }
+        [HarmonyPatch(typeof(SR_Solo), "PickSetting")]
+        class Picksetting
+        {
+            static bool Prefix(StartPartySelect __instance, ref PickSetting __result)
+            {
+                __result = new PickSetting
+                {
+                    BanCharacter =
+                    {
+                        GDEItemKeys.Character_Phoenix
+                    },
+                    MaxParty = 1
+                };
+
+                return false;
+            }
+        }
+
+        // Lian Parry: Dialogue always active
+        [HarmonyPatch(typeof(Ark_Lian))]
+        class ArkLian_Patch
+        {
+            [HarmonyPatch(nameof(Ark_Lian.Active))]
+            [HarmonyPrefix]
+            static bool Prefix(Ark_Lian __instance)
+            {
+
+                if (!SaveManager.NowData.LianTutorialBook)
+                {
+                    __instance.ArkTutorial.Activate();
+                }
+                else
+                {
+                    __instance.ArkTutorialAfter.Activate();
+                }
+                return false;
+            }
+
+            [HarmonyPatch(nameof(Ark_Lian.SkillBook))]
+            [HarmonyPrefix]
+            static bool Prefix2(Ark_Lian __instance)
+            {
+                SaveManager.NowData.LianTutorialBook = true;
+                return false;
+            }
+
+            [HarmonyPatch(nameof(Ark_Lian.NeedCredit))]
+            [HarmonyPrefix]
+            static bool Prefix3(Ark_Lian __instance)
+            {
                 return false;
             }
         }

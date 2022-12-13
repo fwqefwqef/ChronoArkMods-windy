@@ -41,3 +41,17 @@ C:\Users\sjkim\source\repos\windymod\windymod\bin\Debug\UnityEngine.XRModule.dll
 C:\Users\sjkim\source\repos\windymod\windymod\bin\Debug\RestSharp.dll
 C:\Users\sjkim\source\repos\windymod\windymod\bin\Debug\Newtonsoft.Json.dll
 C:\Users\sjkim\source\repos\windymod\windymod\bin\Debug\NLog.dll
+C:\Users\sjkim\source\repos\windymod\windymod\bin\Debug\Mono.Data.Sqlite.dll
+C:\Users\sjkim\source\repos\windymod\windymod\bin\Debug\Mono.Data.Tds.dll
+C:\Users\sjkim\source\repos\windymod\windymod\bin\Debug\Mono.Messaging.dll
+C:\Users\sjkim\source\repos\windymod\windymod\bin\Debug\Mono.Posix.dll
+C:\Users\sjkim\source\repos\windymod\windymod\bin\Debug\Mono.Security.dll
+C:\Users\sjkim\source\repos\windymod\windymod\bin\Debug\Mono.Web.dll
+C:\Users\sjkim\source\repos\windymod\windymod\bin\Debug\Mono.WebBrowser.dll
+C:\Users\sjkim\source\repos\windymod\windymod\bin\Debug\UnityEngine.AccessibilityModule.dll
+C:\Users\sjkim\source\repos\windymod\windymod\bin\Debug\UnityEngine.AIModule.dll
+C:\Users\sjkim\source\repos\windymod\windymod\bin\Debug\UnityEngine.ARModule.dll
+C:\Users\sjkim\source\repos\windymod\windymod\bin\Debug\UnityEngine.BaselibModule.dll
+C:\Users\sjkim\source\repos\windymod\windymod\bin\Debug\UnityEngine.ClothModule.dll
+C:\Users\sjkim\source\repos\windymod\windymod\bin\Debug\UnityEngine.ClusterInputModule.dll
+C:\Users\sjkim\source\repos\windymod\windymod\bin\Debug\UnityEngine.ClusterRendererModule.dll

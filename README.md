@@ -88,4 +88,8 @@ Time to Move!: Gain Swiftness
 
 Fox Orb: Can be used on male characters
 
+Helia & Selena: Can be selected seperately on recruit screen
+
+Parry Skill Book: Can be obtained from Lian after unlocking her
+
 Game Start: Game runs at 3x speed until you reach first battle

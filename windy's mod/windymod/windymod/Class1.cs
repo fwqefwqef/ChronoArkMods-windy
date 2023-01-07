@@ -572,20 +572,20 @@ namespace Alternative_ShadowCurtain
 
 
         // HP Change for Godo
-        [HarmonyPatch(typeof(P_Gunman), "HPChange")]
-        class GodoPatch
-        {
-            static bool Prefix(P_Gunman __instance)
-            {
-                if (__instance.MainAI.Phase == 1 && __instance.BChar.HP <= 2500)
-                {
-                    __instance.BChar.Info.Hp = 2500;
-                    __instance.MainAI.Phase = 2;
-                    __instance.BChar.BuffAdd(GDEItemKeys.Buff_B_GunmanBoss_Phase2, __instance.BChar, false, 0, false, -1, false);
-                }
-                return false;
-            }
-        }
+        //[HarmonyPatch(typeof(P_Gunman), "HPChange")]
+        //class GodoPatch
+        //{
+        //    static bool Prefix(P_Gunman __instance)
+        //    {
+        //        if (__instance.MainAI.Phase == 1 && __instance.BChar.HP <= 2500)
+        //        {
+        //            __instance.BChar.Info.Hp = 2500;
+        //            __instance.MainAI.Phase = 2;
+        //            __instance.BChar.BuffAdd(GDEItemKeys.Buff_B_GunmanBoss_Phase2, __instance.BChar, false, 0, false, -1, false);
+        //        }
+        //        return false;
+        //    }
+        //}
 
         //[HarmonyPatch(typeof(S_TW_Red_6))]
         //class DarkSunTest

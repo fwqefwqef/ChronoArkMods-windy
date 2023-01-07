@@ -69,13 +69,6 @@ namespace Alternative_ShadowCurtain
                             (masterJson[e.Key] as Dictionary<string, object>)["NotCount"] = true;
                         }
 
-
-                        // Godo HP increase
-                        if (e.Key == "SR_GunManBoss")
-                        {
-                            (masterJson[e.Key] as Dictionary<string, object>)["maxhp"] = 4000;
-                        }
-
                         //// Time to move!: Added Swiftness
                         //if (e.Key == "S_Sizz_6")
                         //{

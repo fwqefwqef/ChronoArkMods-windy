@@ -85,6 +85,15 @@ namespace ExpertPlusMod
                                 (masterJson[e.Key] as Dictionary<string, object>)["maxhp"] = 1300;
                             }
                         }
+
+                        if (e.Key == "LBossFirst")
+                        {
+                            if (DespairMode.Value)
+                            {
+                                (masterJson[e.Key] as Dictionary<string, object>)["maxhp"] = 470;
+                            }
+                        }
+
                         if (e.Key == "Queue_S4_King")
                         {
                             if (DespairMode.Value)
@@ -1403,5 +1412,16 @@ namespace ExpertPlusMod
                 }
             }
         }
+
+        // Result UI: Expert+
+        //[HarmonyPatch(typeof(ResultUI))]
+        //[HarmonyPatch(nameof(ResultUI.Init))]
+        //class ResultUI_Patch
+        //{
+        //    static void Postfix(ResultUI __instance)
+        //    {
+        //        __instance.ExpertClearobj.
+        //    }
+        //}
     }
 }

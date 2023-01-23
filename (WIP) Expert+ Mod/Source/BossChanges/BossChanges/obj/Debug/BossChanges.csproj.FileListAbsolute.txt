@@ -25,7 +25,6 @@ C:\Users\sjkim\source\repos\BossChanges\BossChanges\bin\Debug\UnityEngine.Physic
 C:\Users\sjkim\source\repos\BossChanges\BossChanges\bin\Debug\UnityEngine.TextRenderingModule.dll
 C:\Users\sjkim\source\repos\BossChanges\BossChanges\bin\Debug\UnityEngine.UnityWebRequestModule.dll
 C:\Users\sjkim\source\repos\BossChanges\BossChanges\bin\Debug\UnityEngine.VideoModule.dll
-C:\Users\sjkim\source\repos\BossChanges\BossChanges\bin\Debug\StoveSDKforUnity.Desktop.dll
 C:\Users\sjkim\source\repos\BossChanges\BossChanges\bin\Debug\UnityEngine.TerrainModule.dll
 C:\Users\sjkim\source\repos\BossChanges\BossChanges\bin\Debug\UnityEngine.VRModule.dll
 C:\Users\sjkim\source\repos\BossChanges\BossChanges\bin\Debug\Unity.Postprocessing.Runtime.dll
@@ -34,6 +33,9 @@ C:\Users\sjkim\source\repos\BossChanges\BossChanges\bin\Debug\UnityEngine.Perfor
 C:\Users\sjkim\source\repos\BossChanges\BossChanges\bin\Debug\UnityEngine.SharedInternalsModule.dll
 C:\Users\sjkim\source\repos\BossChanges\BossChanges\bin\Debug\UnityEngine.TextCoreModule.dll
 C:\Users\sjkim\source\repos\BossChanges\BossChanges\bin\Debug\UnityEngine.XRModule.dll
-C:\Users\sjkim\source\repos\BossChanges\BossChanges\bin\Debug\RestSharp.dll
-C:\Users\sjkim\source\repos\BossChanges\BossChanges\bin\Debug\Newtonsoft.Json.dll
-C:\Users\sjkim\source\repos\BossChanges\BossChanges\bin\Debug\NLog.dll
+C:\Users\sjkim\source\repos\BossChanges\BossChanges\bin\Debug\Unity.ResourceManager.dll
+C:\Users\sjkim\source\repos\BossChanges\BossChanges\bin\Debug\Unity.Addressables.dll
+C:\Users\sjkim\source\repos\BossChanges\BossChanges\bin\Debug\StovePCSDK.NET.dll
+C:\Users\sjkim\source\repos\BossChanges\BossChanges\bin\Debug\UnityEngine.JSONSerializeModule.dll
+C:\Users\sjkim\source\repos\BossChanges\BossChanges\bin\Debug\UnityEngine.AssetBundleModule.dll
+C:\Users\sjkim\source\repos\BossChanges\BossChanges\bin\Debug\UnityEngine.UnityWebRequestAssetBundleModule.dll

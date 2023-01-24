@@ -393,15 +393,16 @@ namespace BossChanges
                         }
 
                         // Final Boss Changes
+                        
                         // Full Moon Slash = Tracking
-                        if (e.Key == "S_LBossFirst_2")
-                        {
-                            (masterJson[e.Key] as Dictionary<string, object>)["Track"] = true;
-                        }
-                        if (e.Key == "S_LBossFirst_2_Plus")
-                        {
-                            (masterJson[e.Key] as Dictionary<string, object>)["Track"] = true;
-                        }
+                        //if (e.Key == "S_LBossFirst_2")
+                        //{
+                        //    (masterJson[e.Key] as Dictionary<string, object>)["Track"] = true;
+                        //}
+                        //if (e.Key == "S_LBossFirst_2_Plus")
+                        //{
+                        //    (masterJson[e.Key] as Dictionary<string, object>)["Track"] = true;
+                        //}
 
                         // Storming Blade = Tracking
                         //if (e.Key == "S_LBossFirst_Blast")
@@ -418,7 +419,7 @@ namespace BossChanges
                         // Illusion Wave Base DMG and Card Cutting DMG = increased
                         if (e.Key == "SE_LBossFirst_Cut_T")
                         {
-                            (masterJson[e.Key] as Dictionary<string, object>)["DMG_Per"] = 60;
+                            (masterJson[e.Key] as Dictionary<string, object>)["DMG_Per"] = 50;
                         }
 
                         if (e.Key == "SE_LBossFirst_Cut_Plushit_T")
@@ -439,7 +440,7 @@ namespace BossChanges
                             List<string> a = new List<string>();
                             a.Add("S_Public_15");
                             (masterJson[e.Key] as Dictionary<string, object>)["Skills"] = a;
-                            (masterJson[e.Key] as Dictionary<string, object>)["reg"] = 15;
+                            (masterJson[e.Key] as Dictionary<string, object>)["reg"] = 10;
                         }
 
                     }
@@ -1392,61 +1393,59 @@ namespace BossChanges
         {
             [HarmonyPatch(nameof(S_LBossFirst_LucySwordremove.SkillUseSingle))]
             [HarmonyPrefix]
-            static bool Prefix(Skill SkillD, List<BattleChar> Targets, S_LBossFirst_LucySwordremove __instance)
+            static bool Prefix(Skill SkillD, List<BattleChar> Targets)
             {
                 ((GameObject)UnityEngine.Object.Instantiate(Resources.Load("Particle/LastBoss/Lboss_Lucy_SwordBreakP"), new Vector3(0f, 0f, 15f), Quaternion.identity)).GetComponent<SkillParticle>().init(null, BattleSystem.instance.AllyTeam.LucyAlly, new List<BattleChar>());
                 BattleSystem.instance.GetBattleValue<BV_LBossFirst_LucySwordremove>().UseNum--;
-                try
+                Targets[0].Dead(false);
+                if (BattleSystem.instance.GetBattleValue<BV_LBossFirst_LucySwordremove>().UseNum <= 0)
                 {
-                    Targets[0].Dead(false);
-                }
-                catch
-                {
+                    SkillD.Except();
                 }
                 return false;
             }
         }
 
-        // Fantasy = Discard all and draw equal to amount
-        [HarmonyPatch(typeof(S_LBossFirst_4))]
-        class Fantasy_Patch
-        {
-            [HarmonyPatch(nameof(S_LBossFirst_4.SkillUseSingle))]
-            [HarmonyPrefix]
-            static bool Prefix()
-            {
-                int discarded = 0;
-                while (BattleSystem.instance.AllyTeam.Skills.Count > 0)
-                {
-                    if (BattleSystem.instance.AllyTeam.Skills[0].ExtendedFind(GDEItemKeys.SkillExtended_LBossFirst_Sword, true) != null)
-                    {
-                        BattleSystem.instance.AllyTeam.Skills[0].Except();
-                    }
-                    else 
-                    {
-                        BattleSystem.instance.AllyTeam.Skills[0].Delete();
-                        discarded++;
-                    }
-                }
-                BattleSystem.instance.AllyTeam.Draw(discarded);
-                return false;
-            }
-        }
+        //// Fantasy = Discard all and draw equal to amount
+        //[HarmonyPatch(typeof(S_LBossFirst_4))]
+        //class Fantasy_Patch
+        //{
+        //    [HarmonyPatch(nameof(S_LBossFirst_4.SkillUseSingle))]
+        //    [HarmonyPrefix]
+        //    static bool Prefix()
+        //    {
+        //        int discarded = 0;
+        //        while (BattleSystem.instance.AllyTeam.Skills.Count > 0)
+        //        {
+        //            if (BattleSystem.instance.AllyTeam.Skills[0].ExtendedFind(GDEItemKeys.SkillExtended_LBossFirst_Sword, true) != null)
+        //            {
+        //                BattleSystem.instance.AllyTeam.Skills[0].Except();
+        //            }
+        //            else 
+        //            {
+        //                BattleSystem.instance.AllyTeam.Skills[0].Delete();
+        //                discarded++;
+        //            }
+        //        }
+        //        BattleSystem.instance.AllyTeam.Draw(discarded);
+        //        return false;
+        //    }
+        //}
 
-        //Fantasy = Discard all and draw equal to amount
-        [HarmonyPatch(typeof(Skill_Extended))]
-        class Fantasy_Patch2
-        {
-            [HarmonyPatch(nameof(Skill_Extended.DescExtended))]
-            [HarmonyPostfix]
-            static void Postfix(ref string __result, Skill_Extended __instance)
-            {
-                if (__instance is S_LBossFirst_4)
-                {
-                    __result = "Discard all skills in hand. If the skill has an Ultimate Illusion Sword buff, <b>Exclude</b> it instead. Draw skills equal to discarded amount.";
-                }
-            }
-        }
+        ////Fantasy = Discard all and draw equal to amount
+        //[HarmonyPatch(typeof(Skill_Extended))]
+        //class Fantasy_Patch2
+        //{
+        //    [HarmonyPatch(nameof(Skill_Extended.DescExtended))]
+        //    [HarmonyPostfix]
+        //    static void Postfix(ref string __result, Skill_Extended __instance)
+        //    {
+        //        if (__instance is S_LBossFirst_4)
+        //        {
+        //            __result = "Discard all skills in hand. If the skill has an Ultimate Illusion Sword buff, <b>Exclude</b> it instead. Draw skills equal to discarded amount.";
+        //        }
+        //    }
+        //}
 
     }
 

@@ -460,7 +460,7 @@ namespace ExpertPlusMod
             }
         }
 
-        // Mana reduced by 1 per charcter dead. Cannot fall below 3.
+        // Mana reduced by 1 per charcter dead. Cannot fall below 3. (start of turn)
         [HarmonyPatch(typeof(BattleTeam))]
         class ManaRemove_Patch
         {
@@ -494,7 +494,24 @@ namespace ExpertPlusMod
                 {
                     __instance.WaitCount = 1;
                 }
-                __instance.AP = __instance.MAXAP;
+                // Here
+                int deadCount = BattleSystem.instance.AllyTeam.Chars.Count - BattleSystem.instance.AllyTeam.AliveChars.Count;
+                //Debug.Log("Dead count: "+deadCount);
+                if (StageSystem.instance.Map.StageData.Key != GDEItemKeys.Stage_Stage_Crimson) // Not Crimson
+                {
+                    if (__instance.MAXAP - deadCount > 3)
+                    {
+                        __instance.AP = __instance.MAXAP - deadCount;
+                    }
+                    else
+                    {
+                        __instance.AP = 3;
+                    }
+                }
+                else // Crimson
+                {
+                    __instance.AP = __instance.MAXAP;
+                }
                 __instance.TurnActionNum = 0;
                 List<BattleChar> list = new List<BattleChar>();
                 AccessTools.FieldRef<BattleTeam, List<BattleChar>> G_Ref = AccessTools.FieldRefAccess<List<BattleChar>>(typeof(BattleTeam), "G_AliveChars");
@@ -595,95 +612,95 @@ namespace ExpertPlusMod
             }
         }
 
-        [HarmonyPatch(typeof(BattleChar))]
-        class ManaRemove2_Patch
-        {
-            [HarmonyPatch(nameof(BattleChar.AllyDeadCheck))]
-            [HarmonyPrefix]
-            static bool Prefix(BattleChar __instance)
-            {
-                bool flag = false;
-                if (__instance.Info.Passive is P_Phoenix)
-                {
-                    flag = true;
-                }
-                if (flag)
-                {
-                    if (__instance.Info.Hp <= 0)
-                    {
-                        if (!__instance.BuffFind(GDEItemKeys.Buff_B_Phoenix_P, false))
-                        {
-                            __instance.BuffAdd(GDEItemKeys.Buff_B_Phoenix_P, __instance.MyTeam.DummyChar, false, 0, false, -1, false);
-                        }
-                        if (!__instance.BuffFind(GDEItemKeys.Buff_B_Phoenix_P_0, false))
-                        {
-                            __instance.BuffAdd(GDEItemKeys.Buff_B_Phoenix_P_0, __instance.MyTeam.DummyChar, false, 0, false, -1, false);
-                        }
-                    }
-                    else if (__instance.BuffFind(GDEItemKeys.Buff_B_Phoenix_P_0, false))
-                    {
-                        __instance.BuffRemove(GDEItemKeys.Buff_B_Phoenix_P_0, true);
-                    }
-                }
-                else if (__instance.Recovery <= 0)
-                {
-                    __instance.Dead(false);
+        //[HarmonyPatch(typeof(BattleChar))]
+        //class ManaRemove2_Patch
+        //{
+        //    [HarmonyPatch(nameof(BattleChar.AllyDeadCheck))]
+        //    [HarmonyPrefix]
+        //    static bool Prefix(BattleChar __instance)
+        //    {
+        //        bool flag = false;
+        //        if (__instance.Info.Passive is P_Phoenix)
+        //        {
+        //            flag = true;
+        //        }
+        //        if (flag)
+        //        {
+        //            if (__instance.Info.Hp <= 0)
+        //            {
+        //                if (!__instance.BuffFind(GDEItemKeys.Buff_B_Phoenix_P, false))
+        //                {
+        //                    __instance.BuffAdd(GDEItemKeys.Buff_B_Phoenix_P, __instance.MyTeam.DummyChar, false, 0, false, -1, false);
+        //                }
+        //                if (!__instance.BuffFind(GDEItemKeys.Buff_B_Phoenix_P_0, false))
+        //                {
+        //                    __instance.BuffAdd(GDEItemKeys.Buff_B_Phoenix_P_0, __instance.MyTeam.DummyChar, false, 0, false, -1, false);
+        //                }
+        //            }
+        //            else if (__instance.BuffFind(GDEItemKeys.Buff_B_Phoenix_P_0, false))
+        //            {
+        //                __instance.BuffRemove(GDEItemKeys.Buff_B_Phoenix_P_0, true);
+        //            }
+        //        }
+        //        else if (__instance.Recovery <= 0)
+        //        {
+        //            __instance.Dead(false);
 
-                    //Here
-                    //Debug.Log("Stage: " + StageSystem.instance.Map.StageData.Key);
-                    if (StageSystem.instance.Map.StageData.Key != GDEItemKeys.Stage_Stage_Crimson)
-                    {
-                        BattleSystem.instance.AllyTeam.AP--;
-                        //Debug.Log("Mana decreased due to death");
-                    }
-                }
-                else
-                {
-                    __instance.UI.CharAni.SetBool("Dead", false);
-                    if (__instance.Info.Hp <= 0)
-                    {
-                        if (!__instance.BuffFind(GDEItemKeys.Buff_B_Neardeath, false))
-                        {
-                            __instance.BuffAdd(GDEItemKeys.Buff_B_Neardeath, __instance.MyTeam.DummyChar, false, 0, false, -1, false);
-                            foreach (IP_NearDeath ip_NearDeath in __instance.IReturn<IP_NearDeath>(null))
-                            {
-                                if (ip_NearDeath != null)
-                                {
-                                    ip_NearDeath.NearDeath();
-                                }
-                            }
-                            if (!__instance.BuffFind(GDEItemKeys.Buff_B_S3_Pope_P_2, false))
-                            {
-                                if (__instance.Info.KeyData == GDEItemKeys.Character_Phoenix)
-                                {
-                                    __instance.BattleInfo.ScriptOut.LowHPAlly();
-                                    __instance.BattleInfo.ScriptOut.LowHP(__instance);
-                                }
-                                else if (Misc.RandomPer(100, 40))
-                                {
-                                    __instance.BattleInfo.ScriptOut.LowHP(__instance);
-                                }
-                                else
-                                {
-                                    __instance.BattleInfo.ScriptOut.LowHPAlly();
-                                }
-                            }
-                        }
-                        __instance.UI.CharAni.SetBool("NearDead", true);
-                        TutorialSystem.TutorialFlag(15);
-                    }
-                    else
-                    {
-                        if (__instance.BuffFind(GDEItemKeys.Buff_B_Neardeath, false))
-                        {
-                            __instance.BuffRemove(GDEItemKeys.Buff_B_Neardeath, true);
-                        }
-                        __instance.UI.CharAni.SetBool("NearDead", false);
-                    }
-                }
-                return false;
-            }
-        }
+        //            //Here
+        //            //Debug.Log("Stage: " + StageSystem.instance.Map.StageData.Key);
+        //            if (StageSystem.instance.Map.StageData.Key != GDEItemKeys.Stage_Stage_Crimson)
+        //            {
+        //                BattleSystem.instance.AllyTeam.AP--;
+        //                //Debug.Log("Mana decreased due to death");
+        //            }
+        //        }
+        //        else
+        //        {
+        //            __instance.UI.CharAni.SetBool("Dead", false);
+        //            if (__instance.Info.Hp <= 0)
+        //            {
+        //                if (!__instance.BuffFind(GDEItemKeys.Buff_B_Neardeath, false))
+        //                {
+        //                    __instance.BuffAdd(GDEItemKeys.Buff_B_Neardeath, __instance.MyTeam.DummyChar, false, 0, false, -1, false);
+        //                    foreach (IP_NearDeath ip_NearDeath in __instance.IReturn<IP_NearDeath>(null))
+        //                    {
+        //                        if (ip_NearDeath != null)
+        //                        {
+        //                            ip_NearDeath.NearDeath();
+        //                        }
+        //                    }
+        //                    if (!__instance.BuffFind(GDEItemKeys.Buff_B_S3_Pope_P_2, false))
+        //                    {
+        //                        if (__instance.Info.KeyData == GDEItemKeys.Character_Phoenix)
+        //                        {
+        //                            __instance.BattleInfo.ScriptOut.LowHPAlly();
+        //                            __instance.BattleInfo.ScriptOut.LowHP(__instance);
+        //                        }
+        //                        else if (Misc.RandomPer(100, 40))
+        //                        {
+        //                            __instance.BattleInfo.ScriptOut.LowHP(__instance);
+        //                        }
+        //                        else
+        //                        {
+        //                            __instance.BattleInfo.ScriptOut.LowHPAlly();
+        //                        }
+        //                    }
+        //                }
+        //                __instance.UI.CharAni.SetBool("NearDead", true);
+        //                TutorialSystem.TutorialFlag(15);
+        //            }
+        //            else
+        //            {
+        //                if (__instance.BuffFind(GDEItemKeys.Buff_B_Neardeath, false))
+        //                {
+        //                    __instance.BuffRemove(GDEItemKeys.Buff_B_Neardeath, true);
+        //                }
+        //                __instance.UI.CharAni.SetBool("NearDead", false);
+        //            }
+        //        }
+        //        return false;
+        //    }
+        //}
 
         // Change stats for cursed mob, change rewards
         [HarmonyPatch(typeof(B_CursedMob))]

@@ -247,15 +247,15 @@ namespace Alternative_ShadowCurtain
         }
 
         // Everyone is female now, seethe and cope
-        [HarmonyPatch(typeof(Misc), "IsFemale")]
-        class Foxorb_GenderLock_Patch
-        {
-            public static bool Prefix(ref bool __result)
-            {
-                __result = true;
-                return false;
-            }
-        }
+        //[HarmonyPatch(typeof(Misc), "IsFemale")]
+        //class Foxorb_GenderLock_Patch
+        //{
+        //    public static bool Prefix(ref bool __result)
+        //    {
+        //        __result = true;
+        //        return false;
+        //    }
+        //}
 
        //Helia Selena Split
        [HarmonyPatch(typeof(StartPartySelect), "Select")]

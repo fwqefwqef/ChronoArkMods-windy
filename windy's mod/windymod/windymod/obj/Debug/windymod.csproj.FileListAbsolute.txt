@@ -25,7 +25,6 @@ C:\Users\sjkim\source\repos\windymod\windymod\bin\Debug\UnityEngine.PhysicsModul
 C:\Users\sjkim\source\repos\windymod\windymod\bin\Debug\UnityEngine.TextRenderingModule.dll
 C:\Users\sjkim\source\repos\windymod\windymod\bin\Debug\UnityEngine.UnityWebRequestModule.dll
 C:\Users\sjkim\source\repos\windymod\windymod\bin\Debug\UnityEngine.VideoModule.dll
-C:\Users\sjkim\source\repos\windymod\windymod\bin\Debug\StoveSDKforUnity.Desktop.dll
 C:\Users\sjkim\source\repos\windymod\windymod\bin\Debug\UnityEngine.TerrainModule.dll
 C:\Users\sjkim\source\repos\windymod\windymod\bin\Debug\UnityEngine.VRModule.dll
 C:\Users\sjkim\source\repos\windymod\windymod\bin\Debug\Unity.Postprocessing.Runtime.dll
@@ -38,9 +37,6 @@ C:\Users\sjkim\source\repos\windymod\windymod\bin\Debug\UnityEngine.TextCoreModu
 C:\Users\sjkim\source\repos\windymod\windymod\bin\Debug\UnityEngine.UnityWebRequestAssetBundleModule.dll
 C:\Users\sjkim\source\repos\windymod\windymod\bin\Debug\UnityEngine.UnityWebRequestWWWModule.dll
 C:\Users\sjkim\source\repos\windymod\windymod\bin\Debug\UnityEngine.XRModule.dll
-C:\Users\sjkim\source\repos\windymod\windymod\bin\Debug\RestSharp.dll
-C:\Users\sjkim\source\repos\windymod\windymod\bin\Debug\Newtonsoft.Json.dll
-C:\Users\sjkim\source\repos\windymod\windymod\bin\Debug\NLog.dll
 C:\Users\sjkim\source\repos\windymod\windymod\bin\Debug\Mono.Security.dll
 C:\Users\sjkim\source\repos\windymod\windymod\bin\Debug\UnityEngine.AccessibilityModule.dll
 C:\Users\sjkim\source\repos\windymod\windymod\bin\Debug\UnityEngine.AIModule.dll
@@ -52,3 +48,4 @@ C:\Users\sjkim\source\repos\windymod\windymod\bin\Debug\UnityEngine.ClusterRende
 C:\Users\sjkim\source\repos\windymod\windymod\bin\Debug\Unity.ResourceManager.dll
 C:\Users\sjkim\source\repos\windymod\windymod\bin\Debug\Unity.Addressables.dll
 C:\Users\sjkim\source\repos\windymod\windymod\bin\Debug\UnityEngine.JSONSerializeModule.dll
+C:\Users\sjkim\source\repos\windymod\windymod\bin\Debug\StovePCSDK.NET.dll

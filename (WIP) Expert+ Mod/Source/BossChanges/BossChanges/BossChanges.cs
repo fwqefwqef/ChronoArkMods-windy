@@ -235,19 +235,19 @@ namespace BossChanges
                         //}
 
                         // Breathtaker and Death Scythe: Discards top skill
-                        if (e.Key == "S_Boss_Reaper_1")
+                        //if (e.Key == "S_Boss_Reaper_1")
+                        //{
+                        //    List<string> a = new List<string>();
+                        //    a.Add("Extended_Hein_5");
+                        //    (masterJson[e.Key] as Dictionary<string, object>)["SkillExtended"] = a;
+                        //    //Debug.Log("Updated Breathtaker");
+                        //}
+                        if (e.Key == "S_Boss_Reaper_0")
                         {
                             List<string> a = new List<string>();
                             a.Add("Extended_Hein_5");
                             (masterJson[e.Key] as Dictionary<string, object>)["SkillExtended"] = a;
-                            //Debug.Log("Updated Breathtaker");
-                        }
-                        if (e.Key == "S_Boss_Reaper_2")
-                        {
-                            List<string> a = new List<string>();
-                            a.Add("Extended_Hein_5");
-                            (masterJson[e.Key] as Dictionary<string, object>)["SkillExtended"] = a;
-                            //Debug.Log("Updated DeathScythe");
+                            Debug.Log("Reloaded");
                         }
                         // Death Sentence: Applies Healing Reduction
                         if (e.Key == "SE_Boss_Reaper_0_PlusHit_T")
@@ -957,7 +957,7 @@ namespace BossChanges
             }
         }
 
-        //Unused Skill Extended: Discard the top skill
+        //Unused Skill Extended: Reaper Discard death sentence marked skill
         [HarmonyPatch(typeof(Extended_Hein_5))]
         class DiscardTopPatch
         {
@@ -966,12 +966,16 @@ namespace BossChanges
             static bool Prefix(Extended_Hein_5 __instance, Skill SkillD, List<BattleChar> Targets)
             {
                 
-                if (Targets[0].MyTeam.Skills.Count >= 1)
-                {
-                    Skill skill = Targets[0].MyTeam.Skills[0];
-                    skill.Delete(false);
-                    //Debug.Log("wuz here");
-                }
+                    foreach (Skill s in BattleSystem.instance.AllyTeam.Skills)
+                    {
+                        //Debug.Log("Here");
+                        if (s.MySkill.User != "LucyDraw" && s.MySkill.User != "Lucy")
+                        {
+                        //Debug.Log("Not Lucy");
+                            s.Delete(false);
+                            break;
+                        }
+                    }
                 return false;
             }
         }

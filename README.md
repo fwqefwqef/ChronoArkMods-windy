@@ -43,11 +43,6 @@ Easy Crimson Wilderness: Receive ??? in Bloody Park 1. However, gain 2 less Soul
 
 (Go to BepInEx -> config -> open in Notepad: windy.bossrush.cfg)
 
-# [Fox Orb Genderlock Removal]
-
-Fox Orb can be used on male characters.
-
-
 # [Minimum Skill Num]
 
 Change the number of minimum skills a character can have on their deck.
@@ -55,7 +50,6 @@ Change the number of minimum skills a character can have on their deck.
 Default 1. To change the number,
 
 Go to BepInEx -> config -> open in Notepad: windy.minskill.cfg
-
 
 # [Parry Skill Book]
 
@@ -86,7 +80,5 @@ Time to Move!: Gain Swiftness
 Helia & Selena: Can be selected seperately on recruit screen
 
 Game Start: Game runs at 3x speed until you reach first battle
-
-Fox Orb: Can be used on male characters
 
 Parry Skill Book: Can be obtained from Lian after unlocking her

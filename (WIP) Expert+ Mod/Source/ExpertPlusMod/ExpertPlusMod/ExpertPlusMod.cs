@@ -27,7 +27,7 @@ namespace ExpertPlusMod
 
         public static ConfigEntry<bool> PermaMode;
         public static ConfigEntry<bool> VanillaCurses;
-        public static ConfigEntry<bool> AscensionMode;
+        //public static ConfigEntry<bool> AscensionMode;
         public static ConfigEntry<bool> DespairMode;
 
 
@@ -35,7 +35,7 @@ namespace ExpertPlusMod
         {
             PermaMode = Config.Bind("Generation config", "Permadeath Mode", false, "Permadeath Mode\nCampfires cannot revive allies. Removed revive option in Medical Tent. Golden Bread cannot be used on fallen allies.");
             VanillaCurses = Config.Bind("Generation config", "Vanilla Curses", false, "Vanilla Curses\nReverts the nerfs to Cursed Mob stats. The challenge is designed around weaker cursed mobs, but toggle this on if you want.");
-            AscensionMode = Config.Bind("Generation config", "Ascension Mode", false, "Ascension Mode\nA mimic of Slay The Spire's Ascension Mode.\n1. Add Slow Response Curse to deck at the start of the game.\n2. Maximum potion uses per battle reduced to 2.\n3. Character Equipment Slots reduced to 1. (Equipment Drop Rates reduced)\n4. Relic Slots reduced to 2.");
+            //AscensionMode = Config.Bind("Generation config", "Ascension Mode", false, "Ascension Mode\nA mimic of Slay The Spire's Ascension Mode.\n1. Add Slow Response Curse to deck at the start of the game.\n2. Maximum potion uses per battle reduced to 2.\n3. Character Equipment Slots reduced to 1. (Equipment Drop Rates reduced)\n4. Relic Slots reduced to 2.");
             DespairMode = Config.Bind("Generation config", "Despair Mode", false, "Despair Mode\nWarning: Very Difficult.\n1. Lifting Scrolls do not spawn in battle.\n2. After Misty Garden 1, fight all possible bosses for each stage. Godo and TFK fight is harder.");
             harmony.PatchAll();
         }
@@ -349,27 +349,27 @@ namespace ExpertPlusMod
                         }
 
                         // Ascension Mode, drop rates reduced
-                        if (e.Key == "BossEquipRandomDrop")
-                        {
-                            if (AscensionMode.Value)
-                            {
-                                /* 0/8/55/30/5 -> 0/4/35/10/1 */
-                                (masterJson[e.Key] as Dictionary<string, object>)["Common"] = 0;
-                                (masterJson[e.Key] as Dictionary<string, object>)["UnCommon"] = 4;
-                                (masterJson[e.Key] as Dictionary<string, object>)["Rare"] = 35;
-                                (masterJson[e.Key] as Dictionary<string, object>)["Unique"] = 10;
-                                (masterJson[e.Key] as Dictionary<string, object>)["Legendary"] = 1;
-                                (masterJson[e.Key] as Dictionary<string, object>)["NoItem"] = 50;
-                            }
-                        }
+                        //if (e.Key == "BossEquipRandomDrop")
+                        //{
+                        //    if (AscensionMode.Value)
+                        //    {
+                        //        /* 0/8/55/30/5 -> 0/4/35/10/1 */
+                        //        (masterJson[e.Key] as Dictionary<string, object>)["Common"] = 0;
+                        //        (masterJson[e.Key] as Dictionary<string, object>)["UnCommon"] = 4;
+                        //        (masterJson[e.Key] as Dictionary<string, object>)["Rare"] = 35;
+                        //        (masterJson[e.Key] as Dictionary<string, object>)["Unique"] = 10;
+                        //        (masterJson[e.Key] as Dictionary<string, object>)["Legendary"] = 1;
+                        //        (masterJson[e.Key] as Dictionary<string, object>)["NoItem"] = 50;
+                        //    }
+                        //}
 
-                        if (e.Key == "BattleRandomDrop")
-                        {
-                            if (AscensionMode.Value)
-                            {
-                                (masterJson[e.Key] as Dictionary<string, object>)["NoItem"] = 100;
-                            }
-                        }
+                        //if (e.Key == "BattleRandomDrop")
+                        //{
+                        //    if (AscensionMode.Value)
+                        //    {
+                        //        (masterJson[e.Key] as Dictionary<string, object>)["NoItem"] = 100;
+                        //    }
+                        //}
 
                         ///// Misty Garden 1 ///
 
@@ -1064,77 +1064,77 @@ namespace ExpertPlusMod
         /// </summary>
 
         // Ascension Mode: Add Slow Response to deck
-        [HarmonyPatch(typeof(StartPartySelect))]
-        class Ascension_Patch
-        {
-            [HarmonyPatch(nameof(StartPartySelect.Apply))]
-            [HarmonyPostfix]
-            static void Postfix(StartPartySelect __instance)
-            {
-                // If Ascension Mode, add Slow Response
-                if (AscensionMode.Value && PlayData.TSavedata.StageNum == 0)
-                {
-                    //Debug.Log("Added Slow Response");
-                    PlayData.TSavedata.LucySkills.Add(GDEItemKeys.Skill_S_LucyCurse_Late);
+        //[HarmonyPatch(typeof(StartPartySelect))]
+        //class Ascension_Patch
+        //{
+        //    [HarmonyPatch(nameof(StartPartySelect.Apply))]
+        //    [HarmonyPostfix]
+        //    static void Postfix(StartPartySelect __instance)
+        //    {
+        //        // If Ascension Mode, add Slow Response
+        //        if (AscensionMode.Value && PlayData.TSavedata.StageNum == 0)
+        //        {
+        //            //Debug.Log("Added Slow Response");
+        //            PlayData.TSavedata.LucySkills.Add(GDEItemKeys.Skill_S_LucyCurse_Late);
 
-                    //Debug.Log("Relic Slots reduced");
-                    PlayData.TSavedata.Passive_Itembase.Remove(null);
-                    PlayData.TSavedata.Passive_Itembase.Remove(null);
-                    PlayData.TSavedata.ArkPassivePlus -= 2;
-                }
-            }
-        }
+        //            //Debug.Log("Relic Slots reduced");
+        //            PlayData.TSavedata.Passive_Itembase.Remove(null);
+        //            PlayData.TSavedata.Passive_Itembase.Remove(null);
+        //            PlayData.TSavedata.ArkPassivePlus -= 2;
+        //        }
+        //    }
+        //}
 
         // Ascension Mode: Equip Slots reduced
-        [HarmonyPatch(typeof(FieldSystem))]
-        class Ascension_Patch2
-        {
-            [HarmonyPatch(nameof(FieldSystem.PartyAdd), new Type[] { typeof(GDECharacterData), typeof(int) })]
-            [HarmonyPrefix]
-            static bool Prefix(GDECharacterData CData, int Levelup = 0)
-            {
-                if (AscensionMode.Value)
-                {
-                    Character character = new Character();
-                    character.Set_AllyData(CData);
-                    character.Hp = character.get_stat.maxhp;
-                    PlayData.TSavedata.DonAliveChars.Add(CData.Key);
-                    PlayData.TSavedata.Party.Add(character);
-                    if (FieldSystem.instance != null)
-                    {
-                        FieldSystem.instance.PartyWindowInit();
-                    }
-                    UIManager.inst.CharstatUI.GetComponent<CharStatV3>().Init();
-                    for (int i = 0; i < Levelup; i++)
-                    {
-                        UIManager.inst.CharstatUI.GetComponent<CharStatV3>().CWindows[PlayData.TSavedata.Party.Count - 1].Upgrade(true);
-                    }
+        //[HarmonyPatch(typeof(FieldSystem))]
+        //class Ascension_Patch2
+        //{
+        //    [HarmonyPatch(nameof(FieldSystem.PartyAdd), new Type[] { typeof(GDECharacterData), typeof(int) })]
+        //    [HarmonyPrefix]
+        //    static bool Prefix(GDECharacterData CData, int Levelup = 0)
+        //    {
+        //        if (AscensionMode.Value)
+        //        {
+        //            Character character = new Character();
+        //            character.Set_AllyData(CData);
+        //            character.Hp = character.get_stat.maxhp;
+        //            PlayData.TSavedata.DonAliveChars.Add(CData.Key);
+        //            PlayData.TSavedata.Party.Add(character);
+        //            if (FieldSystem.instance != null)
+        //            {
+        //                FieldSystem.instance.PartyWindowInit();
+        //            }
+        //            UIManager.inst.CharstatUI.GetComponent<CharStatV3>().Init();
+        //            for (int i = 0; i < Levelup; i++)
+        //            {
+        //                UIManager.inst.CharstatUI.GetComponent<CharStatV3>().CWindows[PlayData.TSavedata.Party.Count - 1].Upgrade(true);
+        //            }
 
-                    //Remove equip slot here
-                    //Debug.Log("Removed equip slot");
-                    character.Equip.Remove(null);
-                    return false;
-                }
-                return true;
-            }
-        }
+        //            //Remove equip slot here
+        //            //Debug.Log("Removed equip slot");
+        //            character.Equip.Remove(null);
+        //            return false;
+        //        }
+        //        return true;
+        //    }
+        //}
 
         // Ascension Mode: Reduce Potion Num
-        [HarmonyPatch(typeof(BattleSystem))]
-        class Ascension_Patch3
-        {
-            [HarmonyPatch(nameof(BattleSystem.Start))]
-            [HarmonyPostfix]
-            static void Postfix()
-            {
-                // If Ascension Mode, reduce potion num
-                if (AscensionMode.Value)
-                {
-                    //Debug.Log("Potion Slots reduced");
-                    BattleSystem.instance.AllyTeam.MaxPotionNum = 2;
-                }
-            }
-        }
+        //[HarmonyPatch(typeof(BattleSystem))]
+        //class Ascension_Patch3
+        //{
+        //    [HarmonyPatch(nameof(BattleSystem.Start))]
+        //    [HarmonyPostfix]
+        //    static void Postfix()
+        //    {
+        //        // If Ascension Mode, reduce potion num
+        //        if (AscensionMode.Value)
+        //        {
+        //            //Debug.Log("Potion Slots reduced");
+        //            BattleSystem.instance.AllyTeam.MaxPotionNum = 2;
+        //        }
+        //    }
+        //}
         //// Ascension Mode: Ilya Swords buff (compensation for equip slot reduced)
         //[HarmonyPatch(typeof(EItem.Ilya_Sword_0))]
         //class Ascension_Patch4
@@ -1168,30 +1168,30 @@ namespace ExpertPlusMod
         //}
 
         //Ascension Mode : Equip Slot Centered
-        [HarmonyPatch(typeof(ChildClear), "Start")]
-        class CenterItemSlotPatch
-        {
-            static void Postfix(ChildClear __instance)
-            {
-                if (AscensionMode.Value)
-                {
-                    var transform = __instance.GetComponent<Transform>();
-                    if (transform.name == "EquipAlign")
-                    {
-                        // party view
-                        if (transform.parent.parent.name == "CloseView")
-                        {
-                            transform.localPosition = new Vector3(transform.localPosition.x - 30f, transform.localPosition.y, transform.localPosition.z);
-                        }
-                        // blacksmith
-                        //if (transform.parent.name == "EquipView")
-                        //{
-                        //    transform.localPosition = new Vector3(transform.localPosition.x - 35f, transform.localPosition.y, transform.localPosition.z);
-                        //}
-                    }
-                }
-            }
-        }
+        //[HarmonyPatch(typeof(ChildClear), "Start")]
+        //class CenterItemSlotPatch
+        //{
+        //    static void Postfix(ChildClear __instance)
+        //    {
+        //        if (AscensionMode.Value)
+        //        {
+        //            var transform = __instance.GetComponent<Transform>();
+        //            if (transform.name == "EquipAlign")
+        //            {
+        //                // party view
+        //                if (transform.parent.parent.name == "CloseView")
+        //                {
+        //                    transform.localPosition = new Vector3(transform.localPosition.x - 30f, transform.localPosition.y, transform.localPosition.z);
+        //                }
+        //                // blacksmith
+        //                //if (transform.parent.name == "EquipView")
+        //                //{
+        //                //    transform.localPosition = new Vector3(transform.localPosition.x - 35f, transform.localPosition.y, transform.localPosition.z);
+        //                //}
+        //            }
+        //        }
+        //    }
+        //}
 
         /// <summary>
         /// Below is Neo's Stuff
@@ -1401,44 +1401,231 @@ namespace ExpertPlusMod
         }
 
 
-        // Despair Mode: No revival in campfire
+        //Permadeath Mode: No revival in campfire
+        //[HarmonyPatch(typeof(CampUI))]
+        //[HarmonyPatch(nameof(CampUI.Init))]
+        //[HarmonyDebug]
+        //class CampfireRevival_Patch
+        //{
+        //    static bool CheckIncapacitated(CampUI __instance, bool incapacitated)
+        //    {
+        //        return incapacitated && !PermaMode.Value;
+        //    }
+
+        //    static IEnumerable<CodeInstruction> Transpiler(IEnumerable<CodeInstruction> instructions)
+        //    {
+        //        foreach (var ci in instructions)
+        //        {
+        //            if (ci.Is(OpCodes.Ldfld, AccessTools.Field(typeof(Character), nameof(Character.Incapacitated))))
+        //            {
+        //                Debug.Log("inject");
+        //                yield return ci;
+        //                yield return new CodeInstruction(OpCodes.Call, AccessTools.Method(typeof(CampfireRevival_Patch), nameof(CampfireRevival_Patch.CheckIncapacitated)));
+
+        //            }
+        //            else
+        //            {
+        //                yield return ci;
+        //            }
+        //        }
+        //    }
+        //}
+
+
+        // Permadeath Mode: No revival in campfire
         [HarmonyPatch(typeof(CampUI))]
         [HarmonyPatch(nameof(CampUI.Init))]
         class CampfireRevival_Patch
         {
-            static bool CheckIncapacitated(bool incapacitated)
+            [HarmonyPrefix]
+            static bool Prefix(CampUI __instance, Camp Sc)
             {
-                return incapacitated && !PermaMode.Value;
-            }
-
-            static IEnumerable<CodeInstruction> Transpiler(IEnumerable<CodeInstruction> instructions)
-            {
-                foreach (var ci in instructions)
+                //Debug.Log("Camphere");
+                __instance.MainCampScript = Sc;
+                if (!__instance.MainCampScript.Healed)
                 {
-                    if (ci.Is(OpCodes.Ldfld, AccessTools.Field(typeof(Character), nameof(Character.Incapacitated))))
+                    __instance.MainCampScript.Healed = true;
+                    foreach (Character character in PlayData.TSavedata.Party)
                     {
-                        Debug.Log("inject");
-                        yield return ci;
-                        yield return new CodeInstruction(OpCodes.Call, AccessTools.Method(typeof(CampfireRevival_Patch), nameof(CampfireRevival_Patch.CheckIncapacitated)));
-
+                        bool flag = false;
+                        // Here
+                        if (character.Incapacitated && !PermaMode.Value)
+                        {
+                            character.Incapacitated = false;
+                            character.Hp = 1;
+                            flag = true;
+                            if (SaveManager.NowData.GameOptions.Difficulty == 0)
+                            {
+                                character.HealHP((int)Misc.PerToNum((float)character.get_stat.maxhp, 18f), true);
+                            }
+                            else if (SaveManager.NowData.GameOptions.Difficulty == 2)
+                            {
+                                character.HealHP((int)Misc.PerToNum((float)character.get_stat.maxhp, 10f), true);
+                            }
+                        }
+                        if (SaveManager.NowData.GameOptions.Difficulty == 2)
+                        {
+                            if (!flag)
+                            {
+                                character.HealHP((int)Misc.PerToNum((float)character.get_stat.maxhp, 20f), true);
+                            }
+                        }
+                        else if (SaveManager.NowData.GameOptions.Difficulty == 1)
+                        {
+                            character.HealHP((int)Misc.PerToNum((float)character.get_stat.maxhp, 60f), true);
+                        }
+                        else if (!flag)
+                        {
+                            character.HealHP((int)Misc.PerToNum((float)character.get_stat.maxhp, 35f), true);
+                        }
+                        if (character.Passive != null)
+                        {
+                            IP_CampFire ip_CampFire = character.Passive as IP_CampFire;
+                            if (ip_CampFire != null)
+                            {
+                                ip_CampFire.Camp();
+                            }
+                        }
+                        foreach (ItemBase itemBase in character.Equip)
+                        {
+                            if (itemBase != null)
+                            {
+                                IP_CampFire ip_CampFire2 = (itemBase as Item_Equip).ItemScript as IP_CampFire;
+                                if (ip_CampFire2 != null)
+                                {
+                                    ip_CampFire2.Camp();
+                                }
+                            }
+                        }
+                    }
+                    foreach (ItemBase itemBase2 in PlayData.TSavedata.Inventory)
+                    {
+                        if (itemBase2 is Item_Equip)
+                        {
+                            IP_CampFire ip_CampFire3 = (itemBase2 as Item_Equip).ItemScript as IP_CampFire;
+                            if (ip_CampFire3 != null)
+                            {
+                                ip_CampFire3.Camp();
+                            }
+                        }
+                    }
+                }
+                if (SaveManager.Difficalty != 2)
+                {
+                    foreach (ItemBase itemBase3 in PartyInventory.InvenM.InventoryItems)
+                    {
+                        if (itemBase3 != null && (itemBase3.itemkey == GDEItemKeys.Item_Active_LucysNecklace || itemBase3.itemkey == GDEItemKeys.Item_Active_LucysNecklace2 || itemBase3.itemkey == GDEItemKeys.Item_Active_LucysNecklace3 || itemBase3.itemkey == GDEItemKeys.Item_Active_LucysNecklace4))
+                        {
+                            Item_Active item_Active = itemBase3 as Item_Active;
+                            int chargeNow = item_Active.ChargeNow;
+                            item_Active.ChargeNow = chargeNow + 1;
+                        }
+                    }
+                }
+                if (PlayData.TSavedata.StageNum == 1 || PlayData.TSavedata.StageNum == 3)
+                {
+                    if (PlayData.TSavedata.SpRule == null || !PlayData.TSavedata.SpRule.RuleChange.CantNewPartymember)
+                    {
+                        if (SaveManager.NowData.GameOptions.CasualMode)
+                        {
+                            if (PlayData.TSavedata.StageNum == 1 && PlayData.TSavedata.Party.Count <= 2)
+                            {
+                                __instance.MainCampScript.CasualPartyAdd = true;
+                            }
+                            else if (PlayData.TSavedata.StageNum == 3 && PlayData.TSavedata.Party.Count <= 3)
+                            {
+                                __instance.MainCampScript.CasualPartyAdd = true;
+                            }
+                        }
+                        __instance.Button_AddParty.gameObject.SetActive(true);
                     }
                     else
                     {
-                        yield return ci;
+                        __instance.Button_AddParty.gameObject.SetActive(false);
                     }
+                    __instance.MainCampScript.Enforce = true;
                 }
+                else
+                {
+                    __instance.Button_AddParty.gameObject.SetActive(false);
+                    __instance.Button_Enforce.gameObject.SetActive(true);
+                }
+                if (PlayData.TSavedata.Party.Count >= 4)
+                {
+                    __instance.Button_AddParty.gameObject.SetActive(false);
+                }
+                __instance.VerticalLayout.enabled = false;
+                __instance.VerticalLayout.SetLayoutVertical();
+                __instance.VerticalLayout.enabled = true;
+                if (PlayData.TSavedata.Party.Find((Character a) => a.GetData.Key == GDEItemKeys.Character_Leryn) != null)
+                {
+                    __instance.Button_LerynPassive.gameObject.SetActive(true);
+                }
+                return false;
             }
         }
 
-        // Result UI: Expert+
-        //[HarmonyPatch(typeof(ResultUI))]
-        //[HarmonyPatch(nameof(ResultUI.Init))]
-        //class ResultUI_Patch
-        //{
-        //    static void Postfix(ResultUI __instance)
-        //    {
-        //        __instance.ExpertClearobj.
-        //    }
-        //}
+        // Show ExpertPlusMod in result screen
+        [HarmonyPatch(typeof(ResultUI))]
+        [HarmonyPatch(nameof(ResultUI.Init))]
+        class ResultScreenPatch
+        {
+            [HarmonyPostfix]
+            static void Postfix(ResultUI __instance)
+            {
+                PlayData.TSavedata.bMist = new BloodyMist();
+                PlayData.TSavedata.bMist.Level = 4;
+                __instance.DifficultyObj.SetActive(true);
+                __instance.BloodyMistObj.SetActive(true);
+                int level = PlayData.TSavedata.bMist.Level;
+                Sprite sprite = AddressableLoadManager.LoadAsyncCompletion<Sprite>(new GDEImageDatasData(GDEItemKeys.ImageDatas_Image_BloodyMist).Sprites_Path[PlayData.TSavedata.bMist.Level - 1], AddressableLoadManager.ManageType.Stage);
+                __instance.BloodyMistImage.sprite = sprite;
+                string cleartext = "ExpertPlusMod";
+                if (DespairMode.Value)
+                {
+                    cleartext += "\n+Despair Mode";
+                }
+                if (PermaMode.Value)
+                {
+                    cleartext += "\n+Permadeath Mode";
+                }
+                if (VanillaCurses.Value)
+                {
+                    cleartext += "\n+Vanilla Curses";
+                }
+                __instance.BloodyMistText.text = cleartext;
+                List<string> list2 = new List<string>();
+                string text = "";
+                if (DespairMode.Value)
+                {
+                    list2.Add("<b>Despair Mode</b>\n1. Lifting Scrolls do not spawn in battle.\n2. After Misty Garden 1, fight all possible bosses for each stage. Godo and TFK fight is harder.\n");
+                }
+                if (PermaMode.Value)
+                {
+                    list2.Add("<b>Permadeath Mode</b>\nCampfires cannot revive allies. Removed revive option in Medical Tent. Golden Bread cannot be used on fallen allies.\n");
+                }
+                if (VanillaCurses.Value)
+                {
+                    list2.Add("<b>Vanilla Curses</b>\nReverts the nerfs to Cursed Mob stats.\n");
+                }
+                for (int l = 0; l < list2.Count; l++)
+                {
+                    text += list2[l] + "\n";
+                }
+                __instance.BloodyMistObj.GetComponent<SimpleTooltip>().TooltipString = text;
+            }
+        }
+
+        // Disable Blood Mist
+        [HarmonyPatch(typeof(CampUI))]
+        [HarmonyPatch(nameof(CampUI.Init))]
+        class DisableBloodMist
+        {
+            static void Postfix(CampUI __instance)
+            {
+                //Debug.Log("POOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOGG");
+                __instance.Button_BloodyMist.gameObject.SetActive(false);
+            }
+        }
     }
 }

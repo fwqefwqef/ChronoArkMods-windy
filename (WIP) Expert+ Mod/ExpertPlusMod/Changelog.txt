@@ -1,0 +1,202 @@
+Changelog: 
+
+v1.6
+Reworked Living Armor: Fixed a bug where bleed debuff would not trigger. 
+Removed ‘debuff resist’ weakening debuff, Increase bleed and stun chance by +30%
+
+Useful scrap metal drop -> cursed uncommon item
+
+Final Move Leaf slash nerfed to 100 -> 99% HP, Dorchi +10% stun and bleed chance
+
+
+v1.7
+
+Gold dropped from cursed mobs 0->50G.
+
+Lift Curse skill now spawns in bottom of hand.  
+
+
+v1.8
+
+Golem: starts at 0% attack instead of -15%. 
+
+Reaper follower: starts at 0% attack instead of -15%.
+
+Joker: Summon now stuns a random ally. Joker Card: regain Swiftness, gain Bind. 
+
+Pharos Leader: Summons Pharos Mage instead of Spirit Wolf
+
+Cursed Mobs: HP Buffed to 25%->40%. 
+
+
+v1.9
+
+System Changes
+1. Removed guaranteed lifting scroll in shops 2 and 5. 
+
+2. Removed legendary equip reward from Sanctuary summoner and golem. (Only Fire Elementalist drops it now)
+
+Boss Changes
+1. Witch
+Dark Spark: Damage 4->6, Accuracy+4%
+
+2. Time Eater
+Minion: Now has 2 actions instead of 1
+
+3. Bomber Clown
+Time Bomb: Cost increased to 1 (Cannot be removed by Azar Fantasy)
+Bomb Balloon: Added 20% crit chance on Explosion
+
+4. TFK
+- HP reverted to 900 
+- Tightening Shackles: starts at 2 stacks, added Receiving Critical Chance +100% and Debuff Resist -100%
+- Shield Pulse damage doubled, 100% stun chance 
+- Phase 3 Bleeding: Now applies Phase 1 Bleeding (5->7 damage, Max Stacks 2->3) 
+- Black Fog moved to turn 18->12
+
+
+v1.10
+
+-  Removed cursed fights in Crimson Wilderness
+(Problem: Sniper curse cannot be removed by Lifting Scroll. I will try to fix it but I don’t know if I can do it.) 
+- Fixed Bug where Dorchi Leaf Slash doesn't do any damage in 1.82 Beta
+
+
+
+v1.11
+
+1. Re-added cursed fight in Crimson Wilderness. Sniper’s curse can be removed by Lifting Scroll. 
+2. Duelist Godo
+- Revolver Panning damage doubled. 
+
+v1.12
+
+1. TFK 
+- HP increased to 900->1000
+- Tightening Shackles: added Greatly Increased Aggro, removed Debuff Resist -100%
+- At the start of the 3rd phase, if you have more than 2 surviving party members, select 1 party member to kill. 
+
+v1.13.2
+
+1. System Changes
+- During Battle: Mana is reduced by 1 per dead party member. Does not apply in Crimson Wilderness.
+
+This was implemented to punish corpse strategies in Despair Mode, and buff TFK’s 3rd phase.
+
+v1.14
+Previous Duelist Godo changes all reverted.
+Revolver Panning Damage 50% -> 100%
+
+v1.15
+
+Optional Toggle: Ascension Mode
+A mimic of Slay The Spire's Ascension Mode. More features coming soon.
+1. Add Slow Response Curse to deck at the start of the game.
+
+Bugfixes:
+Joker: You cannot select a Joker Card to turn into a Joker Card on Turns 3 and 5.
+TFK: TFK no longer impales you when reaching 1HP due to Pain Damage.
+
+I changed the config file name to
+org.windy.chronoark.difficultymod.expertplus.cfg -> windy.expertplus.cfg
+
+v1.16
+
+Lifting scroll is added to your inventory after Lucy’s Necklace.
+
+(Updated) Optional Toggle: Ascension Mode
+A bunch of additional changes to make the game harder.
+Add Slow Response Curse to deck at the start of the game. 
+(Bugfix: No longer spawns multiple Slow Response Curses.)
+Maximum potion uses per battle reduced to 2. 
+Character Equipment Slots reduced to 1. 
+Relic Slots reduced to 1. 
+
+
+v1.16.1
+
+Ascension Mode:
+Ilya Lightning Sword: Critical Chance 5% -> 15%
+Ilya Snow Sword: Accuracy 2% -> 10%
+Ilya Swords are buffed in compensation due to reduced equipment slots.
+
+v1.17
+
+Ascension Mode:
+Equipment drop rates reduced.
+Common / Uncommon / Rare / Unique / Legendary
+0/8/55/30/5 -> 0/4/35/10/1
+
+Character equipment slot is centered in the UI. 
+Example: https://imgur.com/a/iRKzUip
+
+v1.18
+
+Ascension Mode: Relic Slots increased to 1->2
+
+v1.18.1
+
+Ascension Mode: Equipment Slot position fixed
+
+v1.18.2
+Lucy: Fixed a bug where Standby Count would go over 1 at the start of turn.
+
+v1.18.3
+Fixed a bug where campfire shows you recruit options in Solo Challenge
+
+v1.19
+Despair Mode: Golden Apple changes reverted.
+
+v1.20
+Parade Tank
+Kaboom!: Gained Tracking
+
+Reaper
+Death Sentence: AoE hit gained Deep Bleeding
+
+Karaela
+Burn Debuff: Duration, Max Stacks +1
+
+Pharos Leader
+Pharos Mage summons replaced with Pharos Witch
+
+v1.21
+Despair Mode: Deleted.
+
+[NEW] Permadeath Mode: Campfires cannot revive allies. Removed revive option in Medical Tent.
+
+Despair Mode will be reworked into something different, an extremely difficult gameplay mode. Coming soon.
+
+v1.22
+[New] Despair Mode
+Warning: Very Difficult.
+Lifting Scrolls do not spawn in battle.
+After Misty Garden 1, fight all possible bosses for each stage. Godo and TFK fight is harder.
+More features coming soon.
+
+Some details:
+Boss order is always the same. Black Fog duration is extended accordingly. Most boss gimmicks are removed once they die. 
+I plan on making the regular encounters harder.
+
+v1.23
+Permadeath Mode: Golden Bread cannot be used on fallen allies.
+Crimson Wilderness: Minibosses cannot be cursed.
+Despair Mode: Time Trial time limit adjusted. 
+
+v1.24
+Despair Mode: 
+Boss order is now randomized. (Thanks Neoshrimp!)
+TFK Black Fog turn moved to turn 18.
+
+v1.25
+Despair Mode: 
+Time Eater: Cursed Watch is now removed when it dies
+
+v1.25.1
+Despair Mode:
+Joker: Joker card no longer activates when it is removed due to Joker dying. (This makes the transition to Parade Tank a little easier)
+Reaper: Death Sentence is now removed upon Reaper Death.
+
+v1.25.2
+Despair Mode:
+(Bugfix) Bomber Clown: Properly summoned with 3 bomb balloons.

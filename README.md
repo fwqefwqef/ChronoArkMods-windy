@@ -68,17 +68,3 @@ Go to BepInEx -> config -> open in Notepad: org.windy.chronoark.recruitmod.recru
 # [Remove Fixed Skill Limit]
 
 Remove 'Cannot be Fixed' keyword from all skills. 
-
-# [windy's mod]
-
-Miscellaneous gameplay changes that I personally like.
-
-Dark Sun, Dark Moon, Storming Blade: Gain Tracking
-
-Time to Move!: Gain Swiftness
-
-Helia & Selena: Can be selected seperately on recruit screen
-
-Game Start: Game runs at 3x speed until you reach first battle
-
-Parry Skill Book: Can be obtained from Lian after unlocking her

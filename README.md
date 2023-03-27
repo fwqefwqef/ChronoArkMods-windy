@@ -2,7 +2,7 @@
 
 A list of various mods for Chrono Ark. Requires BepInEx.
 
-The .dll files are the mod files. I included .cs source code for people who want to look at it. 
+The .dll files are the mod files that you need. I included the project folders for people who want to look at it.
 
 Check here for how to use mods: https://github.com/Neoshrimp/ChronoArk-gameplay-plugins
 

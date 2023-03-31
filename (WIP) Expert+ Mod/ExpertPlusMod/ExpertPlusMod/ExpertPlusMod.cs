@@ -1642,6 +1642,7 @@ namespace ExpertPlusMod
 
         // Despair Mode Blood Mist 4 //
 
+        // Makes TFK the second fight
         [HarmonyPatch(typeof(BloodyMist))]
         [HarmonyPatch(nameof(BloodyMist.DoubleBattle))]
         class TFKGrave
@@ -1660,6 +1661,7 @@ namespace ExpertPlusMod
             }
         }
 
+        // Revive & Heal everyone at the start of WHite Grave TFK
         [HarmonyPatch(typeof(P_King))]
         [HarmonyPatch(nameof(P_King.BattleStart))]
         class TFKGraveFight
@@ -1700,6 +1702,21 @@ namespace ExpertPlusMod
                     }
                 }
                 return true;
+            }
+        }
+
+
+        [HarmonyPatch(typeof(P_King))]
+        [HarmonyPatch(nameof(P_King.BattleEnd))]
+        class TFKBattleEnd2
+        {
+            [HarmonyPrefix]
+            static bool Prefix(P_King __instance/*, ref IEnumerator __result*/)
+            {
+                Debug.Log("aaaaaaaaaaaaaaa");
+                BattleSystem.instance.BattleEnd();
+                Debug.Log("bbbbbbbbbbbbbbbb");
+                return false;
             }
         }
 

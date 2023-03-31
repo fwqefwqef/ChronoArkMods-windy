@@ -1707,16 +1707,30 @@ namespace ExpertPlusMod
 
 
         [HarmonyPatch(typeof(P_King))]
-        [HarmonyPatch(nameof(P_King.BattleEnd))]
+        [HarmonyPatch(nameof(P_King.BattleEndafter))]
         class TFKBattleEnd2
         {
             [HarmonyPrefix]
             static bool Prefix(P_King __instance/*, ref IEnumerator __result*/)
             {
-                Debug.Log("aaaaaaaaaaaaaaa");
-                BattleSystem.instance.BattleEnd();
-                Debug.Log("bbbbbbbbbbbbbbbb");
-                return false;
+                if (DespairMode.Value && PlayData.TSavedata.bMist != null && PlayData.TSavedata.bMist.Level == 4 && PlayData.TSavedata.StageNum != 5)
+                {
+                    Debug.Log("Here123");
+                    BattleSystem.instance.BattleEnd();
+                    return false;
+                }
+                return true;
+            }
+        }
+
+        [HarmonyPatch(typeof(S_LBossFirst_2))]
+        [HarmonyPatch(nameof(S_LBossFirst_2.Init))]
+        class Azar_TFKMusicEnd
+        {
+            static void Postfix(S_LBossFirst_2 __instance)
+            {
+                MasterAudio.StopAllOfSound("CA_Boss_04_Intro");
+                MasterAudio.StopAllOfSound("CA_Boss_04_Loop");
             }
         }
 

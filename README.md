@@ -43,6 +43,17 @@ Easy Crimson Wilderness: Receive ??? in Bloody Park 1. However, gain 2 less Soul
 
 (Go to BepInEx -> config -> open in Notepad: windy.bossrush.cfg)
 
+# [Damage Modifier]
+
+Multiplies all enemy and player damage by player-configured amount.
+
+Extra Settings
+
+Enemy Damage Multiplier: Multiplies enemy damage by this amount. (Default 1.5)
+Player Damage Multiplier: Multiplies player damage by this amount. (Default 1.5)
+
+(Go to BepInEx -> config -> open in Notepad: windy.damagemod.cfg)
+
 # [Minimum Skill Num]
 
 Change the number of minimum skills a character can have on their deck.

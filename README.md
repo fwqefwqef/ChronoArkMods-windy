@@ -50,6 +50,7 @@ Multiplies all enemy and player damage by player-configured amount.
 Extra Settings
 
 Enemy Damage Multiplier: Multiplies enemy damage by this amount. (Default 1.5)
+
 Player Damage Multiplier: Multiplies player damage by this amount. (Default 1.5)
 
 (Go to BepInEx -> config -> open in Notepad: windy.damagemod.cfg)

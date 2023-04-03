@@ -1,0 +1,167 @@
+C:\Program Files (x86)\Steam\steamapps\common\Chrono Ark\x64\Master\BepInEx\plugins\WM_CharacterMod\WM_CharacterMod-ModtheArk\StatModifier\bin\Debug\StatModifier.dll
+C:\Program Files (x86)\Steam\steamapps\common\Chrono Ark\x64\Master\BepInEx\plugins\WM_CharacterMod\WM_CharacterMod-ModtheArk\StatModifier\bin\Debug\StatModifier.pdb
+C:\Program Files (x86)\Steam\steamapps\common\Chrono Ark\x64\Master\BepInEx\plugins\WM_CharacterMod\WM_CharacterMod-ModtheArk\StatModifier\bin\Debug\0Harmony.dll
+C:\Program Files (x86)\Steam\steamapps\common\Chrono Ark\x64\Master\BepInEx\plugins\WM_CharacterMod\WM_CharacterMod-ModtheArk\StatModifier\bin\Debug\Assembly-CSharp-firstpass.dll
+C:\Program Files (x86)\Steam\steamapps\common\Chrono Ark\x64\Master\BepInEx\plugins\WM_CharacterMod\WM_CharacterMod-ModtheArk\StatModifier\bin\Debug\Assembly-CSharp.dll
+C:\Program Files (x86)\Steam\steamapps\common\Chrono Ark\x64\Master\BepInEx\plugins\WM_CharacterMod\WM_CharacterMod-ModtheArk\StatModifier\bin\Debug\BepInEx.dll
+C:\Program Files (x86)\Steam\steamapps\common\Chrono Ark\x64\Master\BepInEx\plugins\WM_CharacterMod\WM_CharacterMod-ModtheArk\StatModifier\bin\Debug\netstandard.dll
+C:\Program Files (x86)\Steam\steamapps\common\Chrono Ark\x64\Master\BepInEx\plugins\WM_CharacterMod\WM_CharacterMod-ModtheArk\StatModifier\bin\Debug\UnityEngine.CoreModule.dll
+C:\Program Files (x86)\Steam\steamapps\common\Chrono Ark\x64\Master\BepInEx\plugins\WM_CharacterMod\WM_CharacterMod-ModtheArk\StatModifier\bin\Debug\UnityEngine.dll
+C:\Program Files (x86)\Steam\steamapps\common\Chrono Ark\x64\Master\BepInEx\plugins\WM_CharacterMod\WM_CharacterMod-ModtheArk\StatModifier\bin\Debug\UnityEngine.UI.dll
+C:\Program Files (x86)\Steam\steamapps\common\Chrono Ark\x64\Master\BepInEx\plugins\WM_CharacterMod\WM_CharacterMod-ModtheArk\StatModifier\bin\Debug\Unity.ResourceManager.dll
+C:\Program Files (x86)\Steam\steamapps\common\Chrono Ark\x64\Master\BepInEx\plugins\WM_CharacterMod\WM_CharacterMod-ModtheArk\StatModifier\bin\Debug\Unity.Addressables.dll
+C:\Program Files (x86)\Steam\steamapps\common\Chrono Ark\x64\Master\BepInEx\plugins\WM_CharacterMod\WM_CharacterMod-ModtheArk\StatModifier\bin\Debug\UnityEngine.Physics2DModule.dll
+C:\Program Files (x86)\Steam\steamapps\common\Chrono Ark\x64\Master\BepInEx\plugins\WM_CharacterMod\WM_CharacterMod-ModtheArk\StatModifier\bin\Debug\UnityEngine.AnimationModule.dll
+C:\Program Files (x86)\Steam\steamapps\common\Chrono Ark\x64\Master\BepInEx\plugins\WM_CharacterMod\WM_CharacterMod-ModtheArk\StatModifier\bin\Debug\UnityEngine.ParticleSystemModule.dll
+C:\Program Files (x86)\Steam\steamapps\common\Chrono Ark\x64\Master\BepInEx\plugins\WM_CharacterMod\WM_CharacterMod-ModtheArk\StatModifier\bin\Debug\Unity.TextMeshPro.dll
+C:\Program Files (x86)\Steam\steamapps\common\Chrono Ark\x64\Master\BepInEx\plugins\WM_CharacterMod\WM_CharacterMod-ModtheArk\StatModifier\bin\Debug\UnityEngine.UIModule.dll
+C:\Program Files (x86)\Steam\steamapps\common\Chrono Ark\x64\Master\BepInEx\plugins\WM_CharacterMod\WM_CharacterMod-ModtheArk\StatModifier\bin\Debug\UnityEngine.AudioModule.dll
+C:\Program Files (x86)\Steam\steamapps\common\Chrono Ark\x64\Master\BepInEx\plugins\WM_CharacterMod\WM_CharacterMod-ModtheArk\StatModifier\bin\Debug\UnityEngine.PhysicsModule.dll
+C:\Program Files (x86)\Steam\steamapps\common\Chrono Ark\x64\Master\BepInEx\plugins\WM_CharacterMod\WM_CharacterMod-ModtheArk\StatModifier\bin\Debug\spine-unity.dll
+C:\Program Files (x86)\Steam\steamapps\common\Chrono Ark\x64\Master\BepInEx\plugins\WM_CharacterMod\WM_CharacterMod-ModtheArk\StatModifier\bin\Debug\Unity.Postprocessing.Runtime.dll
+C:\Program Files (x86)\Steam\steamapps\common\Chrono Ark\x64\Master\BepInEx\plugins\WM_CharacterMod\WM_CharacterMod-ModtheArk\StatModifier\bin\Debug\UnityEngine.IMGUIModule.dll
+C:\Program Files (x86)\Steam\steamapps\common\Chrono Ark\x64\Master\BepInEx\plugins\WM_CharacterMod\WM_CharacterMod-ModtheArk\StatModifier\bin\Debug\UnityEngine.TextRenderingModule.dll
+C:\Program Files (x86)\Steam\steamapps\common\Chrono Ark\x64\Master\BepInEx\plugins\WM_CharacterMod\WM_CharacterMod-ModtheArk\StatModifier\bin\Debug\UnityEngine.VideoModule.dll
+C:\Program Files (x86)\Steam\steamapps\common\Chrono Ark\x64\Master\BepInEx\plugins\WM_CharacterMod\WM_CharacterMod-ModtheArk\StatModifier\bin\Debug\UnityEngine.UnityAnalyticsModule.dll
+C:\Program Files (x86)\Steam\steamapps\common\Chrono Ark\x64\Master\BepInEx\plugins\WM_CharacterMod\WM_CharacterMod-ModtheArk\StatModifier\bin\Debug\StovePCSDK.NET.dll
+C:\Program Files (x86)\Steam\steamapps\common\Chrono Ark\x64\Master\BepInEx\plugins\WM_CharacterMod\WM_CharacterMod-ModtheArk\StatModifier\bin\Debug\UnityEngine.UnityWebRequestModule.dll
+C:\Program Files (x86)\Steam\steamapps\common\Chrono Ark\x64\Master\BepInEx\plugins\WM_CharacterMod\WM_CharacterMod-ModtheArk\StatModifier\bin\Debug\DOTween.dll
+C:\Program Files (x86)\Steam\steamapps\common\Chrono Ark\x64\Master\BepInEx\plugins\WM_CharacterMod\WM_CharacterMod-ModtheArk\StatModifier\bin\Debug\UnityEngine.PerformanceReportingModule.dll
+C:\Program Files (x86)\Steam\steamapps\common\Chrono Ark\x64\Master\BepInEx\plugins\WM_CharacterMod\WM_CharacterMod-ModtheArk\StatModifier\bin\Debug\UnityEngine.VRModule.dll
+C:\Program Files (x86)\Steam\steamapps\common\Chrono Ark\x64\Master\BepInEx\plugins\WM_CharacterMod\WM_CharacterMod-ModtheArk\StatModifier\bin\Debug\UnityEngine.TerrainModule.dll
+C:\Program Files (x86)\Steam\steamapps\common\Chrono Ark\x64\Master\BepInEx\plugins\WM_CharacterMod\WM_CharacterMod-ModtheArk\StatModifier\bin\Debug\UnityEngine.UnityWebRequestWWWModule.dll
+C:\Program Files (x86)\Steam\steamapps\common\Chrono Ark\x64\Master\BepInEx\plugins\WM_CharacterMod\WM_CharacterMod-ModtheArk\StatModifier\bin\Debug\System.Diagnostics.StackTrace.dll
+C:\Program Files (x86)\Steam\steamapps\common\Chrono Ark\x64\Master\BepInEx\plugins\WM_CharacterMod\WM_CharacterMod-ModtheArk\StatModifier\bin\Debug\System.Globalization.Extensions.dll
+C:\Program Files (x86)\Steam\steamapps\common\Chrono Ark\x64\Master\BepInEx\plugins\WM_CharacterMod\WM_CharacterMod-ModtheArk\StatModifier\bin\Debug\System.IO.Compression.dll
+C:\Program Files (x86)\Steam\steamapps\common\Chrono Ark\x64\Master\BepInEx\plugins\WM_CharacterMod\WM_CharacterMod-ModtheArk\StatModifier\bin\Debug\System.IO.Compression.FileSystem.dll
+C:\Program Files (x86)\Steam\steamapps\common\Chrono Ark\x64\Master\BepInEx\plugins\WM_CharacterMod\WM_CharacterMod-ModtheArk\StatModifier\bin\Debug\System.Net.Http.dll
+C:\Program Files (x86)\Steam\steamapps\common\Chrono Ark\x64\Master\BepInEx\plugins\WM_CharacterMod\WM_CharacterMod-ModtheArk\StatModifier\bin\Debug\System.Runtime.Serialization.Xml.dll
+C:\Program Files (x86)\Steam\steamapps\common\Chrono Ark\x64\Master\BepInEx\plugins\WM_CharacterMod\WM_CharacterMod-ModtheArk\StatModifier\bin\Debug\System.Xml.XPath.XDocument.dll
+C:\Program Files (x86)\Steam\steamapps\common\Chrono Ark\x64\Master\BepInEx\plugins\WM_CharacterMod\WM_CharacterMod-ModtheArk\StatModifier\bin\Debug\UnityEngine.DSPGraphModule.dll
+C:\Program Files (x86)\Steam\steamapps\common\Chrono Ark\x64\Master\BepInEx\plugins\WM_CharacterMod\WM_CharacterMod-ModtheArk\StatModifier\bin\Debug\UnityEngine.UnityCurlModule.dll
+C:\Program Files (x86)\Steam\steamapps\common\Chrono Ark\x64\Master\BepInEx\plugins\WM_CharacterMod\WM_CharacterMod-ModtheArk\StatModifier\bin\Debug\UnityEngine.UIElementsModule.dll
+C:\Program Files (x86)\Steam\steamapps\common\Chrono Ark\x64\Master\BepInEx\plugins\WM_CharacterMod\WM_CharacterMod-ModtheArk\StatModifier\bin\Debug\UnityEngine.AndroidJNIModule.dll
+C:\Program Files (x86)\Steam\steamapps\common\Chrono Ark\x64\Master\BepInEx\plugins\WM_CharacterMod\WM_CharacterMod-ModtheArk\StatModifier\bin\Debug\UnityEngine.InputLegacyModule.dll
+C:\Program Files (x86)\Steam\steamapps\common\Chrono Ark\x64\Master\BepInEx\plugins\WM_CharacterMod\WM_CharacterMod-ModtheArk\StatModifier\bin\Debug\UnityEngine.AccessibilityModule.dll
+C:\Program Files (x86)\Steam\steamapps\common\Chrono Ark\x64\Master\BepInEx\plugins\WM_CharacterMod\WM_CharacterMod-ModtheArk\StatModifier\bin\Debug\UnityEngine.UnityConnectModule.dll
+C:\Program Files (x86)\Steam\steamapps\common\Chrono Ark\x64\Master\BepInEx\plugins\WM_CharacterMod\WM_CharacterMod-ModtheArk\StatModifier\bin\Debug\UnityEngine.AIModule.dll
+C:\Program Files (x86)\Steam\steamapps\common\Chrono Ark\x64\Master\BepInEx\plugins\WM_CharacterMod\WM_CharacterMod-ModtheArk\StatModifier\bin\Debug\UnityEngine.AssetBundleModule.dll
+C:\Program Files (x86)\Steam\steamapps\common\Chrono Ark\x64\Master\BepInEx\plugins\WM_CharacterMod\WM_CharacterMod-ModtheArk\StatModifier\bin\Debug\UnityEngine.SharedInternalsModule.dll
+C:\Program Files (x86)\Steam\steamapps\common\Chrono Ark\x64\Master\BepInEx\plugins\WM_CharacterMod\WM_CharacterMod-ModtheArk\StatModifier\bin\Debug\UnityEngine.ClothModule.dll
+C:\Program Files (x86)\Steam\steamapps\common\Chrono Ark\x64\Master\BepInEx\plugins\WM_CharacterMod\WM_CharacterMod-ModtheArk\StatModifier\bin\Debug\UnityEngine.ClusterInputModule.dll
+C:\Program Files (x86)\Steam\steamapps\common\Chrono Ark\x64\Master\BepInEx\plugins\WM_CharacterMod\WM_CharacterMod-ModtheArk\StatModifier\bin\Debug\UnityEngine.ClusterRendererModule.dll
+C:\Program Files (x86)\Steam\steamapps\common\Chrono Ark\x64\Master\BepInEx\plugins\WM_CharacterMod\WM_CharacterMod-ModtheArk\StatModifier\bin\Debug\UnityEngine.CrashReportingModule.dll
+C:\Program Files (x86)\Steam\steamapps\common\Chrono Ark\x64\Master\BepInEx\plugins\WM_CharacterMod\WM_CharacterMod-ModtheArk\StatModifier\bin\Debug\UnityEngine.TilemapModule.dll
+C:\Program Files (x86)\Steam\steamapps\common\Chrono Ark\x64\Master\BepInEx\plugins\WM_CharacterMod\WM_CharacterMod-ModtheArk\StatModifier\bin\Debug\UnityEngine.VFXModule.dll
+C:\Program Files (x86)\Steam\steamapps\common\Chrono Ark\x64\Master\BepInEx\plugins\WM_CharacterMod\WM_CharacterMod-ModtheArk\StatModifier\bin\Debug\UnityEngine.GridModule.dll
+C:\Program Files (x86)\Steam\steamapps\common\Chrono Ark\x64\Master\BepInEx\plugins\WM_CharacterMod\WM_CharacterMod-ModtheArk\StatModifier\bin\Debug\UnityEngine.ImageConversionModule.dll
+C:\Program Files (x86)\Steam\steamapps\common\Chrono Ark\x64\Master\BepInEx\plugins\WM_CharacterMod\WM_CharacterMod-ModtheArk\StatModifier\bin\Debug\UnityEngine.SubsystemsModule.dll
+C:\Program Files (x86)\Steam\steamapps\common\Chrono Ark\x64\Master\BepInEx\plugins\WM_CharacterMod\WM_CharacterMod-ModtheArk\StatModifier\bin\Debug\UnityEngine.JSONSerializeModule.dll
+C:\Program Files (x86)\Steam\steamapps\common\Chrono Ark\x64\Master\BepInEx\plugins\WM_CharacterMod\WM_CharacterMod-ModtheArk\StatModifier\bin\Debug\UnityEngine.LocalizationModule.dll
+C:\Program Files (x86)\Steam\steamapps\common\Chrono Ark\x64\Master\BepInEx\plugins\WM_CharacterMod\WM_CharacterMod-ModtheArk\StatModifier\bin\Debug\UnityEngine.UNETModule.dll
+C:\Program Files (x86)\Steam\steamapps\common\Chrono Ark\x64\Master\BepInEx\plugins\WM_CharacterMod\WM_CharacterMod-ModtheArk\StatModifier\bin\Debug\UnityEngine.UnityWebRequestAssetBundleModule.dll
+C:\Program Files (x86)\Steam\steamapps\common\Chrono Ark\x64\Master\BepInEx\plugins\WM_CharacterMod\WM_CharacterMod-ModtheArk\StatModifier\bin\Debug\UnityEngine.UnityWebRequestAudioModule.dll
+C:\Program Files (x86)\Steam\steamapps\common\Chrono Ark\x64\Master\BepInEx\plugins\WM_CharacterMod\WM_CharacterMod-ModtheArk\StatModifier\bin\Debug\UnityEngine.UnityWebRequestTextureModule.dll
+C:\Program Files (x86)\Steam\steamapps\common\Chrono Ark\x64\Master\BepInEx\plugins\WM_CharacterMod\WM_CharacterMod-ModtheArk\StatModifier\bin\Debug\UnityEngine.DirectorModule.dll
+C:\Program Files (x86)\Steam\steamapps\common\Chrono Ark\x64\Master\BepInEx\plugins\WM_CharacterMod\WM_CharacterMod-ModtheArk\StatModifier\bin\Debug\UnityEngine.VirtualTexturingModule.dll
+C:\Program Files (x86)\Steam\steamapps\common\Chrono Ark\x64\Master\BepInEx\plugins\WM_CharacterMod\WM_CharacterMod-ModtheArk\StatModifier\bin\Debug\UnityEngine.ScreenCaptureModule.dll
+C:\Program Files (x86)\Steam\steamapps\common\Chrono Ark\x64\Master\BepInEx\plugins\WM_CharacterMod\WM_CharacterMod-ModtheArk\StatModifier\bin\Debug\UnityEngine.GameCenterModule.dll
+C:\Program Files (x86)\Steam\steamapps\common\Chrono Ark\x64\Master\BepInEx\plugins\WM_CharacterMod\WM_CharacterMod-ModtheArk\StatModifier\bin\Debug\UnityEngine.SpriteMaskModule.dll
+C:\Program Files (x86)\Steam\steamapps\common\Chrono Ark\x64\Master\BepInEx\plugins\WM_CharacterMod\WM_CharacterMod-ModtheArk\StatModifier\bin\Debug\UnityEngine.StreamingModule.dll
+C:\Program Files (x86)\Steam\steamapps\common\Chrono Ark\x64\Master\BepInEx\plugins\WM_CharacterMod\WM_CharacterMod-ModtheArk\StatModifier\bin\Debug\UnityEngine.TerrainPhysicsModule.dll
+C:\Program Files (x86)\Steam\steamapps\common\Chrono Ark\x64\Master\BepInEx\plugins\WM_CharacterMod\WM_CharacterMod-ModtheArk\StatModifier\bin\Debug\UnityEngine.TextCoreModule.dll
+C:\Program Files (x86)\Steam\steamapps\common\Chrono Ark\x64\Master\BepInEx\plugins\WM_CharacterMod\WM_CharacterMod-ModtheArk\StatModifier\bin\Debug\UnityEngine.SpriteShapeModule.dll
+C:\Program Files (x86)\Steam\steamapps\common\Chrono Ark\x64\Master\BepInEx\plugins\WM_CharacterMod\WM_CharacterMod-ModtheArk\StatModifier\bin\Debug\UnityEngine.UIElementsNativeModule.dll
+C:\Program Files (x86)\Steam\steamapps\common\Chrono Ark\x64\Master\BepInEx\plugins\WM_CharacterMod\WM_CharacterMod-ModtheArk\StatModifier\bin\Debug\UnityEngine.VehiclesModule.dll
+C:\Program Files (x86)\Steam\steamapps\common\Chrono Ark\x64\Master\BepInEx\plugins\WM_CharacterMod\WM_CharacterMod-ModtheArk\StatModifier\bin\Debug\UnityEngine.WindModule.dll
+C:\Program Files (x86)\Steam\steamapps\common\Chrono Ark\x64\Master\BepInEx\plugins\WM_CharacterMod\WM_CharacterMod-ModtheArk\StatModifier\bin\Debug\UnityEngine.XRModule.dll
+C:\Program Files (x86)\Steam\steamapps\common\Chrono Ark\x64\Master\BepInEx\plugins\WM_CharacterMod\WM_CharacterMod-ModtheArk\StatModifier\bin\Debug\UnityEngine.ARModule.dll
+C:\Program Files (x86)\Steam\steamapps\common\Chrono Ark\x64\Master\BepInEx\plugins\WM_CharacterMod\WM_CharacterMod-ModtheArk\StatModifier\bin\Debug\UnityEngine.InputModule.dll
+C:\Program Files (x86)\Steam\steamapps\common\Chrono Ark\x64\Master\BepInEx\plugins\WM_CharacterMod\WM_CharacterMod-ModtheArk\StatModifier\obj\Debug\StatModifier.csproj.AssemblyReference.cache
+C:\Program Files (x86)\Steam\steamapps\common\Chrono Ark\x64\Master\BepInEx\plugins\WM_CharacterMod\WM_CharacterMod-ModtheArk\StatModifier\obj\Debug\StatModifier.csproj.CoreCompileInputs.cache
+C:\Program Files (x86)\Steam\steamapps\common\Chrono Ark\x64\Master\BepInEx\plugins\WM_CharacterMod\WM_CharacterMod-ModtheArk\StatModifier\obj\Debug\StatModifier.csproj.CopyComplete
+C:\Program Files (x86)\Steam\steamapps\common\Chrono Ark\x64\Master\BepInEx\plugins\WM_CharacterMod\WM_CharacterMod-ModtheArk\StatModifier\obj\Debug\StatModifier.dll
+C:\Program Files (x86)\Steam\steamapps\common\Chrono Ark\x64\Master\BepInEx\plugins\WM_CharacterMod\WM_CharacterMod-ModtheArk\StatModifier\obj\Debug\StatModifier.pdb
+C:\Users\sjkim\source\repos\StatModifier\bin\Debug\StatModifier.dll
+C:\Users\sjkim\source\repos\StatModifier\bin\Debug\StatModifier.pdb
+C:\Users\sjkim\source\repos\StatModifier\bin\Debug\0Harmony.dll
+C:\Users\sjkim\source\repos\StatModifier\bin\Debug\BepInEx.dll
+C:\Users\sjkim\source\repos\StatModifier\bin\Debug\netstandard.dll
+C:\Users\sjkim\source\repos\StatModifier\bin\Debug\UnityEngine.UI.dll
+C:\Users\sjkim\source\repos\StatModifier\bin\Debug\Unity.ResourceManager.dll
+C:\Users\sjkim\source\repos\StatModifier\bin\Debug\Unity.Addressables.dll
+C:\Users\sjkim\source\repos\StatModifier\bin\Debug\UnityEngine.Physics2DModule.dll
+C:\Users\sjkim\source\repos\StatModifier\bin\Debug\UnityEngine.AnimationModule.dll
+C:\Users\sjkim\source\repos\StatModifier\bin\Debug\UnityEngine.ParticleSystemModule.dll
+C:\Users\sjkim\source\repos\StatModifier\bin\Debug\Unity.TextMeshPro.dll
+C:\Users\sjkim\source\repos\StatModifier\bin\Debug\UnityEngine.UIModule.dll
+C:\Users\sjkim\source\repos\StatModifier\bin\Debug\UnityEngine.AudioModule.dll
+C:\Users\sjkim\source\repos\StatModifier\bin\Debug\UnityEngine.PhysicsModule.dll
+C:\Users\sjkim\source\repos\StatModifier\bin\Debug\spine-unity.dll
+C:\Users\sjkim\source\repos\StatModifier\bin\Debug\Unity.Postprocessing.Runtime.dll
+C:\Users\sjkim\source\repos\StatModifier\bin\Debug\UnityEngine.IMGUIModule.dll
+C:\Users\sjkim\source\repos\StatModifier\bin\Debug\UnityEngine.TextRenderingModule.dll
+C:\Users\sjkim\source\repos\StatModifier\bin\Debug\UnityEngine.VideoModule.dll
+C:\Users\sjkim\source\repos\StatModifier\bin\Debug\UnityEngine.UnityAnalyticsModule.dll
+C:\Users\sjkim\source\repos\StatModifier\bin\Debug\StovePCSDK.NET.dll
+C:\Users\sjkim\source\repos\StatModifier\bin\Debug\UnityEngine.UnityWebRequestModule.dll
+C:\Users\sjkim\source\repos\StatModifier\bin\Debug\DOTween.dll
+C:\Users\sjkim\source\repos\StatModifier\bin\Debug\UnityEngine.PerformanceReportingModule.dll
+C:\Users\sjkim\source\repos\StatModifier\bin\Debug\UnityEngine.VRModule.dll
+C:\Users\sjkim\source\repos\StatModifier\bin\Debug\UnityEngine.TerrainModule.dll
+C:\Users\sjkim\source\repos\StatModifier\bin\Debug\UnityEngine.UnityWebRequestWWWModule.dll
+C:\Users\sjkim\source\repos\StatModifier\bin\Debug\System.Diagnostics.StackTrace.dll
+C:\Users\sjkim\source\repos\StatModifier\bin\Debug\System.Globalization.Extensions.dll
+C:\Users\sjkim\source\repos\StatModifier\bin\Debug\System.IO.Compression.dll
+C:\Users\sjkim\source\repos\StatModifier\bin\Debug\System.IO.Compression.FileSystem.dll
+C:\Users\sjkim\source\repos\StatModifier\bin\Debug\System.Net.Http.dll
+C:\Users\sjkim\source\repos\StatModifier\bin\Debug\System.Runtime.Serialization.dll
+C:\Users\sjkim\source\repos\StatModifier\bin\Debug\System.Runtime.Serialization.Xml.dll
+C:\Users\sjkim\source\repos\StatModifier\bin\Debug\System.Xml.XPath.XDocument.dll
+C:\Users\sjkim\source\repos\StatModifier\bin\Debug\UnityEngine.DSPGraphModule.dll
+C:\Users\sjkim\source\repos\StatModifier\bin\Debug\UnityEngine.UnityCurlModule.dll
+C:\Users\sjkim\source\repos\StatModifier\bin\Debug\UnityEngine.UIElementsModule.dll
+C:\Users\sjkim\source\repos\StatModifier\bin\Debug\UnityEngine.AndroidJNIModule.dll
+C:\Users\sjkim\source\repos\StatModifier\bin\Debug\UnityEngine.InputLegacyModule.dll
+C:\Users\sjkim\source\repos\StatModifier\bin\Debug\UnityEngine.AccessibilityModule.dll
+C:\Users\sjkim\source\repos\StatModifier\bin\Debug\UnityEngine.UnityConnectModule.dll
+C:\Users\sjkim\source\repos\StatModifier\bin\Debug\UnityEngine.AIModule.dll
+C:\Users\sjkim\source\repos\StatModifier\bin\Debug\UnityEngine.AssetBundleModule.dll
+C:\Users\sjkim\source\repos\StatModifier\bin\Debug\UnityEngine.SharedInternalsModule.dll
+C:\Users\sjkim\source\repos\StatModifier\bin\Debug\UnityEngine.ClothModule.dll
+C:\Users\sjkim\source\repos\StatModifier\bin\Debug\UnityEngine.ClusterInputModule.dll
+C:\Users\sjkim\source\repos\StatModifier\bin\Debug\UnityEngine.ClusterRendererModule.dll
+C:\Users\sjkim\source\repos\StatModifier\bin\Debug\UnityEngine.CrashReportingModule.dll
+C:\Users\sjkim\source\repos\StatModifier\bin\Debug\UnityEngine.TilemapModule.dll
+C:\Users\sjkim\source\repos\StatModifier\bin\Debug\UnityEngine.VFXModule.dll
+C:\Users\sjkim\source\repos\StatModifier\bin\Debug\UnityEngine.GridModule.dll
+C:\Users\sjkim\source\repos\StatModifier\bin\Debug\UnityEngine.ImageConversionModule.dll
+C:\Users\sjkim\source\repos\StatModifier\bin\Debug\UnityEngine.SubsystemsModule.dll
+C:\Users\sjkim\source\repos\StatModifier\bin\Debug\UnityEngine.JSONSerializeModule.dll
+C:\Users\sjkim\source\repos\StatModifier\bin\Debug\UnityEngine.LocalizationModule.dll
+C:\Users\sjkim\source\repos\StatModifier\bin\Debug\UnityEngine.UNETModule.dll
+C:\Users\sjkim\source\repos\StatModifier\bin\Debug\UnityEngine.UnityWebRequestAssetBundleModule.dll
+C:\Users\sjkim\source\repos\StatModifier\bin\Debug\UnityEngine.UnityWebRequestAudioModule.dll
+C:\Users\sjkim\source\repos\StatModifier\bin\Debug\UnityEngine.UnityWebRequestTextureModule.dll
+C:\Users\sjkim\source\repos\StatModifier\bin\Debug\UnityEngine.DirectorModule.dll
+C:\Users\sjkim\source\repos\StatModifier\bin\Debug\UnityEngine.VirtualTexturingModule.dll
+C:\Users\sjkim\source\repos\StatModifier\bin\Debug\UnityEngine.ScreenCaptureModule.dll
+C:\Users\sjkim\source\repos\StatModifier\bin\Debug\UnityEngine.GameCenterModule.dll
+C:\Users\sjkim\source\repos\StatModifier\bin\Debug\UnityEngine.SpriteMaskModule.dll
+C:\Users\sjkim\source\repos\StatModifier\bin\Debug\UnityEngine.StreamingModule.dll
+C:\Users\sjkim\source\repos\StatModifier\bin\Debug\UnityEngine.TerrainPhysicsModule.dll
+C:\Users\sjkim\source\repos\StatModifier\bin\Debug\UnityEngine.TextCoreModule.dll
+C:\Users\sjkim\source\repos\StatModifier\bin\Debug\UnityEngine.SpriteShapeModule.dll
+C:\Users\sjkim\source\repos\StatModifier\bin\Debug\UnityEngine.UIElementsNativeModule.dll
+C:\Users\sjkim\source\repos\StatModifier\bin\Debug\UnityEngine.VehiclesModule.dll
+C:\Users\sjkim\source\repos\StatModifier\bin\Debug\UnityEngine.WindModule.dll
+C:\Users\sjkim\source\repos\StatModifier\bin\Debug\UnityEngine.XRModule.dll
+C:\Users\sjkim\source\repos\StatModifier\bin\Debug\UnityEngine.ARModule.dll
+C:\Users\sjkim\source\repos\StatModifier\bin\Debug\UnityEngine.InputModule.dll
+C:\Users\sjkim\source\repos\StatModifier\bin\Debug\Mono.Security.dll
+C:\Users\sjkim\source\repos\StatModifier\bin\Debug\System.ServiceModel.Internals.dll
+C:\Users\sjkim\source\repos\StatModifier\obj\Debug\StatModifier.csproj.AssemblyReference.cache
+C:\Users\sjkim\source\repos\StatModifier\obj\Debug\StatModifier.csproj.CoreCompileInputs.cache
+C:\Users\sjkim\source\repos\StatModifier\obj\Debug\StatModifier.csproj.CopyComplete
+C:\Users\sjkim\source\repos\StatModifier\obj\Debug\StatModifier.dll
+C:\Users\sjkim\source\repos\StatModifier\obj\Debug\StatModifier.pdb

@@ -47,7 +47,7 @@ Easy Crimson Wilderness: Receive ??? in Bloody Park 1. However, gain 2 less Soul
 
 Multiplies all enemy and player damage by player-configured amount.
 
-Note: this mod simply modifies ally and enemy attack power, which means there are some unaccounted skills.
+Note: this mod simply changes attack power, which means there are some unaccounted skills.
 
 Extra Settings
 

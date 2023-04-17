@@ -57,6 +57,10 @@ Player Damage Multiplier: Multiplies player damage by this amount. (Default 1.5)
 
 (Go to BepInEx -> config -> open in Notepad: windy.damagemod.cfg)
 
+# [First Rare Full]
+
+The first rare skillbook shows all rare skills of your investigators.
+
 # [Minimum Skill Num]
 
 Change the number of minimum skills a character can have on their deck.

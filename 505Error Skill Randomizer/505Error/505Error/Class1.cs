@@ -8,7 +8,7 @@ using System.Collections.Generic;
 using BepInEx.Configuration;
 using I2.Loc;
 
-namespace Alternative_ShadowCurtain
+namespace FiveErrorMod
 {
     [BepInPlugin(GUID, "505Error Mod", version)]
     [BepInProcess("ChronoArk.exe")]
@@ -29,25 +29,6 @@ namespace Alternative_ShadowCurtain
         {
             if (harmony != null)
                 harmony.UnpatchAll(GUID);
-        }
-
-        [HarmonyPatch(typeof(GDEDataManager), nameof(GDEDataManager.InitFromText))]
-        // modify gdata json
-        class ModifyGData
-        {
-            static void Prefix(ref string dataString)
-            {
-                Dictionary<string, object> masterJson = (Json.Deserialize(dataString) as Dictionary<string, object>);
-                foreach (var e in masterJson)
-                {
-                    //Debug.Log(e);
-                    //if (((Dictionary<string, object>)e.Value).ContainsKey("NoBasicSkill"))
-                    //{
-                    //    (masterJson[e.Key] as Dictionary<string, object>)["NoBasicSkill"] = "false";
-                    //}
-                }
-                dataString = Json.Serialize(masterJson);
-            }
         }
 
         // modify 505Error
@@ -275,26 +256,12 @@ namespace Alternative_ShadowCurtain
                 BattleTeam tempBattleTeam = PlayData.TempBattleTeam;
 
 
-                // List of character names to pull from. This implementation is stinky but it works
-                List<string> names = new List<string>();
-                names.Add("Hein");
-                names.Add("Joey");
-                names.Add("Sizz");
-                names.Add("Trisha");
-                names.Add("MissChain");
-                names.Add("Azar");
-                names.Add("Lian");
-                names.Add("Phoenix");
-                names.Add("Priest");
-                names.Add("Prime");
-                names.Add("ShadowPriest");
-                names.Add("SilverStein");
-                names.Add("Queen");
-                names.Add("TW_Red");
-                names.Add("TW_Blue");
-                names.Add("Control");
-                names.Add("Mement");
-                names.Add("Ilya");
+                // List of character names to pull from.
+                List<string> names = new List<string> {
+                    GDEItemKeys.Character_Azar, GDEItemKeys.Character_Control, GDEItemKeys.Character_Hein, GDEItemKeys.Character_Ilya, GDEItemKeys.Character_Joey,
+                    GDEItemKeys.Character_Lian, GDEItemKeys.Character_Mement, GDEItemKeys.Character_MissChain, GDEItemKeys.Character_Phoenix, GDEItemKeys.Character_Priest,
+                    GDEItemKeys.Character_Prime, GDEItemKeys.Character_Queen, GDEItemKeys.Character_ShadowPriest, GDEItemKeys.Character_SilverStein, GDEItemKeys.Character_Sizz,
+                    GDEItemKeys.Character_Trisha, GDEItemKeys.Character_TW_Blue, GDEItemKeys.Character_TW_Red, GDEItemKeys.Character_Ilya,GDEItemKeys.Character_Leryn};
 
                 for (int i = 0; i < PlayData.TSavedata.Party.Count; i++)
                 {

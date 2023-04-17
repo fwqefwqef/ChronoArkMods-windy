@@ -59,7 +59,7 @@ Player Damage Multiplier: Multiplies player damage by this amount. (Default 1.5)
 
 # [First Rare Full]
 
-The first rare skillbook shows all rare skills of your investigators.
+Makes the first rare skillbook show all rare skills of your investigators.
 
 # [Minimum Skill Num]
 

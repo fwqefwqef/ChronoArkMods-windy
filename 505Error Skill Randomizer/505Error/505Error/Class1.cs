@@ -20,11 +20,9 @@ namespace Alternative_ShadowCurtain
         private static readonly Harmony harmony = new Harmony(GUID);
 
         private static ConfigEntry<bool> ChaosMode;
-        private static ConfigEntry<bool> Healing101;
         void Awake()
         {
             ChaosMode = Config.Bind("Generation config", "Chaos Mode", false, "Include every existing skill in the game into the selection pool. Gets silly quickly. (true/false)");
-            Healing101 = Config.Bind("Generation config", "Healing 101", false, "Gives 2 Healing 101 at the start of the game to help support characters pick up heal skills. (true/false)");
             harmony.PatchAll();
         }
         void OnDestroy()
@@ -49,25 +47,6 @@ namespace Alternative_ShadowCurtain
                     //}
                 }
                 dataString = Json.Serialize(masterJson);
-            }
-        }
-
-        // add starting items
-        [HarmonyPatch(typeof(FieldSystem))]
-        class FieldSystem_Patch
-        {
-            [HarmonyPatch(nameof(FieldSystem.StageStart))]
-            [HarmonyPrefix]
-            static void StageStartPrefix()
-            {
-                // copied from FieldSystem.StageStart
-                if (PlayData.TSavedata.StageNum == 0 && !PlayData.TSavedata.GameStarted)
-                {
-                    if (Healing101.Value)
-                    {
-                        PartyInventory.InvenM.AddNewItem(ItemBase.GetItem(GDEItemKeys.Item_Consume_SkillBookSuport, 2));
-                    }
-                }
             }
         }
 
@@ -297,9 +276,6 @@ namespace Alternative_ShadowCurtain
 
 
                 // List of character names to pull from. This implementation is stinky but it works
-                // Reason why I did this: I tried to make a list of rare GDESkillData but GDESkillData.Rare and GDESkillData.NoDrop (both are bool) seem to have 0 skills that return true
-                // Why do I need to use <GDESkillData> instead of <Skill>? PlayData.ALLSKILLLIST is a List<GDESkillData>
-                // I couldn't find another way to do it so I just did this quick fix for now. Confirmed that all characters' rares show up properly.
                 List<string> names = new List<string>();
                 names.Add("Hein");
                 names.Add("Joey");
@@ -318,7 +294,7 @@ namespace Alternative_ShadowCurtain
                 names.Add("TW_Blue");
                 names.Add("Control");
                 names.Add("Mement");
-                //names.Add("Ilya");
+                names.Add("Ilya");
 
                 for (int i = 0; i < PlayData.TSavedata.Party.Count; i++)
                 {

@@ -51,7 +51,7 @@ Extra Settings
 
 Trinity Mode: You can only learn Boomerang, Harden, Surprise Attack. (Default OFF)
 
-Rare Disable: Golden Skillbook is converted into gold when used. Disable rare learn option from Black Market.(Default OFF)
+Rare Disable: Golden Skillbook is converted into gold when used. Disable rare learn option from Black Market. (Default OFF)
 
 (Go to BepInEx -> config -> open in Notepad: windy.commonskillonly.cfg)
 

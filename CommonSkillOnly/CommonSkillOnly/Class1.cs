@@ -14,7 +14,7 @@ namespace CommonSkillOnly
     [BepInProcess("ChronoArk.exe")]
     public class RareSkillsPlugin : BaseUnityPlugin
     {
-        public const string GUID = "org.windy.commonskillonly";
+        public const string GUID = "windy.commonskillonly";
         public const string version = "1.0.0";
 
         private static readonly Harmony harmony = new Harmony(GUID);

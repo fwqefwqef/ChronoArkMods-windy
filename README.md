@@ -43,6 +43,20 @@ Easy Crimson Wilderness: Receive ??? in Bloody Park 1. However, gain 2 less Soul
 
 (Go to BepInEx -> config -> open in Notepad: windy.bossrush.cfg)
 
+# [Common Skill Only]
+
+Level Up: Learn from 3 random common skills.
+
+Skill Book, Infinite Skill Book, Healing 101: Shows random common skills.
+
+Extra Settings
+
+Trinity Mode: You can only learn Boomerang, Harden, Surprise Attack. (Default OFF)
+
+Rare Disable: Golden Skillbook is converted into gold when used. Disable rare learn option from Black Market.(Default OFF)
+
+(Go to BepInEx -> config -> open in Notepad: windy.commonskillonly.cfg)
+
 # [Damage Modifier]
 
 Multiplies all enemy and player damage by player-configured amount.

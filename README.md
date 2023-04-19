@@ -45,9 +45,7 @@ Easy Crimson Wilderness: Receive ??? in Bloody Park 1. However, gain 2 less Soul
 
 # [Common Skill Only]
 
-Level Up: Learn from 3 random common skills.
-
-Skill Book, Infinite Skill Book, Healing 101: Shows random common skills.
+Changes all skill learns (level up, skillbook, event object) to be common skills only.
 
 Extra Settings
 

@@ -85,8 +85,6 @@ Go to BepInEx -> config -> open in Notepad: windy.minskill.cfg
 
 You can obtain parrying attack skillbook from Lian even after unlocking her. It costs 0 credits. 
 
-(Optional) The game text will say that it still requires 8 credits. To fix this: Chrono Ark > ChronoArk_Data > StreamingAssets > LangDialogueDB.csv: Ctrl+F "8 credits", delete the parenthesis
-
 # [Recruit Select Num]
 
 Change the number of party members available in campfire recruit. 

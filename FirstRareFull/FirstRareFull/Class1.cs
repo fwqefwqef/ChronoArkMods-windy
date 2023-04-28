@@ -42,10 +42,6 @@ namespace FirstRareFull
             {
                 if (firstlearn)
                 {
-                    // Can learn infinite rare
-                    PlayData.TSavedata.SpRule = new SpecialRule();
-                    PlayData.TSavedata.SpRule.RuleChange.CharacterRareSkillInfinityGet = true;
-
                     List<Skill> list = new List<Skill>();
                     List<BattleAlly> battleallys = PlayData.Battleallys;
                     BattleTeam tempBattleTeam = PlayData.TempBattleTeam;
@@ -98,7 +94,6 @@ namespace FirstRareFull
                     FieldSystem.DelayInput(BattleSystem.I_OtherSkillSelect(list, new SkillButton.SkillClickDel(__instance.SkillAdd), ScriptLocalization.System_Item.SkillAdd, false, true, true, true, true));
                     __result = true;
                     firstlearn = false;
-                    PlayData.TSavedata.SpRule.RuleChange.CharacterRareSkillInfinityGet = false;
                     return false;
                 }
                 else return true;

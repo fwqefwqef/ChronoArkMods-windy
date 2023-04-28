@@ -6,6 +6,7 @@ using I2.Loc;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using System.Reflection;
 using UnityEngine;
 
@@ -68,12 +69,13 @@ namespace FirstRareFull
                         if (!flag)
                         {
                             // Changed Here
-                            List<GDESkillData> gdeskillData = PlayData.GetMySkills(PlayData.TSavedata.Party[i].KeyData, true);
+                            List<GDESkillData> gdeskillData = PlayData.GetMySkills(PlayData.TSavedata.Party[i].KeyData, true).GroupBy(x => x.KeyID).Select(x => x.First()).ToList();
                             if (gdeskillData != null)
                             {
                                 foreach (GDESkillData skill in gdeskillData)
                                 {
                                     list.Add(Skill.TempSkill(skill.KeyID, battleallys[i], tempBattleTeam));
+                                    Debug.Log(skill.Name);
                                 }
                             }
                         }

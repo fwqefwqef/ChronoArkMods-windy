@@ -98,6 +98,7 @@ namespace FirstRareFull
                     FieldSystem.DelayInput(BattleSystem.I_OtherSkillSelect(list, new SkillButton.SkillClickDel(__instance.SkillAdd), ScriptLocalization.System_Item.SkillAdd, false, true, true, true, true));
                     __result = true;
                     firstlearn = false;
+                    PlayData.TSavedata.SpRule.RuleChange.CharacterRareSkillInfinityGet = false;
                     return false;
                 }
                 else return true;

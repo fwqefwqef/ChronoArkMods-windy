@@ -85,3 +85,4 @@ C:\Users\sjkim\source\repos\FirstRareFull\obj\Debug\FirstRareFull.csproj.CoreCom
 C:\Users\sjkim\source\repos\FirstRareFull\obj\Debug\FirstRareFull.csproj.CopyComplete
 C:\Users\sjkim\source\repos\FirstRareFull\obj\Debug\FirstRareFull.dll
 C:\Users\sjkim\source\repos\FirstRareFull\obj\Debug\FirstRareFull.pdb
+C:\Users\sjkim\source\repos\FirstRareFull\bin\Debug\Newtonsoft.Json.dll

@@ -1026,10 +1026,13 @@ namespace ExpertPlusMod
             [HarmonyPostfix]
             static void Postfix(RandomEventBaseScript __instance)
             {
-                if (__instance is RE_Medicaltent)
+                if (PermaMode.Value)
                 {
-                    //Debug.Log("Here");
-                    __instance.ButtonOff(0);
+                    if (__instance is RE_Medicaltent)
+                    {
+                        //Debug.Log("Here");
+                        __instance.ButtonOff(0);
+                    }
                 }
             }
         }
@@ -1655,6 +1658,8 @@ namespace ExpertPlusMod
                     __instance.Level4DoubleBoss = true;
                     GDEItemKeys.EnemyQueue_Queue_S4_King = "LBossFirst_Queue";
                     FieldSystem.instance.BattleStart(new GDEEnemyQueueData("Queue_S4_King"), StageSystem.instance.StageData.BattleMap.Key, false, false, "", "", false);
+                    Debug.Log("Changed to LBoss");
+                    Debug.Log(PlayData.TSavedata.StageNum);
                     return false;
                 }
                 return true;
@@ -1694,13 +1699,13 @@ namespace ExpertPlusMod
             [HarmonyPrefix]
             static bool Prefix(P_King __instance)
             {
-                if (DespairMode.Value && PlayData.TSavedata.bMist != null && PlayData.TSavedata.bMist.Level == 4 && PlayData.TSavedata.StageNum != 5)
-                {
+                //if (DespairMode.Value && PlayData.TSavedata.bMist != null && PlayData.TSavedata.bMist.Level == 4 && PlayData.TSavedata.StageNum != 5)
+                //{
                     if (__instance.BChar.HP <= 0)
                     {
                         __instance.BChar.Dead(false);
                     }
-                }
+                //}
                 return true;
             }
         }
@@ -1713,24 +1718,32 @@ namespace ExpertPlusMod
             [HarmonyPrefix]
             static bool Prefix(P_King __instance/*, ref IEnumerator __result*/)
             {
-                if (DespairMode.Value && PlayData.TSavedata.bMist != null && PlayData.TSavedata.bMist.Level == 4 && PlayData.TSavedata.StageNum != 5)
-                {
+                //if (DespairMode.Value && PlayData.TSavedata.bMist != null && PlayData.TSavedata.bMist.Level == 4 && PlayData.TSavedata.StageNum != 5)
+                //{
                     Debug.Log("Here123");
                     BattleSystem.instance.BattleEnd();
+                    InventoryManager.Reward(new List<ItemBase>
+                        {
+                        ItemBase.GetItem(GDEItemKeys.Item_Misc_TimeMoney, 7),
+                        });
                     return false;
-                }
-                return true;
+                //}
+                //return true;
             }
         }
 
-        [HarmonyPatch(typeof(S_LBossFirst_2))]
-        [HarmonyPatch(nameof(S_LBossFirst_2.Init))]
-        class Azar_TFKMusicEnd
+        // Reset Sanctuary final boss to tfk
+        [HarmonyPatch(typeof(DataCollectMgr), "GameEnd")]
+        class RareTurnBackOn
         {
-            static void Postfix(S_LBossFirst_2 __instance)
+            [HarmonyPostfix]
+            static void Postfix()
             {
-                MasterAudio.StopAllOfSound("CA_Boss_04_Intro");
-                MasterAudio.StopAllOfSound("CA_Boss_04_Loop");
+                if (PlayData.TSavedata.StageNum != 4) // Premature game end with despair 4 tfk
+                {
+                    GDEItemKeys.EnemyQueue_Queue_S4_King = "Queue_S4_King";
+                    Debug.Log("Reset Sanctuary Boss");
+                }
             }
         }
 

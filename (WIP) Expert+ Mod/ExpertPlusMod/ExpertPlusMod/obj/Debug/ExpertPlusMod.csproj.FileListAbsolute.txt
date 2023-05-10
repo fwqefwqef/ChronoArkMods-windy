@@ -3,10 +3,6 @@ C:\Users\sjkim\source\repos\ExpertPlusMod\ExpertPlusMod\bin\Debug\ExpertPlusMod.
 C:\Users\sjkim\source\repos\ExpertPlusMod\ExpertPlusMod\bin\Debug\0Harmony.dll
 C:\Users\sjkim\source\repos\ExpertPlusMod\ExpertPlusMod\bin\Debug\Assembly-CSharp.dll
 C:\Users\sjkim\source\repos\ExpertPlusMod\ExpertPlusMod\bin\Debug\BepInEx.dll
-C:\Users\sjkim\source\repos\ExpertPlusMod\ExpertPlusMod\bin\Debug\UnityEngine.CoreModule.dll
-C:\Users\sjkim\source\repos\ExpertPlusMod\ExpertPlusMod\bin\Debug\UnityEngine.dll
-C:\Users\sjkim\source\repos\ExpertPlusMod\ExpertPlusMod\bin\Debug\UnityEngine.UI.dll
-C:\Users\sjkim\source\repos\ExpertPlusMod\ExpertPlusMod\bin\Debug\Assembly-CSharp-firstpass.dll
 C:\Users\sjkim\source\repos\ExpertPlusMod\ExpertPlusMod\obj\Debug\ExpertPlusMod.csproj.AssemblyReference.cache
 C:\Users\sjkim\source\repos\ExpertPlusMod\ExpertPlusMod\obj\Debug\ExpertPlusMod.csproj.CoreCompileInputs.cache
 C:\Users\sjkim\source\repos\ExpertPlusMod\ExpertPlusMod\obj\Debug\ExpertPlusMod.csproj.CopyComplete
@@ -44,3 +40,6 @@ C:\Users\sjkim\source\repos\ExpertPlusMod\ExpertPlusMod\bin\Debug\System.IO.Comp
 C:\Users\sjkim\source\repos\ExpertPlusMod\ExpertPlusMod\bin\Debug\System.IO.Compression.FileSystem.dll
 C:\Users\sjkim\source\repos\ExpertPlusMod\ExpertPlusMod\bin\Debug\System.Runtime.Serialization.Xml.dll
 C:\Users\sjkim\source\repos\ExpertPlusMod\ExpertPlusMod\bin\Debug\System.Xml.XPath.XDocument.dll
+C:\Users\sjkim\source\repos\ExpertPlusMod\ExpertPlusMod\bin\Debug\Newtonsoft.Json.dll
+C:\Users\sjkim\source\repos\ExpertPlusMod\ExpertPlusMod\bin\Debug\UnityEngine.ImageConversionModule.dll
+C:\Users\sjkim\source\repos\ExpertPlusMod\ExpertPlusMod\bin\Debug\UnityEngine.UnityWebRequestAudioModule.dll

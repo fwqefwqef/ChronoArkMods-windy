@@ -29,8 +29,6 @@ Extra settings
 
 Chaos Mode: Include every existing skill in the game (such as enemy skills and item effects) into the selection pool. Gets silly quickly. (Default OFF)
 
-Healing 101: Gives 2 Healing 101 at the start of the game to help support characters pick up heal skills. (Default OFF) 
-
 (Go to BepInEx -> config -> open in Notepad: org.windy.chronoark.cardmod.randomskillmod.cfg)
 
 # [Boss Rush Mode]
